@@ -34,16 +34,29 @@ class Element
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Trajet *getTrajet ();
+    Trajet *GetTrajet () const;
     // Mode d'emploi :
     // Retourne un pointeur vers le trajet contenu dans le chaînon
     // Contrat :
     //
 
-    void setTrajet (Trajet *trajet);
+    void SetTrajet (Trajet *trajet);
     // Mode d'emploi :
     // Permet de modifier le trajet contenu dans le chaînon à partir d'un
     // trajet alloué dynamiquement (avec new).
+    // Contrat :
+    //
+
+    Element *GetNext () const;
+    // Mode d'emploi :
+    // Retourne un pointeur vers le prochain chaînon
+    // Contrat :
+    //
+
+    void SetNext (Element *next);
+    // Mode d'emploi :
+    // Permet de modifier le prochain chaînon pointé par next avec une
+    // valeur valide (NULL ou Element alloué dynamiquement)
     // Contrat :
     //
 

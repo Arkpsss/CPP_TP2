@@ -62,7 +62,7 @@ LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
 // Met tete à l'attribut tete et taille à l'attribut taille
     {
 #ifdef MAP
-    cout << "Appel au premierconstructeur de <LinkedList>" << endl;
+    cout << "Appel au premier constructeur de <LinkedList>" << endl;
 #endif
     }
 
@@ -73,6 +73,13 @@ LinkedList::~LinkedList ( )
 #ifdef MAP
     cout << "Appel au destructeur de <LinkedList>" << endl;
 #endif
+    Element *current = tete;
+    for (int i=0; i<taille; i++)
+    {
+        Element *temp = current->GetNext();
+        delete(current);
+        current=temp;
+    }
 } //----- Fin de ~LinkedList
 
 

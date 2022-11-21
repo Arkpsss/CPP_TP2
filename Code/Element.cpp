@@ -22,12 +22,33 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Element::Méthode ( liste des paramètres )
+Trajet *Element::GetTrajet () const
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+     return trajet;
+} //----- Fin de GetTrajet
 
+void Element::SetTrajet (Trajet *trajet)
+// Algorithme :
+//
+{
+    this->trajet=trajet;
+} //----- Fin de Méthode
+
+Element *Element::GetNext () const
+// Algorithme :
+//
+{
+    return next;
+} //----- Fin de GetTrajet
+
+void Element::SetNext (Element *next)
+// Algorithme :
+//
+{
+this->next=next;
+} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -51,7 +72,7 @@ Element::Element ( ) : trajet(NULL), next(NULL)
 #ifdef MAP
     cout << "Appel au constructeur par défaut de <Element>" << endl;
 #endif
-} //----- Fin de Element
+} //----- Fin de Element (constructeur par défaut)
 
 Element::Element (Trajet *trajet) : trajet(trajet), next(NULL)
 // Algorithme :
@@ -60,7 +81,7 @@ Element::Element (Trajet *trajet) : trajet(trajet), next(NULL)
 #ifdef MAP
     cout << "Appel au premier constructeur de <Element>" << endl;
 #endif
-}
+} //----- Fin de Element (premier constructeur)
 
 Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
 // Algorithme :
@@ -69,7 +90,7 @@ Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
 #ifdef MAP
     cout << "Appel au deuxième constructeur de <Element>" << endl;
 #endif
-}
+} //----- Fin de Element (deuxième constructeur)
 
 Element::~Element ( )
 // Algorithme :
