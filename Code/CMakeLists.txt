@@ -4,3 +4,4 @@ project(Code)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(Code main.cpp LinkedList.cpp Element.cpp Trajet.cpp)
+add_compile_definitions(MAP)

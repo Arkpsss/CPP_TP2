@@ -48,15 +48,23 @@ LinkedList::LinkedList ( const LinkedList & unLinkedList )
 } //----- Fin de LinkedList (constructeur de copie)
 
 
-LinkedList::LinkedList ( )
+LinkedList::LinkedList ( ) : tete(NULL), taille(0)
 // Algorithme :
-//
+// Met tete à NULL et taille à 0
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <LinkedList>" << endl;
+    cout << "Appel au constructeur par défaut de <LinkedList>" << endl;
 #endif
 } //----- Fin de LinkedList
 
+LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
+// Algorithme :
+// Met tete à l'attribut tete et taille à l'attribut taille
+    {
+#ifdef MAP
+    cout << "Appel au premierconstructeur de <LinkedList>" << endl;
+#endif
+    }
 
 LinkedList::~LinkedList ( )
 // Algorithme :
