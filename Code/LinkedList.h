@@ -45,9 +45,11 @@ public:
     // Contrat :
     //
 
-    void AddList (Trajet trajet) ;
+    void AddList (Trajet *trajet, int position) ;
     // Mode d'emploi :
-    // Ajoute
+    // Crée un Element donc le trajet est trajet à la position position.
+    // Trajet doit être alloué dynamiquement (avec new)
+    // position doit être valide (0<=position<=taille);
     // Contrat :
     //
 

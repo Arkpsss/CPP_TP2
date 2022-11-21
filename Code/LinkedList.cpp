@@ -22,11 +22,28 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type LinkedList::Méthode ( liste des paramètres )
+void LinkedList::AddList (Trajet *trajet, int position)
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+    //Si on ajoute en tête de liste
+    if (position==0)
+    {
+        Element *nouvelElement = new Element(trajet,tete);
+        tete = nouvelElement;
+        return;
+    }
+
+    //Si on ajoute dans le reste de la liste
+    Element *current=tete;
+    for (int i=0; i<position-1; i++)
+    {
+        current=current->GetNext();
+    }
+
+    Element *nouvelElement = new Element (trajet, current->GetNext());
+    current->SetNext(nouvelElement);
+} //----- Fin de Méthode
 
 
 //------------------------------------------------- Surcharge d'opérateurs
