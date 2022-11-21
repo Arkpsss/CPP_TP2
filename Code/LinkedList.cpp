@@ -30,21 +30,17 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-LinkedList & LinkedList::operator = ( const LinkedList & unLinkedList )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
-LinkedList::LinkedList ( const LinkedList & unLinkedList )
+LinkedList::LinkedList ( const LinkedList & uneLinkedList )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <LinkedList>" << endl;
 #endif
+    tete=uneLinkedList.tete;
+    taille=uneLinkedList.taille;
 } //----- Fin de LinkedList (constructeur de copie)
 
 

@@ -19,8 +19,12 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <LinkedList>
-//
-//
+// LinkedList implémente une liste chaînée avec pour chaînons des Element
+// Son utilisation est indépendante du type contenu dans Element, mais ici
+// elle sera utilisée avec des Element contenant des Trajet.
+// Elle contient deux attributs :
+// tete, de type Element*, qui est un pointeur vers le début de la liste
+// taille, de type int, qui correspond à la taille de la liste.
 //------------------------------------------------------------------------
 
 class LinkedList
@@ -29,12 +33,23 @@ class LinkedList
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    Element * GetHead () const;
     // Mode d'emploi :
-    //
+    // Renvoie le premier maillon de la liste
     // Contrat :
     //
 
+    void SetHead () ;
+    // Mode d'emploi :
+    // Redéfinit le début de la liste
+    // Contrat :
+    //
+
+    void AddList (Trajet trajet) ;
+    // Mode d'emploi :
+    // Ajoute
+    // Contrat :
+    //
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -60,7 +75,7 @@ public:
 
     ~LinkedList ( );
     // Mode d'emploi :
-    // Détruit la LinkedList, c'est à dire désalloue tous ses éléments
+    // Détruit la LinkedList, c’est-à-dire désalloue tous ses éléments
     // Contrat :
     //
 

@@ -52,28 +52,28 @@ build cmake_object_order_depends_target_Code: phony || CMakeFiles/Code.dir
 build CMakeFiles/Code.dir/main.cpp.o: CXX_COMPILER__Code_Debug /home/canaple/Dev/CPP_TP1/CPP_TP1/Code/main.cpp || cmake_object_order_depends_target_Code
   DEFINES = -DMAP
   DEP_FILE = CMakeFiles/Code.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++11
+  FLAGS = -ansi -pedantic -Wall -std=c++11 -Wextra -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/Code.dir
   OBJECT_FILE_DIR = CMakeFiles/Code.dir
 
 build CMakeFiles/Code.dir/LinkedList.cpp.o: CXX_COMPILER__Code_Debug /home/canaple/Dev/CPP_TP1/CPP_TP1/Code/LinkedList.cpp || cmake_object_order_depends_target_Code
   DEFINES = -DMAP
   DEP_FILE = CMakeFiles/Code.dir/LinkedList.cpp.o.d
-  FLAGS = -g -std=gnu++11
+  FLAGS = -ansi -pedantic -Wall -std=c++11 -Wextra -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/Code.dir
   OBJECT_FILE_DIR = CMakeFiles/Code.dir
 
 build CMakeFiles/Code.dir/Element.cpp.o: CXX_COMPILER__Code_Debug /home/canaple/Dev/CPP_TP1/CPP_TP1/Code/Element.cpp || cmake_object_order_depends_target_Code
   DEFINES = -DMAP
   DEP_FILE = CMakeFiles/Code.dir/Element.cpp.o.d
-  FLAGS = -g -std=gnu++11
+  FLAGS = -ansi -pedantic -Wall -std=c++11 -Wextra -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/Code.dir
   OBJECT_FILE_DIR = CMakeFiles/Code.dir
 
 build CMakeFiles/Code.dir/Trajet.cpp.o: CXX_COMPILER__Code_Debug /home/canaple/Dev/CPP_TP1/CPP_TP1/Code/Trajet.cpp || cmake_object_order_depends_target_Code
   DEFINES = -DMAP
   DEP_FILE = CMakeFiles/Code.dir/Trajet.cpp.o.d
-  FLAGS = -g -std=gnu++11
+  FLAGS = -ansi -pedantic -Wall -std=c++11 -Wextra -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/Code.dir
   OBJECT_FILE_DIR = CMakeFiles/Code.dir
 
@@ -86,7 +86,7 @@ build CMakeFiles/Code.dir/Trajet.cpp.o: CXX_COMPILER__Code_Debug /home/canaple/D
 # Link the executable Code
 
 build Code: CXX_EXECUTABLE_LINKER__Code_Debug CMakeFiles/Code.dir/main.cpp.o CMakeFiles/Code.dir/LinkedList.cpp.o CMakeFiles/Code.dir/Element.cpp.o CMakeFiles/Code.dir/Trajet.cpp.o
-  FLAGS = -g
+  FLAGS = -ansi -pedantic -Wall -std=c++11 -Wextra -g
   OBJECT_DIR = CMakeFiles/Code.dir
   POST_BUILD = :
   PRE_LINK = :
