@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Xxx  -  description
+                           LinkedList  -  Classe implémentant une liste chaînée
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 21/11/2022
+    copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <LinkedList> (fichier LinkedList.h) ----------------
+#if ! defined ( LinkedList_H )
+#define LinkedList_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <LinkedList>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
+class LinkedList
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,7 +36,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
+    LinkedList & operator = ( const LinkedList & unLinkedList );
     // Mode d'emploi :
     //
     // Contrat :
@@ -44,19 +44,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
+    LinkedList ( const LinkedList & unLinkedList );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Xxx ( );
+    LinkedList ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx ( );
+    virtual ~LinkedList ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -71,6 +71,6 @@ protected:
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de <LinkedList>
 
-#endif // XXX_H
+#endif // LinkedList_H

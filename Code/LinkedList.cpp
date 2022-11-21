@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Xxx  -  description
+                           LinkedList  -  Classe implémentant une liste chaînée
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 21/11/2022
+    copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <LinkedList> (fichier LinkedList.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,14 +15,14 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "LinkedList.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type LinkedList::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -30,7 +30,7 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+LinkedList & LinkedList::operator = ( const LinkedList & unLinkedList )
 // Algorithme :
 //
 {
@@ -38,34 +38,34 @@ Xxx & Xxx::operator = ( const Xxx & unXxx )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+LinkedList::LinkedList ( const LinkedList & unLinkedList )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+    cout << "Appel au constructeur de copie de <LinkedList>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+} //----- Fin de LinkedList (constructeur de copie)
 
 
-Xxx::Xxx ( )
+LinkedList::LinkedList ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+    cout << "Appel au constructeur de <LinkedList>" << endl;
 #endif
-} //----- Fin de Xxx
+} //----- Fin de LinkedList
 
 
-Xxx::~Xxx ( )
+LinkedList::~LinkedList ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+    cout << "Appel au destructeur de <LinkedList>" << endl;
 #endif
-} //----- Fin de ~Xxx
+} //----- Fin de ~LinkedList
 
 
 //------------------------------------------------------------------ PRIVE
