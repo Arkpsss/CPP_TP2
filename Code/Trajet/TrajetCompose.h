@@ -42,10 +42,10 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const char *vD, const char *vA, const list<Trajet> *l);
+    TrajetCompose(const list<Trajet> *l, const char *vD = "", const char *vA = "");
     // Mode d'emploi :
-    // Initialise la liste des trajets et la ville de départ et d'arrive 
-    // du trajet en totalité
+    // Initialise la liste des trajets et si renseigné, les villes de départ
+    // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :

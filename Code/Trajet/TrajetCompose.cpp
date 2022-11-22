@@ -30,7 +30,7 @@ using namespace std;
 
 
 
-TrajetCompose::TrajetCompose (const char *vD, const char *vA, const list<Trajet> *l)
+TrajetCompose::TrajetCompose (const list<Trajet> *l, const char *vD = "", const char *vA = "")
     : Trajet(vD, vA)
 
 {
