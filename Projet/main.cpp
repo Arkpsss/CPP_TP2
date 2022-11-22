@@ -14,6 +14,7 @@
 //------------------------------------------------------ Include personnel
 #include "Trajet.h"
 #include "TrajetSimple.h"
+#include "TrajetCompose.h"
 
 
 ///////////////////////////////////////////////////////////////////  PRIVE
@@ -37,6 +38,31 @@ static void test_affichage_trajet_simple() {
 
 }
 
+static void test_affichage_trajet_compose() {
+
+
+  LinkedList *l = new LinkedList();
+
+  l->AddFirst(new TrajetSimple("Paris", "Londres", "bateau"));
+  l->AddTrie(new TrajetSimple("Londres", "Los Angeles", "avion"));
+
+  Trajet *t = new TrajetCompose(l);
+
+  t->Afficher();
+
+  delete t;
+
+}
+
+static void test_creation_linkedlist() {
+  LinkedList *l = new LinkedList();
+
+  l->AddFirst(new TrajetSimple("Paris", "Londres", "bateau"));
+  l->AddTrie(new TrajetSimple("Londres", "Los Angeles", "avion"));
+
+  delete l;
+}
+
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
@@ -45,7 +71,7 @@ static void test_affichage_trajet_simple() {
 int main(int argc, char const *argv[])
 {
   
-  test_affichage_trajet_simple();
+  test_creation_linkedlist();
 
   return 0;
 }

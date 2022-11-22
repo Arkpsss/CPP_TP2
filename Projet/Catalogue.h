@@ -62,7 +62,7 @@ private:
 
 //----------------------------------------------------- Attributs privés
 
-    LinkedList *list;
+    LinkedList *list;                        
 
 };
 

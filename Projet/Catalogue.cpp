@@ -29,6 +29,24 @@ void Catalogue::Insert(Trajet *trajet) {
 
 }
 
+void Catalogue::Afficher() {
+
+    Element *e = list->GetHead();
+
+    for (int i = 1; i < list->GetTaille(); i++) {
+
+        cout << "\t\t" << "Trajet n° " << i << "/ " << endl;
+
+        e->GetTrajet()->Afficher();
+
+        e = e->GetNext();
+    }
+
+    cout << "\t" << list->GetTaille() << "/ " << endl;
+    e->GetTrajet()->Afficher();
+    
+}
+
 
 
 //-------------------------------------------- Constructeurs - destructeur

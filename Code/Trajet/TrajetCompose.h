@@ -35,12 +35,8 @@ class TrajetCompose : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    
+    void Afficher() const;
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetCompose(const LinkedList *l, const char *vD = "", const char *vA = "");

@@ -55,6 +55,7 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 
         Element *e = new Element(trajet, current);
         this->tete = e;
+        taille++;
 
         return true;
     }
@@ -67,6 +68,8 @@ bool LinkedList::AddTrie(Trajet *trajet) {
             if (compare(current->GetTrajet(), trajet)) {
                 Element *e = new Element(trajet, current);
                 prec->SetNext(e);
+
+                taille++;
                 return true;
             }
 
@@ -84,6 +87,8 @@ void LinkedList::AddFirst (Trajet *trajet) {
     Element *e = new Element(trajet, tete);
 
     this->tete = e;
+
+    taille++;
 
 }
 

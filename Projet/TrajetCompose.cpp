@@ -23,14 +23,34 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void TrajetCompose::Afficher() const {
 
+    cout << "Ville de départ : " << villeDepart << endl;
+    cout << "Ville d'arrivee : " << villeArrivee << endl;
+    cout << "Etapes du trajet : " << endl;
+
+    Element *e = listTrajets->GetHead();
+
+    for (int i = 1; i < listTrajets->GetTaille(); i++) {
+
+        cout << "\t" << i << "/ " << endl;
+
+        e->GetTrajet()->Afficher();
+
+        e = e->GetNext();
+    }
+
+    cout << "\t" << listTrajets->GetTaille() << "/ " << endl;
+    e->GetTrajet()->Afficher();
+
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
 
-TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD, const char *vA)
+TrajetCompose::TrajetCompose (LinkedList *l, const char *vD, const char *vA)
     : Trajet(vD, vA)
 
 {
@@ -38,7 +58,27 @@ TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD, const char *v
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 
-    listTrajets = new LinkedList(l->GetHead(), l->GetTaille());
+    listTrajets = l;
+    
+    if (strcmp(vD, "") == 0 || strcmp(vA, "") == 0) {
+        Element *d = listTrajets->GetHead();
+        Element *a = listTrajets->GetHead();
+
+        for (int i = 1; i < listTrajets->GetTaille(); i++) {
+            a = a->GetNext();
+        }
+
+        delete [] villeDepart;
+        delete [] villeArrivee;
+
+        villeDepart = new char[strlen(d->GetTrajet()->GetVilleDepart()) +1];
+        villeArrivee = new char[strlen(a->GetTrajet()->GetVilleArrivee()) +1];
+
+        strcpy(villeDepart, d->GetTrajet()->GetVilleDepart());
+        strcpy(villeArrivee, a->GetTrajet()->GetVilleArrivee());
+
+    }
+    
 
 } //----- Fin de TrajetCompose
 

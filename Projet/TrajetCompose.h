@@ -35,15 +35,11 @@ class TrajetCompose : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    
+    void Afficher() const;
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const LinkedList *l, const char *vD = "", const char *vA = "");
+    TrajetCompose(LinkedList *l, const char *vD = "", const char *vA = "");
     // Mode d'emploi :
     // Initialise la liste des trajets et si renseigné, les villes de départ
     // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
