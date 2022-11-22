@@ -64,43 +64,24 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    Element ( const Element &unElement );
+    /*Element ( const Element &unElement );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
+    */
 
-    Element ( );
-    // Mode d'emploi :
-    // Crée un Element avec :
-    // this->trajet = NULL
-    // this->next = NULL
-    // Contrat :
-    //
-
-    Element (Trajet *trajet);
-    // Mode d'emploi :
-    // Crée un Element avec :
-    // this->trajet = trajet (paramètre formel)
-    // this->next = NULL
-    // Contrat :
-    //
-
-    Element (Trajet *trajet, Element *next);
+    Element (Trajet *trajet = NULL, Element *next = NULL);
     // Mode d'emploi :
     // Crée un Element avec :
     // this->trajet = trajet (paramètre formel)
     // this->next = next
     // next doit être valide (pointe vers un Element existant ou vers NULL)
-    // Contrat :
-    //
 
     ~Element ( );
     // Mode d'emploi :
     // Détruit l'Element, c'est à dire désalloue la zone mémoire pointée
     // par trajet.
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 

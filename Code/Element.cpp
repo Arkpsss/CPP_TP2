@@ -53,7 +53,7 @@ this->next=next;
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Element::Element ( const Element & unElement )
+/*Element::Element ( const Element & unElement )
 // Algorithme :
 // Copie les pointeurs vers trajet et next de l'élément à copier.
 {
@@ -63,25 +63,9 @@ Element::Element ( const Element & unElement )
     trajet=unElement.trajet;
     next=unElement.next;
 } //----- Fin de Element (constructeur de copie)
+*/
 
 
-Element::Element ( ) : trajet(NULL), next(NULL)
-// Algorithme :
-// Met à NULL trajet et next.
-{
-#ifdef MAP
-    cout << "Appel au constructeur par défaut de <Element>" << endl;
-#endif
-} //----- Fin de Element (constructeur par défaut)
-
-Element::Element (Trajet *trajet) : trajet(trajet), next(NULL)
-// Algorithme :
-// Met à next à NULL et this->trajet à trajet.
-{
-#ifdef MAP
-    cout << "Appel au premier constructeur de <Element>" << endl;
-#endif
-} //----- Fin de Element (premier constructeur)
 
 Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
 // Algorithme :
@@ -90,7 +74,7 @@ Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
 #ifdef MAP
     cout << "Appel au deuxième constructeur de <Element>" << endl;
 #endif
-} //----- Fin de Element (deuxième constructeur)
+} //----- Fin de Element
 
 Element::~Element ( )
 // Algorithme :
