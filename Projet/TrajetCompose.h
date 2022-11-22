@@ -13,7 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 
 #include "Trajet.h"
-#include "../LinkedList.h"
+#include "LinkedList.h"
 
 //------------------------------------------------------------- Constantes
 

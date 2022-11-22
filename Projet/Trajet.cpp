@@ -1,12 +1,12 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Trajet  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,7 +15,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "TrajetCompose.h"
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -26,33 +26,34 @@ using namespace std;
 
 
 
+//------------------------------------------------- Surcharge d'opérateurs
+
+
 //-------------------------------------------- Constructeurs - destructeur
 
+Trajet::Trajet(const char *vD, const char *vA) {
+    villeDepart = new char[strlen(vD)+1];
+    villeArrivee = new char[strlen(vA) + 1];
 
+    strcpy(villeDepart, vD);
+    strcpy(villeArrivee, vA);
 
-TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD = "", const char *vA = "")
-    : Trajet(vD, vA)
+    #ifdef MAP
+        cout << "Appel au constructeur de <Trajet>" << endl;
+    #endif
+}
+// Mode d'emploi :
+// Initialise les attributs de la classe (2 tableaux dynamiques de char).
 
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <TrajetCompose>" << endl;
-#endif
+Trajet::~Trajet () {
 
-    
+    #ifdef MAP
+        cout << "Appel au destructeur de <Trajet>" << endl;
+    #endif
 
-} //----- Fin de TrajetCompose
-
-
-TrajetCompose::~TrajetCompose ()
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetCompose>" << endl;
-#endif
-
-    delete listTrajets;
-    
-} //----- Fin de ~TrajetCompose
-
+    delete [] villeArrivee;
+    delete [] villeDepart;
+}
 
 //------------------------------------------------------------------ PRIVE
 

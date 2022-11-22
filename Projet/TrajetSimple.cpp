@@ -1,21 +1,22 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           TrajetSimple  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
-#include "TrajetCompose.h"
+#include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -23,35 +24,38 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void TrajetSimple::Afficher() const {
 
+    cout << "Ville de départ : " << villeDepart << endl;
+    cout << "Ville d'arrivee : " << villeArrivee << endl;
+    cout << "Moyen de transport : " << moyenTransport << endl;
+
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-
-TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD = "", const char *vA = "")
+TrajetSimple::TrajetSimple (const char *vD, const char *vA, const char *mt)
     : Trajet(vD, vA)
-
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <TrajetCompose>" << endl;
+    cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
 
-    
+    moyenTransport = new char[strlen(mt) + 1];
+    strcpy(moyenTransport, mt);
 
-} //----- Fin de TrajetCompose
+} //----- Fin de TrajetSimple
 
 
-TrajetCompose::~TrajetCompose ()
-{
+TrajetSimple::~TrajetSimple () {
 #ifdef MAP
-    cout << "Appel au destructeur de <TrajetCompose>" << endl;
+    cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
 
-    delete listTrajets;
-    
-} //----- Fin de ~TrajetCompose
+    delete [] moyenTransport;
+
+} //----- Fin de ~TrajetSimple
 
 
 //------------------------------------------------------------------ PRIVE
