@@ -39,6 +39,14 @@ public:
     virtual void Afficher() const = 0;
     // Mode d'emploi:
     // Affiche les caractéristiques du trajet sur la sortie standard cout
+
+    char* GetVilleDepart() {
+        return villeDepart;
+    }
+
+    char* GetVilleArrivee() {
+        return villeArrivee;
+    }
     
 
 

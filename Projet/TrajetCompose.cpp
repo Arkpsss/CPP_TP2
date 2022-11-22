@@ -30,7 +30,7 @@ using namespace std;
 
 
 
-TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD = "", const char *vA = "")
+TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD, const char *vA)
     : Trajet(vD, vA)
 
 {
@@ -38,7 +38,7 @@ TrajetCompose::TrajetCompose (const LinkedList *l, const char *vD = "", const ch
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 
-    
+    listTrajets = new LinkedList(l->GetHead(), l->GetTaille());
 
 } //----- Fin de TrajetCompose
 

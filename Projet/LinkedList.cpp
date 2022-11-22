@@ -43,8 +43,40 @@ void LinkedList::Add (Trajet *trajet, int position)
 
     Element *nouvelElement = new Element (trajet, current->GetNext());
     current->SetNext(nouvelElement);
-} //----- Fin de Méthode
+} //----- Fin de Add
 
+bool LinkedList::AddTrie(Trajet *trajet) {
+
+    Element *current = tete;
+    Element *prec = tete;
+
+    //Ville d'arrivee du trajet est la ville de depart de l'element
+    if (compare(current->GetTrajet(), trajet)) {
+
+        Element *e = new Element(trajet, current);
+        this->tete = e;
+
+        return true;
+    }
+
+    else {
+
+        for (int i = 0; i < taille; i++) {
+            current = prec->GetNext();
+
+            if (compare(current->GetTrajet(), trajet)) {
+                Element *e = new Element(trajet, current);
+                prec->SetNext(e);
+                return true;
+            }
+
+            prec = current;
+        }
+
+        return false;
+    }
+
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
