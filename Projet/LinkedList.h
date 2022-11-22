@@ -55,7 +55,14 @@ public:
     // Contrat :
     //
 
+    void AddFirst(Trajet *trajet);
+    // Mode d'emploi :
+    // Ajoute un trajet en tête de liste
+
     bool AddTrie(Trajet *trajet);
+    // Mode d'emploi :
+    // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
+    // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
 
     int GetTaille() const {
         return this->taille;

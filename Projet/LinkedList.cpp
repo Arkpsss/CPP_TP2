@@ -78,6 +78,15 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 
 }
 
+
+void LinkedList::AddFirst (Trajet *trajet) {
+
+    Element *e = new Element(trajet, tete);
+
+    this->tete = e;
+
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

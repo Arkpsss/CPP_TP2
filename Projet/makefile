@@ -9,7 +9,7 @@
 ECHO = echo
 GCC = g++ #gcc
 CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 -DMAP#-c -O1 # debug : -c -g
-OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o
+OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o
 EXE = main
 LIBRAIRIES = #-lm
 
@@ -32,6 +32,7 @@ Trajet.o : Trajet.h
 TrajetCompose.o : TrajetCompose.h Trajet.h
 Element.o : Element.h Trajet.h
 LinkedList.o : LinkedList.h Element.h
+Catalogue.o : Catalogue.h LinkedList.h
 
 
 #Nettoyage
