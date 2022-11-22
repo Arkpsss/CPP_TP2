@@ -71,7 +71,7 @@ static void test_creation_linkedlist() {
 int main(int argc, char const *argv[])
 {
   
-  test_creation_linkedlist();
+  test_affichage_trajet_compose();
 
   return 0;
 }

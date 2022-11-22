@@ -104,6 +104,8 @@ private:
             return false;
         }
     }
+    // Mode d'emploi:
+    // Compare la ville de depart du premier trajet avec la ville d'arrivé du second
 
 //----------------------------------------------------- Attributs privé
     Element *tete;

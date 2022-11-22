@@ -53,6 +53,8 @@ bool LinkedList::AddTrie(Trajet *trajet) {
     //Ville d'arrivee du trajet est la ville de depart de l'element
     if (compare(current->GetTrajet(), trajet)) {
 
+
+
         Element *e = new Element(trajet, current);
         this->tete = e;
         taille++;
@@ -65,7 +67,19 @@ bool LinkedList::AddTrie(Trajet *trajet) {
         for (int i = 0; i < taille; i++) {
             current = prec->GetNext();
 
-            if (compare(current->GetTrajet(), trajet)) {
+            if (current == NULL) {
+                if(compare(trajet,prec->GetTrajet())) {
+                    Element *e = new Element(trajet, NULL);
+                    prec->SetNext(e);
+                    taille++;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            else if (compare(current->GetTrajet(), trajet)) {
                 Element *e = new Element(trajet, current);
                 prec->SetNext(e);
 

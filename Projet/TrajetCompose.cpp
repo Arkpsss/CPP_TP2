@@ -25,8 +25,8 @@ using namespace std;
 
 void TrajetCompose::Afficher() const {
 
-    cout << "Ville de départ : " << villeDepart << endl;
-    cout << "Ville d'arrivee : " << villeArrivee << endl;
+    cout << "   Ville de départ : " << villeDepart << endl;
+    cout << "   Ville d'arrivee : " << villeArrivee << endl;
     cout << "Etapes du trajet : " << endl;
 
     Element *e = listTrajets->GetHead();
