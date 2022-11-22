@@ -22,7 +22,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void LinkedList::AddList (Trajet *trajet, int position)
+void LinkedList::Add (Trajet *trajet, int position)
 // Algorithme :
 //
 {
@@ -49,7 +49,7 @@ void LinkedList::AddList (Trajet *trajet, int position)
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-LinkedList::LinkedList ( const LinkedList & uneLinkedList )
+/*LinkedList::LinkedList ( const LinkedList & uneLinkedList )
 // Algorithme :
 //
 {
@@ -59,25 +59,18 @@ LinkedList::LinkedList ( const LinkedList & uneLinkedList )
     tete=uneLinkedList.tete;
     taille=uneLinkedList.taille;
 } //----- Fin de LinkedList (constructeur de copie)
+*/
 
 
-LinkedList::LinkedList ( ) : tete(NULL), taille(0)
-// Algorithme :
-// Met tete à NULL et taille à 0
-{
-#ifdef MAP
-    cout << "Appel au constructeur par défaut de <LinkedList>" << endl;
-#endif
-} //----- Fin de LinkedList
 
 LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
 // Algorithme :
 // Met tete à l'attribut tete et taille à l'attribut taille
-    {
+{
 #ifdef MAP
-    cout << "Appel au premier constructeur de <LinkedList>" << endl;
+    cout << "Appel au constructeur de <LinkedList>" << endl;
 #endif
-    }
+}
 
 LinkedList::~LinkedList ( )
 // Algorithme :
