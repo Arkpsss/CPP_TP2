@@ -23,33 +23,59 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void TrajetCompose::Afficher() const {
+char* TrajetCompose::ToString() const {
 
-    cout << "   Ville de départ : " << villeDepart << endl;
-    cout << "   Ville d'arrivee : " << villeArrivee << endl;
-    cout << "Etapes du trajet : " << endl;
+    int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
 
-    Element *e = listTrajets->GetHead();
+    char *res = new char[taille];
 
-    for (int i = 1; i < listTrajets->GetTaille(); i++) {
+    strcat(res, "   Ville de départ : ");
+    strcat(res, villeDepart);
+    strcat(res, "\n   Ville d'arrivee : ");
+    strcat(res, villeArrivee);
+    strcat(res, "\nEtapes du trajet : \n");
 
-        cout << "\t" << i << "/ " << endl;
+    Element *e = list->GetHead();
 
-        e->GetTrajet()->Afficher();
+    for (int i = 1; i < list->GetTaille(); i++) {
+
+        char *text = e->GetTrajet()->GetDescription();
+
+        while (strlen(text) + 10 >= taille - strlen(res)-1) {
+            res = TrajetCompose::realloc(res, taille*2);
+            taille *= 2;
+        }
+
+        strcat(res, "\t+++/ \n");
+
+        strcat(res, text);
+
+        e->GetTrajet()->deleteDescription();
 
         e = e->GetNext();
     }
 
-    cout << "\t" << listTrajets->GetTaille() << "/ " << endl;
-    e->GetTrajet()->Afficher();
+    char *text = e->GetTrajet()->GetDescription();
+
+    while (strlen(text) + 10 >= taille - strlen(res)-1) {
+        res = TrajetCompose::realloc(res, taille*2);
+        taille *= 2;
+    }
+
+    strcat(res, "\t+++/ \n");
+    strcat(res, e->GetTrajet()->GetDescription());
+    e->GetTrajet()->deleteDescription();
+
+    return res;
 
 }
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
-
+/*
 TrajetCompose::TrajetCompose (LinkedList *l, const char *vD, const char *vA)
     : Trajet(vD, vA)
 
@@ -81,6 +107,27 @@ TrajetCompose::TrajetCompose (LinkedList *l, const char *vD, const char *vA)
     
 
 } //----- Fin de TrajetCompose
+*/
+
+TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA )
+    : Trajet(vD, vA)
+{
+
+#ifdef MAP
+    cout << "Appel au constructeur de <TrajetCompose>" << endl;
+#endif
+
+    list = new LinkedList();
+
+    for (int i = nb-1; i >= 0; i--) {
+        list->AddFirst(tab[i]);
+    }
+
+
+    description = ToString();
+
+}
+
 
 
 TrajetCompose::~TrajetCompose ()
@@ -89,7 +136,7 @@ TrajetCompose::~TrajetCompose ()
     cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
 
-    delete listTrajets;
+    delete list;
     
 } //----- Fin de ~TrajetCompose
 

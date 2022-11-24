@@ -1,67 +1,76 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Catalogue  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#ifndef TRAJETCOMPOSE_H
-#define TRAJETCOMPOSE_H
+//---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
+#if ! defined ( CATALOGUE_H )
+#define CATALOGUE_H
 
 //--------------------------------------------------- Interfaces utilisées
 
-#include "Trajet.h"
-#include "LinkedList.h"
+#include "../Modele/LinkedList.h"
+#include "../Modele/Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
+// Rôle de la classe <Catalogue>
 //
-// Cette classe représente un trajet composé de plusieurs trajets simples
-// ou composé
-// ordonné de tel sorte que la ville d'arrivé correspondent à la ville de 
-// départ du suivant.
+// Cette classe répresent une liste sans ordre spécifique de Trajet possible.
 //
 //------------------------------------------------------------------------
 
-class TrajetCompose : public Trajet
+class Catalogue
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
     
-    void Afficher() const;
+    void Insert(Trajet *trajet);
+    // Mode d'emploi:
+    // Ajoute un trajet en tête de liste
+
+    void Afficher();
+    // Mode d'emploi :
+    // Affiche un par un chaque trajet de la liste
+
+    int GetNbTrajet() const {
+        return list->GetTaille();
+    }
+
+    char* GetDescriptionOf(int numeroTrajet) const;
+
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(LinkedList *l, const char *vD = "", const char *vA = "");
-    // Mode d'emploi :
-    // Initialise la liste des trajets et si renseigné, les villes de départ
-    // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
 
-    virtual ~TrajetCompose ();
+
+    Catalogue();
     // Mode d'emploi :
-    // Désalloue la liste des trajets
+    // Instancie un nouveau catalogue avec une liste vide
+
+    virtual ~Catalogue ();
+    // Mode d'emploi :
+    // Désalloue la liste
 
 //------------------------------------------------------------------ PRIVE
 
 private:
 //----------------------------------------------------- Méthodes privées
 
-    bool estOrdonne() const;
-
 //----------------------------------------------------- Attributs privés
 
-    LinkedList *listTrajets;
+    LinkedList *list;                        
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------------- Autres définitions dépendantes de <Catalogue>
 
-#endif // TRAJETCOMPOSE_H
+#endif // CATALOGUE_H
 

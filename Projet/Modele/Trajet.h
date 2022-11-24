@@ -36,7 +36,7 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     
-    virtual void Afficher() const = 0;
+    //virtual void Afficher() const = 0;
     // Mode d'emploi:
     // Affiche les caractéristiques du trajet sur la sortie standard cout
 
@@ -46,6 +46,19 @@ public:
 
     char* GetVilleArrivee() {
         return villeArrivee;
+    }
+
+    char* GetDescription() {
+        return description;
+    }
+
+    inline void deleteDescription() {
+
+        if (description != NULL) {
+            delete [] description;
+            description = NULL;
+        }
+
     }
     
 
@@ -64,10 +77,16 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 
+    virtual char* ToString() const = 0;
+
+    
+
 //----------------------------------------------------- Attributs protégés
 
     char *villeDepart;
     char *villeArrivee;
+
+    char *description;
 
 };
 

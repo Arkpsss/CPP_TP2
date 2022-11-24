@@ -29,22 +29,20 @@ void Catalogue::Insert(Trajet *trajet) {
 
 }
 
-void Catalogue::Afficher() {
+char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
+
+    if (numeroTrajet > list->GetTaille() || numeroTrajet < 0) {
+        return NULL;
+    }
 
     Element *e = list->GetHead();
 
-    for (int i = 1; i < list->GetTaille(); i++) {
-
-        cout << "\t\t" << "Trajet n° " << i << "/ " << endl;
-
-        e->GetTrajet()->Afficher();
-
+    for (int i = 1; i < numeroTrajet; i++) {
         e = e->GetNext();
     }
 
-    cout << "\t" << list->GetTaille() << "/ " << endl;
-    e->GetTrajet()->Afficher();
-    
+    return e->GetTrajet()->GetDescription();
+
 }
 
 

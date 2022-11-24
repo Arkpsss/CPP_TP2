@@ -38,6 +38,8 @@ Trajet::Trajet(const char *vD, const char *vA) {
     strcpy(villeDepart, vD);
     strcpy(villeArrivee, vA);
 
+    description = NULL;
+
     #ifdef MAP
         cout << "Appel au constructeur de <Trajet>" << endl;
     #endif
@@ -53,6 +55,11 @@ Trajet::~Trajet () {
 
     delete [] villeArrivee;
     delete [] villeDepart;
+
+    if (description != NULL) {
+        delete [] description;
+    }
+    
 }
 
 //------------------------------------------------------------------ PRIVE

@@ -9,7 +9,7 @@
 ECHO = echo
 GCC = g++ #gcc
 CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 #-DMAP#-c -O1 # debug : -c -g
-OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o
+OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o Terminal.o
 EXE = main
 LIBRAIRIES = #-lm
 
@@ -22,17 +22,27 @@ $(EXE) : $(OBJETS)
 
 
 #Creation fichier binaire -> compilation
-%.o : %.cpp
+%.o : Modele/%.cpp
 	$(ECHO) $(GCC) $(CCFLAGS) $<
 	$(GCC) $(CCFLAGS) $<
 
-TrajetSimple.o : TrajetSimple.h Trajet.h
-main.o : Trajet.h TrajetSimple.h
-Trajet.o : Trajet.h
-TrajetCompose.o : TrajetCompose.h Trajet.h
-Element.o : Element.h Trajet.h
-LinkedList.o : LinkedList.h Element.h
-Catalogue.o : Catalogue.h LinkedList.h
+%.o : Vue/%.cpp
+	$(ECHO) $(GCC) $(CCFLAGS) $<
+	$(GCC) $(CCFLAGS) $<
+
+%.o : Controleur/%.cpp
+	$(ECHO) $(GCC) $(CCFLAGS) $<
+	$(GCC) $(CCFLAGS) $<
+
+TrajetSimple.o : Modele/TrajetSimple.h Modele/Trajet.h
+main.o : Modele/Trajet.h Modele/TrajetSimple.h
+Trajet.o : Modele/Trajet.h
+TrajetCompose.o : Modele/TrajetCompose.h Modele/Trajet.h
+Element.o : Modele/Element.h Modele/Trajet.h
+LinkedList.o : Modele/LinkedList.h Modele/Element.h
+Catalogue.o : Controleur/Catalogue.h Modele/LinkedList.h
+Terminal.o : Vue/Terminal.h Controleur/Catalogue.h
+
 
 
 #Nettoyage

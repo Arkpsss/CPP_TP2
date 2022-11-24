@@ -1,72 +1,65 @@
 /*************************************************************************
-                           Catalogue  -  description
+                           Terminal  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
-#if ! defined ( CATALOGUE_H )
-#define CATALOGUE_H
+//---------- Interface de la classe <Terminal> (fichier Terminal.h) ----------------
+#if ! defined ( TERMINAL_H )
+#define TERMINAL_H
 
 //--------------------------------------------------- Interfaces utilisées
 
-#include "LinkedList.h"
-#include "Trajet.h"
+#include "../Controleur/Catalogue.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Catalogue>
+// Rôle de la classe <Terminal>
 //
-// Cette classe répresent une liste sans ordre spécifique de Trajet possible.
 //
 //------------------------------------------------------------------------
 
-class Catalogue
+class Terminal
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
+
+    void Afficher() const;
     
-    void Insert(Trajet *trajet);
-    // Mode d'emploi:
-    // Ajoute un trajet en tête de liste
-
-    void Afficher();
-    // Mode d'emploi :
-    // Affiche un par un chaque trajet de la liste
-
-
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-    Catalogue();
+    Terminal ( );
     // Mode d'emploi :
-    // Instancie un nouveau catalogue avec une liste vide
+    //
+    // Contrat :
+    //
 
-    virtual ~Catalogue ();
+    virtual ~Terminal ( );
     // Mode d'emploi :
-    // Désalloue la liste
+    //
+    // Contrat :
+    //
 
 //------------------------------------------------------------------ PRIVE
 
-private:
-//----------------------------------------------------- Méthodes privées
+protected:
+//----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs privés
-
-    LinkedList *list;                        
+//----------------------------------------------------- Attributs protégés
+    Catalogue *catalogue;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Catalogue>
+//-------------------------------- Autres définitions dépendantes de <Terminal>
 
-#endif // CATALOGUE_H
+#endif // TERMINAL_H
 

@@ -15,6 +15,8 @@
 
 //------------------------------------------------------------- Constantes
 
+#define DESC 100
+
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
@@ -33,12 +35,10 @@ class TrajetSimple : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    
-    void Afficher() const;
-    // Mode d'emploi:
-    // Affiche la ville de départ, d'arrivé, et le moyen de transport
-    // du trajet simple.
 
+    //void Afficher() const;
+
+    
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -58,8 +58,12 @@ public:
 
 private:
 
+    char* ToString() const;
+
 //----------------------------------------------------- Attributs privés
     char *moyenTransport;
+
+    //char *description;
 
 
 };

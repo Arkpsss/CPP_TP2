@@ -24,14 +24,24 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void TrajetSimple::Afficher() const {
+char* TrajetSimple::ToString() const {
 
-    cout << "Ville de départ : " << villeDepart << endl;
-    cout << "Ville d'arrivee : " << villeArrivee << endl;
-    cout << "Moyen de transport : " << moyenTransport << endl;
+    char *res = new char[DESC + strlen(villeDepart) + strlen(villeArrivee) + strlen(moyenTransport)];
+    res[0] = '\0';
+
+    strcat(res, "Ville de depart : ");
+    strcat(res, villeDepart);
+    strcat(res, "\nVille d'arrivee : ");
+    strcat(res, villeArrivee);
+    strcat(res, "\nMoyen de transport : ");
+    strcat(res, moyenTransport);
+    strcat(res, "\n");
+
+    //printf("%s\n\n\n", res);
+
+    return res;
 
 }
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -45,6 +55,8 @@ TrajetSimple::TrajetSimple (const char *vD, const char *vA, const char *mt)
     moyenTransport = new char[strlen(mt) + 1];
     strcpy(moyenTransport, mt);
 
+    description = ToString();
+
 } //----- Fin de TrajetSimple
 
 
@@ -54,6 +66,7 @@ TrajetSimple::~TrajetSimple () {
 #endif
 
     delete [] moyenTransport;
+    //delete [] description;
 
 } //----- Fin de ~TrajetSimple
 

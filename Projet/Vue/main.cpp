@@ -12,9 +12,11 @@
 //-------------------------------------------------------- Include système
 
 //------------------------------------------------------ Include personnel
-#include "Trajet.h"
-#include "TrajetSimple.h"
-#include "TrajetCompose.h"
+#include "../Modele/Trajet.h"
+#include "../Modele/TrajetSimple.h"
+#include "../Modele/TrajetCompose.h"
+
+#include "Terminal.h"
 
 
 ///////////////////////////////////////////////////////////////////  PRIVE
@@ -32,7 +34,7 @@ static void test_affichage_trajet_simple() {
 
   Trajet *t = new TrajetSimple("Paris", "Londres", "Bateau");
 
-  t->Afficher();
+  //t->Afficher();
 
   delete t;
 
@@ -41,14 +43,14 @@ static void test_affichage_trajet_simple() {
 static void test_affichage_trajet_compose() {
 
 
-  LinkedList *l = new LinkedList();
+  Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
+  Trajet *t2 = new TrajetSimple("Londres", "Los Angeles", "avion");
 
-  l->AddFirst(new TrajetSimple("Paris", "Londres", "bateau"));
-  l->AddTrie(new TrajetSimple("Londres", "Los Angeles", "avion"));
+  Trajet* tab[2] = {t1,t2};
 
-  Trajet *t = new TrajetCompose(l);
+  Trajet *t = new TrajetCompose(tab, 2, "Paris", "Los Angeles");
 
-  t->Afficher();
+  //t->Afficher();
 
   delete t;
 
@@ -64,6 +66,15 @@ static void test_creation_linkedlist() {
 }
 
 
+static void test_affichage_Terminal() {
+
+  Terminal term = Terminal();
+
+  term.Afficher();
+
+}
+
+
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
 
@@ -71,7 +82,7 @@ static void test_creation_linkedlist() {
 int main(int argc, char const *argv[])
 {
   
-  test_affichage_trajet_compose();
+  test_affichage_Terminal();
 
   return 0;
 }
