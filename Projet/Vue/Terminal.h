@@ -35,6 +35,9 @@ public:
 
     void Start();
     Trajet* SaisirNewTrajet() const;
+
+    void ViderBuffer() const;
+    int RecupSaisiString(char *chaine, int longueur) const;
     
 
 

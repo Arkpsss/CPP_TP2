@@ -15,6 +15,9 @@
 #include "Trajet.h"
 #include "LinkedList.h"
 
+#include <iostream>
+using namespace std;
+
 //------------------------------------------------------------- Constantes
 
 #define DESC 100
@@ -51,6 +54,8 @@ public:
     // Mode d'emploi :
     // Désalloue la liste des trajets
 
+    //friend class MauvaiseComposition;
+
 //------------------------------------------------------------------ PRIVE
 
 private:
@@ -81,6 +86,30 @@ private:
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+
+class MauvaiseComposition : public exception {
+
+public:
+
+    MauvaiseComposition(LinkedList *l){
+
+        this->list  = l;
+
+    }
+    virtual ~MauvaiseComposition() {
+
+        delete list;
+
+    }
+
+    virtual const char* what() const throw() {      //redefinition de what() de la classe exception
+        return "Erreur: Impossible d'ajouter ce trajet compose car la succession n'est pas ordonnée";
+    }
+
+private:
+    LinkedList *list;
+
+};
 
 #endif // TRAJETCOMPOSE_H
 

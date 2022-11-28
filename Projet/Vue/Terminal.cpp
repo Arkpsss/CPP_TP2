@@ -40,25 +40,64 @@ void Terminal::Afficher() const {
 
 }
 
+
+void Terminal::ViderBuffer() const
+{
+    int c = 0;
+    while (c != '\n' && c != EOF)
+    {
+        c = getchar();
+    }
+}
+ 
+int Terminal::RecupSaisiString(char *chaine, int longueur) const
+{
+    char *positionEntree = NULL;
+ 
+    if (fgets(chaine, longueur, stdin) != NULL)
+    {
+        positionEntree = strchr(chaine, '\n');
+        if (positionEntree != NULL)
+        {
+            *positionEntree = '\0';
+        }
+        else
+        {
+            ViderBuffer();
+        }
+        return 1;
+    }
+    else
+    {
+        ViderBuffer();
+        return 0;
+    }
+}
+
 Trajet* Terminal::SaisirNewTrajet() const {
 
     int nbSousTrajets = 0;
     cout << "Entrer le nombre de sous-trajets que contient votre trajet à saisir : ";
     cin >> nbSousTrajets;
+    cin.ignore();
 
     char vD[MAX];
     char vA[MAX];
 
     if (nbSousTrajets == 1) {
-        cout << "   Ville de départ : ";
-        fgets(vD, MAX, stdin);
+        cout << "   Ville de départ : " << endl;
+        RecupSaisiString(vD, MAX);
 
-        cout << "   Ville d'arrivee : ";
-        fgets(vA, MAX, stdin);
+        cout << "   Ville d'arrivee : " << endl;
+        RecupSaisiString(vA, MAX);
+
 
         char mt[MAX];
-        cout << "   Moyen de transport : ";
-        fgets(mt, MAX, stdin);
+        cout << "   Moyen de transport : " << endl;
+        RecupSaisiString(mt, MAX);
+
+
+        cout << "\n\n";
 
         return new TrajetSimple(vD, vA, mt);
 
@@ -66,11 +105,13 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
     else {
 
-        cout << "   Ville de départ : ";
-        fgets(vD, MAX, stdin);
+        cout << "   Ville de départ : " << endl;
+        RecupSaisiString(vD, MAX);
 
-        cout << "   Ville d'arrivee : ";
-        fgets(vA, MAX, stdin);
+
+        cout << "   Ville d'arrivee : " << endl;
+        RecupSaisiString(vA, MAX);
+
 
         Trajet* *tab = new Trajet*[nbSousTrajets];
 
@@ -81,7 +122,19 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
         }
 
-        return new TrajetCompose(tab, nbSousTrajets, vD, vA);
+        try {
+            Trajet* t = new TrajetCompose(tab, nbSousTrajets, vD, vA);
+            delete [] tab;
+
+            return t;
+        }
+        catch (exception &e) {
+            cout << e.what() << endl;
+            delete [] tab;
+        }
+        
+        return NULL;
+        
     }
 
     
@@ -96,7 +149,7 @@ void Terminal::Start() {
 
     while (ok) {
 
-        
+        cout << endl;
         cout << "   1. Afficher le catalogue" << endl;
         cout << "   2. Inserer un trajet" << endl;
         cout << "   3. Rechercher un voyage" << endl;
@@ -113,7 +166,12 @@ void Terminal::Start() {
             break;
 
         case 2:
-            catalogue->Insert(this->SaisirNewTrajet());
+            {
+                Trajet *t = this->SaisirNewTrajet();
+                if (t != NULL) {
+                    catalogue->Insert(t);
+                }
+            }
             break;
 
         case 3:
@@ -148,7 +206,7 @@ Terminal::Terminal ( )
     catalogue = new Catalogue();
 
     //Pour le test
-    Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
+    /*Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
     Trajet *t2 = new TrajetSimple("Londres", "Los Angeles", "avion");
 
     Trajet* tab[2] = {t1,t2};
@@ -158,7 +216,7 @@ Terminal::Terminal ( )
     catalogue->Insert(t);
 
     Trajet *tbis = new TrajetSimple("Paris", "Londres", "Bateau");
-    catalogue->Insert(tbis);
+    catalogue->Insert(tbis);*/
 
 
 

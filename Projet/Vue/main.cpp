@@ -74,6 +74,14 @@ static void test_affichage_Terminal() {
 
 }
 
+static void test_menu_Terminal() {
+
+  Terminal term = Terminal();
+
+  term.Start();
+
+}
+
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
@@ -82,7 +90,11 @@ static void test_affichage_Terminal() {
 int main(int argc, char const *argv[])
 {
   
-  test_affichage_Terminal();
+  //test_affichage_Terminal();
+
+  test_menu_Terminal();
+
+  
 
   return 0;
 }

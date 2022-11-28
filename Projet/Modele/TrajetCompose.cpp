@@ -61,21 +61,6 @@ char* TrajetCompose::ToString() const {
         e = e->GetNext();
     }
 
-    /*
-    char *text = e->GetTrajet()->GetDescription();
-
-    while (strlen(text) + 10 >= taille - strlen(res)-1) {
-        res = TrajetCompose::realloc(res, taille*2);
-        taille *= 2;
-    }
-
-    char etape[NB_CHIFFRES];
-    sprintf(etape, "%d", i);
-
-    strcat(strcat(strcat(res, "\t"), etape), "/ \n");
-    strcat(res, e->GetTrajet()->GetDescription());
-    e->GetTrajet()->deleteDescription();*/
-
     return res;
 
 }
@@ -127,14 +112,19 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 
+
+
     list = new LinkedList();
 
     for (int i = nb-1; i >= 0; i--) {
-        list->AddTrie(tab[i]);
+        if (list->AddTrie(tab[i]) == false) {
+            delete tab[i];
+            throw MauvaiseComposition(list);
+        }
     }
 
-
     description = ToString();
+    
 
 }
 
