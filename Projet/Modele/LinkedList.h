@@ -33,7 +33,9 @@ class LinkedList
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Element * GetHead () const;
+    Element * GetHead () const {
+        return this->tete;
+    }
     // Mode d'emploi :
     // Renvoie le premier maillon de la liste
     // Contrat :
@@ -52,6 +54,21 @@ public:
     // position doit être valide (0<=position<=taille);
     // Contrat :
     //
+
+    void AddFirst(Trajet *trajet);
+    // Mode d'emploi :
+    // Ajoute un trajet en tête de liste
+
+    bool AddTrie(Trajet *trajet);
+    // Mode d'emploi :
+    // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
+    // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
+
+    int GetTaille() const {
+        return this->taille;
+    }
+    // Mode d'emploi :
+    // Renvoie la taille de la liste
 
     
 
@@ -76,10 +93,21 @@ public:
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
-//----------------------------------------------------- Méthodes protégées
+private:
+//----------------------------------------------------- Méthodes privé
 
-//----------------------------------------------------- Attributs protégés
+    inline static bool compare(Trajet *a, Trajet *b) {
+        if (strcmp(a->GetVilleDepart(), b->GetVilleArrivee()) == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    // Mode d'emploi:
+    // Compare la ville de depart du premier trajet avec la ville d'arrivé du second
+
+//----------------------------------------------------- Attributs privé
     Element *tete;
     int taille;
 };

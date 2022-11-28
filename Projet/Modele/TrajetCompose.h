@@ -13,9 +13,11 @@
 //--------------------------------------------------- Interfaces utilisées
 
 #include "Trajet.h"
-#include "../LinkedList.h"
+#include "LinkedList.h"
 
 //------------------------------------------------------------- Constantes
+
+#define DESC 100
 
 //------------------------------------------------------------------ Types
 
@@ -35,14 +37,15 @@ class TrajetCompose : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    
-    void Afficher() const;
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const LinkedList *l, const char *vD = "", const char *vA = "");
+    /*TrajetCompose(LinkedList *l, const char *vD = "", const char *vA = "");
     // Mode d'emploi :
     // Initialise la liste des trajets et si renseigné, les villes de départ
     // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
+    */
+
+    TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA );
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :
@@ -53,11 +56,27 @@ public:
 private:
 //----------------------------------------------------- Méthodes privées
 
-    bool estOrdonne() const;
+
+    char* ToString() const;
+
+    inline static char* realloc(char* text, int newSize) {
+
+        char* res = new char[newSize];
+
+        if (text != NULL) {
+            strcpy(res, text);
+            delete [] text;
+        }
+
+        return res;
+
+    }
+
+
 
 //----------------------------------------------------- Attributs privés
 
-    LinkedList *listTrajets;
+    LinkedList *list;
 
 };
 

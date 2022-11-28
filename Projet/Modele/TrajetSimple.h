@@ -1,67 +1,74 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           TrajetSimple  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#ifndef TRAJETCOMPOSE_H
-#define TRAJETCOMPOSE_H
+//---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
+#ifndef TRAJETSIMPLE_H
+#define TRAJETSIMPLE_H
 
 //--------------------------------------------------- Interfaces utilisées
-
 #include "Trajet.h"
-#include "../LinkedList.h"
 
 //------------------------------------------------------------- Constantes
+
+#define DESC 100
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
+// Rôle de la classe <TrajetSimple>
 //
-// Cette classe représente un trajet composé de plusieurs trajets simples
-// ou composé
-// ordonné de tel sorte que la ville d'arrivé correspondent à la ville de 
-// départ du suivant.
+// Cette classe représente un trajet simple d'une ville à une autre avec un
+// moyen de transport.
+//
+// Un trajet simple est une sorte de Trajet
 //
 //------------------------------------------------------------------------
 
-class TrajetCompose : public Trajet
+class TrajetSimple : public Trajet
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
+
+    //void Afficher() const;
+
     
-    void Afficher() const;
+
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const LinkedList *l, const char *vD = "", const char *vA = "");
-    // Mode d'emploi :
-    // Initialise la liste des trajets et si renseigné, les villes de départ
-    // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
 
-    virtual ~TrajetCompose ();
+
+    TrajetSimple(const char *vD, const char *vA, const char *mt);
     // Mode d'emploi :
-    // Désalloue la liste des trajets
+    // Fait appel au constructeur de Trajet pour initialiser les
+    // villes de départ et d'arrivé
+    // Initialise le moyen de transport
+
+    virtual ~TrajetSimple();
+    // Mode d'emploi :
+    // Détruit les 3 tableaux dynamique (2 de Trajet et un de TrajetSimple)
 
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- Méthodes privées
 
-    bool estOrdonne() const;
+    char* ToString() const;
 
 //----------------------------------------------------- Attributs privés
+    char *moyenTransport;
 
-    LinkedList *listTrajets;
+    //char *description;
+
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------------- Autres définitions dépendantes de <TrajetSimple>
 
-#endif // TRAJETCOMPOSE_H
+#endif // TRAJETSIMPLE_H
 
