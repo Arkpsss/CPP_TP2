@@ -85,7 +85,6 @@ protected:
 
     char *villeDepart;
     char *villeArrivee;
-
     char *description;
 
 };

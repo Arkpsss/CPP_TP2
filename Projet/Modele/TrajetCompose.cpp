@@ -30,6 +30,7 @@ char* TrajetCompose::ToString() const {
     int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
 
     char *res = new char[taille];
+    res[0]='\0';
 
     strcat(res, "   Ville de départ : ");
     strcat(res, villeDepart);

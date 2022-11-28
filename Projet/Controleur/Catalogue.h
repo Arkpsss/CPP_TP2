@@ -22,7 +22,7 @@
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 //
-// Cette classe répresent une liste sans ordre spécifique de Trajet possible.
+// Cette classe répresente une liste sans ordre spécifique de Trajet possible.
 //
 //------------------------------------------------------------------------
 
@@ -45,15 +45,23 @@ public:
         return list->GetTaille();
     }
 
+
     char* GetDescriptionOf(int numeroTrajet) const;
 
+    Catalogue *RechercheSimple (char *villeDepart, char *villeArrivee) const;
+    // Mode d'emploi :
+    // Recherche tous les trajets dont la ville de départ est villeDepart et dont la ville d'arrivée est
+    // villeArrivee.
+    // Renvoie un pointeur vers un Catalogue contenant tous les trajets (simples ou composés)
+    // remplissant ces deux conditions
+    // Ces trajets seront réalloués dynamiquement dans le tas
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
-    Catalogue();
+    Catalogue(LinkedList *_list = new LinkedList());
     // Mode d'emploi :
-    // Instancie un nouveau catalogue avec une liste vide
+    // Instancie un nouveau catalogue avec une liste donnée en paramètre (vide par défaut)
 
     virtual ~Catalogue ();
     // Mode d'emploi :

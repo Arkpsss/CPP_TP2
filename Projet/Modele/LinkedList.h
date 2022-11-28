@@ -61,8 +61,8 @@ public:
 
     bool AddTrie(Trajet *trajet);
     // Mode d'emploi :
-    // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
-    // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
+    // Ajoute un trajet à la liste de telle sorte que la ville d'arrivée de celui-ci
+    // corresponde à la ville de départ du trajet contenu dans l'élement suivant.
 
     int GetTaille() const {
         return this->taille;
@@ -82,9 +82,10 @@ public:
     //
     */
 
+
     LinkedList(Element *tete = NULL, int taille = 0);
     // Mode d'emploi :
-    // Crée une liste vide avec tete=tete et taille=taille
+    // Crée une liste avec tete=tete et taille=taille
     // La taille doit correspondre à la taille de la liste pointée par tete
 
     ~LinkedList ( );

@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -37,7 +38,7 @@ char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
     Element *e = list->GetHead();
 
-    for (int i = 1; i < numeroTrajet; i++) {
+    for (int i = 0; i < numeroTrajet; i++) {
         e = e->GetNext();
     }
 
@@ -45,21 +46,39 @@ char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
 }
 
+Catalogue *Catalogue::RechercheSimple (char *villeDepart, char *villeArrivee) const
+{
+#ifdef MAP
+    cout << "Appel à RechercheSimple de Catalogue" << endl;
+#endif
+    //Si la liste est vide, on renvoie un catalogue vide
+    if (list->GetTaille() == 0)
+        return new Catalogue();
 
+    LinkedList *matching = new LinkedList();
+    Element *current = list->GetHead();
+    for (int i = 0; i<list->GetTaille(); i++)
+    {
+        if (strcmp(current->GetTrajet()->GetVilleDepart(), villeDepart) == 0
+        && strcmp(current->GetTrajet()->GetVilleArrivee(), villeArrivee) == 0)
+        {
+            matching->AddFirst(current->GetTrajet());
+        }
+        current = current->GetNext();
+    }
+    return new Catalogue(matching);
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
 
-Catalogue::Catalogue ( )
+Catalogue::Catalogue(LinkedList *_list) : list(_list)
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Catalogue>" << endl;
+    cout << "Appel au constructeur de Catalogue" << endl;
 #endif
-
-    list = new LinkedList();
-
-} //----- Fin de Catalogue
+} //----- Fin du constructeur par défaut Catalogue
 
 
 Catalogue::~Catalogue ( )

@@ -127,7 +127,6 @@ void LinkedList::AddFirst (Trajet *trajet) {
 */
 
 
-
 LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
 // Algorithme :
 // Met tete à l'attribut tete et taille à l'attribut taille
