@@ -1,5 +1,5 @@
 /*************************************************************************
-                           LinkedList  -  Classe implémentant une liste chaînée
+                           LinkedList  -  Classe implémentant une liste chaînée simple
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
@@ -8,8 +8,8 @@
 
 //---------- Interface de la classe <LinkedList> (fichier LinkedList.h) ----------------
 
-#if ! defined ( LinkedList_H )
-#define LinkedList_H
+#if ! defined ( LINKEDLIST_H )
+#define LINKEDLIST_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Element.h"
@@ -19,7 +19,7 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <LinkedList>
-// LinkedList implémente une liste chaînée avec pour chaînons des Element
+// LinkedList implémente une liste chaînée simple avec pour chaînons des Element
 // Son utilisation est indépendante du type contenu dans Element, mais ici
 // elle sera utilisée avec des Element contenant des Trajet.
 // Elle contient deux attributs :
@@ -33,27 +33,12 @@ class LinkedList
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Element * GetHead () const {
+    Element* GetHead () const {
         return this->tete;
     }
     // Mode d'emploi :
     // Renvoie le premier maillon de la liste
-    // Contrat :
-    //
 
-    void SetHead () ;
-    // Mode d'emploi :
-    // Redéfinit le début de la liste
-    // Contrat :
-    //
-
-    void Add (Trajet *trajet, int position) ;
-    // Mode d'emploi :
-    // Crée un Element donc le trajet est trajet à la position position.
-    // Trajet doit être alloué dynamiquement (avec new)
-    // position doit être valide (0<=position<=taille);
-    // Contrat :
-    //
 
     void AddFirst(Trajet *trajet);
     // Mode d'emploi :
@@ -70,17 +55,10 @@ public:
     // Mode d'emploi :
     // Renvoie la taille de la liste
 
-    
 
-//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    /*LinkedList ( const LinkedList & unLinkedList );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-    */
+
 
     LinkedList(Element *tete = NULL, int taille = 0);
     // Mode d'emploi :
@@ -114,4 +92,4 @@ private:
 
 //-------------------------------- Autres définitions dépendantes de <LinkedList>
 
-#endif // LinkedList_H
+#endif // LINKEDLIST_H

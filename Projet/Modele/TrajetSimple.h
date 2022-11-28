@@ -1,9 +1,9 @@
 /*************************************************************************
-                           TrajetSimple  -  description
+                           TrajetSimple  -  Classe implémentant un trajet simple
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.f
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
@@ -15,7 +15,7 @@
 
 //------------------------------------------------------------- Constantes
 
-#define DESC 100
+#define DESC 100    //taille du superflux de description
 
 //------------------------------------------------------------------ Types
 
@@ -36,10 +36,7 @@ class TrajetSimple : public Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    //void Afficher() const;
-
     
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -59,12 +56,12 @@ public:
 private:
 
     char* ToString() const;
+    // Mode d'emploi :
+    // Construit une chaine de caractère C décrivant le trajet
+    // Contient la ville de départ et la ville d'arrivé et le moyen de transport
 
 //----------------------------------------------------- Attributs privés
     char *moyenTransport;
-
-    //char *description;
-
 
 };
 

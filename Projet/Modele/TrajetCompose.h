@@ -1,9 +1,9 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Trajet  -  Classe implémentant un trajet composé
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
@@ -20,7 +20,7 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
-#define DESC 100
+#define DESC 100    //taille du superflux de description
 
 //------------------------------------------------------------------ Types
 
@@ -42,19 +42,20 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-    /*TrajetCompose(LinkedList *l, const char *vD = "", const char *vA = "");
-    // Mode d'emploi :
-    // Initialise la liste des trajets et si renseigné, les villes de départ
-    // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
-    */
 
     TrajetCompose( Trajet **tab, int nb, const char *vD = NULL, const char *vA = NULL);
+    // Mode d'emploi :
+    // A partir d'un tableau de nb trajets, construit une LinkedList 
+    // en se chargeant de les ajouter de manière ordonné (contraintes sur les villes
+    // de départ et d'arrivé de chaque). 
+    // En cas d'impossibilité de respecter cette contrainte, une MauvaiseComposition
+    // exception est levée.
+    // Si les paramètres vD et vA sont non renseignés, on les détermine après la construction de la liste
+    // en prenant le premier et dernier element
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :
     // Désalloue la liste des trajets
-
-    //friend class MauvaiseComposition;
 
 //------------------------------------------------------------------ PRIVE
 
@@ -63,8 +64,16 @@ private:
 
 
     char* ToString() const;
+    // Mode d'emploi :
+    // Construit une chaine de caractère C décrivant le trajet
+    // Contient la ville de départ et la ville d'arrivé et la description de 
+    // chaque sous-trajet
 
-    inline static char* realloc(char* text, int newSize) {
+    inline static char* realloc(char* text, int newSize) 
+    // Mode d'emploi :
+    // Recopie le text dans une nouvelle chaine de caractère plus grande (newSize)
+    // delete le text
+    {
 
         char* res = new char[newSize];
 
@@ -86,6 +95,20 @@ private:
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+
+
+//------------------------------------------------------------------------
+// Rôle de la classe <MauvaiseCompositio>
+//
+// Cette classe hérite de la classe exception
+// Cette exception est levée lorsque l'on ajoute un trajet au trajet composé
+// qui ne permet pas de maintenir la cohérence entre ville de départ et ville
+// d'arrivée
+//
+// En cas de levé d'exception le trajet composé en cours de construction est
+// détruit et cette classe se charge de détruire la liste incomplète.
+//------------------------------------------------------------------------
+
 
 class MauvaiseComposition : public exception {
 

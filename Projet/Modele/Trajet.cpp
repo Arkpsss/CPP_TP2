@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Trajet  -  description
+                           Trajet  -  Classe représentant un trajet générale
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
@@ -25,13 +25,13 @@ using namespace std;
 
 
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-
 //-------------------------------------------- Constructeurs - destructeur
 
 Trajet::Trajet(const char *vD, const char *vA) {
+
+    #ifdef MAP
+        cout << "Appel au constructeur de <Trajet>" << endl;
+    #endif
 
     if (vD != NULL && vA != NULL) {
         villeDepart = new char[strlen(vD)+1];
@@ -43,12 +43,8 @@ Trajet::Trajet(const char *vD, const char *vA) {
 
     description = NULL;
 
-    #ifdef MAP
-        cout << "Appel au constructeur de <Trajet>" << endl;
-    #endif
+    
 }
-// Mode d'emploi :
-// Initialise les attributs de la classe (2 tableaux dynamiques de char).
 
 Trajet::~Trajet () {
 

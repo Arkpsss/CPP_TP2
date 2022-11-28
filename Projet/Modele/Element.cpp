@@ -23,47 +23,19 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 Trajet *Element::GetTrajet () const
-// Algorithme :
-//
 {
      return trajet;
 } //----- Fin de GetTrajet
 
-void Element::SetTrajet (Trajet *trajet)
-// Algorithme :
-//
-{
-    this->trajet=trajet;
-} //----- Fin de Méthode
 
 Element *Element::GetNext () const
-// Algorithme :
-//
 {
     return next;
 } //----- Fin de GetTrajet
 
-void Element::SetNext (Element *next)
-// Algorithme :
-//
-{
-this->next=next;
-} //----- Fin de Méthode
-
-//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-/*Element::Element ( const Element & unElement )
-// Algorithme :
-// Copie les pointeurs vers trajet et next de l'élément à copier.
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Element>" << endl;
-#endif
-    trajet=unElement.trajet;
-    next=unElement.next;
-} //----- Fin de Element (constructeur de copie)
-*/
+
 
 
 

@@ -19,52 +19,13 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
-#define NB_CHIFFRES 4
+#define NB_CHIFFRES 4  //nombre de chiffre que peut contenir une étape -> utile pour la conversion int to char*
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-char* TrajetCompose::ToString() const {
 
-    int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
-
-    char *res = new char[taille];
-    res[0] = '\0';
-
-    strcat(res, "   Ville de départ : ");
-    strcat(res, villeDepart);
-    strcat(res, "\n   Ville d'arrivee : ");
-    strcat(res, villeArrivee);
-    strcat(res, "\nEtapes du trajet : \n");
-
-    Element *e = list->GetHead();
-
-    for (int i = 1; i <= list->GetTaille(); i++) {
-
-        char *text = e->GetTrajet()->GetDescription();
-
-        while (strlen(text) + 15 >= taille - strlen(res)-1) {
-            res = TrajetCompose::realloc(res, taille*2);
-            taille *= 2;
-        }
-
-        //conversion i to char*
-        char etape[NB_CHIFFRES];
-        sprintf(etape, "%d", i);
-
-        strcat(strcat(strcat(res, "\t"), etape), "/ \n");
-
-        strcat(res, text);
-
-        e->GetTrajet()->deleteDescription();
-
-        e = e->GetNext();
-    }
-
-    return res;
-
-}
 
 
 
@@ -113,8 +74,6 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 
-
-
     list = new LinkedList();
 
     for (int i = nb-1; i >= 0; i--) {
@@ -156,5 +115,46 @@ TrajetCompose::~TrajetCompose ()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes privés
+
+char* TrajetCompose::ToString() const {
+
+    int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
+
+    char *res = new char[taille];
+    res[0] = '\0';
+
+    strcat(res, "   Ville de départ : ");
+    strcat(res, villeDepart);
+    strcat(res, "\n   Ville d'arrivee : ");
+    strcat(res, villeArrivee);
+    strcat(res, "\nEtapes du trajet : \n");
+
+    Element *e = list->GetHead();
+
+    for (int i = 1; i <= list->GetTaille(); i++) {
+
+        const char *text = e->GetTrajet()->GetDescription();
+
+        while (strlen(text) + 15 >= taille - strlen(res)-1) {
+            res = TrajetCompose::realloc(res, taille*2);
+            taille *= 2;
+        }
+
+        //conversion i to char*
+        char etape[NB_CHIFFRES];
+        sprintf(etape, "%d", i);
+
+        strcat(strcat(strcat(res, "\t"), etape), "/ \n");
+
+        strcat(res, text);
+
+        e->GetTrajet()->deleteDescription();
+
+        e = e->GetNext();
+    }
+
+    return res;
+
+}
 

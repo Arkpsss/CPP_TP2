@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Trajet  -  description
+                           Trajet  -  Classe représentant un trajet générale
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
@@ -23,6 +23,7 @@
 // La classe Trajet est une classe générique pour représenter soit un trajet
 // simple soit un trajet composé.
 // Un trajet est caractérisé par une ville de départ et une ville d'arrivée.
+// Ainsi qu'un string C de description
 //
 // Cette classe est abstraite car un trajet sans moyen de transport n'est pas
 // possible.
@@ -35,20 +36,26 @@ class Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    
-    //virtual void Afficher() const = 0;
-    // Mode d'emploi:
-    // Affiche les caractéristiques du trajet sur la sortie standard cout
 
-    char* GetVilleDepart() {
+
+    const char* GetVilleDepart()
+    // Mode d'emploi :
+    // Retourne la ville de départ
+    {
         return villeDepart;
     }
 
-    char* GetVilleArrivee() {
+    const char* GetVilleArrivee() 
+    // Mode d'emploi :
+    // Retourne la ville d'arrivé
+    {
         return villeArrivee;
     }
 
-    char* GetDescription() {
+    const char* GetDescription() 
+    // Mode d'emploi:
+    // Retourn la description du trajet
+    {
         return description;
     }
 
@@ -78,11 +85,17 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
     virtual char* ToString() const = 0;
+    // Mode d'emploi :
+    // Construit une chaine de caractère C décrivant le trajet
+    // Contient la ville de départ et la ville d'arrivé
 
     void SetVilleDepart(const char* vD);
-    void SetVilleArrivee(const char* vA);
+    // Mode d'emploi :
+    // Redéfinit la ville de départ en supprimant l'ancienne si nécessaire
 
-    
+    void SetVilleArrivee(const char* vA);
+    // Mode d'emploi : 
+    // Redéfinit la ville d'arrivé en supprimant l'ancienne si nécessaire
 
 //----------------------------------------------------- Attributs protégés
 

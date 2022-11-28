@@ -1,9 +1,9 @@
 /*************************************************************************
-                           TrajetSimple  -  description
+                           TrajetSimple  -  Classe implémentant un trajet simple
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.f
 *************************************************************************/
 
 //---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
@@ -24,24 +24,6 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-char* TrajetSimple::ToString() const {
-
-    char *res = new char[DESC + strlen(villeDepart) + strlen(villeArrivee) + strlen(moyenTransport)];
-    res[0] = '\0';
-
-    strcat(res, "Ville de depart : ");
-    strcat(res, villeDepart);
-    strcat(res, "\nVille d'arrivee : ");
-    strcat(res, villeArrivee);
-    strcat(res, "\nMoyen de transport : ");
-    strcat(res, moyenTransport);
-    strcat(res, "\n");
-
-    //printf("%s\n\n\n", res);
-
-    return res;
-
-}
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -73,5 +55,21 @@ TrajetSimple::~TrajetSimple () {
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes privées
 
+char* TrajetSimple::ToString() const {
+
+    char *res = new char[DESC + strlen(villeDepart) + strlen(villeArrivee) + strlen(moyenTransport)];
+    res[0] = '\0';
+
+    strcat(res, "Ville de depart : ");
+    strcat(res, villeDepart);
+    strcat(res, "\nVille d'arrivee : ");
+    strcat(res, villeArrivee);
+    strcat(res, "\nMoyen de transport : ");
+    strcat(res, moyenTransport);
+    strcat(res, "\n");
+
+    return res;
+
+}
