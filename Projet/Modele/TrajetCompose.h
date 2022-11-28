@@ -56,7 +56,6 @@ public:
 private:
 //----------------------------------------------------- Méthodes privées
 
-    //bool estOrdonne() const;
 
     char* ToString() const;
 

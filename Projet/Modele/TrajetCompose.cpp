@@ -19,6 +19,8 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
+#define NB_CHIFFRES 4
+
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -37,16 +39,20 @@ char* TrajetCompose::ToString() const {
 
     Element *e = list->GetHead();
 
-    for (int i = 1; i < list->GetTaille(); i++) {
+    for (int i = 1; i <= list->GetTaille(); i++) {
 
         char *text = e->GetTrajet()->GetDescription();
 
-        while (strlen(text) + 10 >= taille - strlen(res)-1) {
+        while (strlen(text) + 15 >= taille - strlen(res)-1) {
             res = TrajetCompose::realloc(res, taille*2);
             taille *= 2;
         }
 
-        strcat(res, "\t+++/ \n");
+        //conversion i to char*
+        char etape[NB_CHIFFRES];
+        sprintf(etape, "%d", i);
+
+        strcat(strcat(strcat(res, "\t"), etape), "/ \n");
 
         strcat(res, text);
 
@@ -55,6 +61,7 @@ char* TrajetCompose::ToString() const {
         e = e->GetNext();
     }
 
+    /*
     char *text = e->GetTrajet()->GetDescription();
 
     while (strlen(text) + 10 >= taille - strlen(res)-1) {
@@ -62,9 +69,12 @@ char* TrajetCompose::ToString() const {
         taille *= 2;
     }
 
-    strcat(res, "\t+++/ \n");
+    char etape[NB_CHIFFRES];
+    sprintf(etape, "%d", i);
+
+    strcat(strcat(strcat(res, "\t"), etape), "/ \n");
     strcat(res, e->GetTrajet()->GetDescription());
-    e->GetTrajet()->deleteDescription();
+    e->GetTrajet()->deleteDescription();*/
 
     return res;
 

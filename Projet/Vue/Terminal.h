@@ -32,6 +32,9 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     void Afficher() const;
+
+    void Start();
+    Trajet* SaisirNewTrajet() const;
     
 
 
