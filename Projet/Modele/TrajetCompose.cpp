@@ -130,7 +130,7 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
     list = new LinkedList();
 
     for (int i = nb-1; i >= 0; i--) {
-        list->AddFirst(tab[i]);
+        list->AddTrie(tab[i]);
     }
 
 

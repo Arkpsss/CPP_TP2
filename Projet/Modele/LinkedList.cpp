@@ -50,6 +50,11 @@ bool LinkedList::AddTrie(Trajet *trajet) {
     Element *current = tete;
     Element *prec = tete;
 
+    if (tete == NULL) {
+        this->AddFirst(trajet);
+        return true;
+    }
+
     //Ville d'arrivee du trajet est la ville de depart de l'element
     if (compare(current->GetTrajet(), trajet)) {
 
