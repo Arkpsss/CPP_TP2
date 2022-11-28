@@ -48,7 +48,7 @@ public:
     // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
     */
 
-    TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA );
+    TrajetCompose( Trajet **tab, int nb, const char *vD = NULL, const char *vA = NULL);
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :

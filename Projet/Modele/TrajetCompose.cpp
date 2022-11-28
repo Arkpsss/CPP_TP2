@@ -30,6 +30,7 @@ char* TrajetCompose::ToString() const {
     int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
 
     char *res = new char[taille];
+    res[0] = '\0';
 
     strcat(res, "   Ville de départ : ");
     strcat(res, villeDepart);
@@ -122,6 +123,18 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
             throw MauvaiseComposition(list);
         }
     }
+
+    if (vD == NULL && vA == NULL) {
+        SetVilleDepart(list->GetHead()->GetTrajet()->GetVilleDepart());
+
+        Element *e = list->GetHead();
+        for (int i = 1; i < list->GetTaille(); i++) {
+            e = e->GetNext();
+        }
+
+        SetVilleArrivee(e->GetTrajet()->GetVilleArrivee());
+    }
+    
 
     description = ToString();
     

@@ -8,7 +8,7 @@
 #Variables (mettre @ devant une commande pour la passer en mode silencieux)
 ECHO = echo
 GCC = g++ #gcc
-CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 -DMAP#-c -O1 # debug : -c -g
+CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 #-DMAP#-c -O1 # debug : -c -g
 OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o Terminal.o
 EXE = main
 LIBRAIRIES = #-lm

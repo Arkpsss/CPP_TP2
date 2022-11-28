@@ -64,7 +64,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Trajet(const char *vD, const char *vA);
+    Trajet(const char *vD = NULL, const char *vA = NULL);
     // Mode d'emploi :
     // Initialise les attributs de la classe (2 tableaux dynamiques de char).
 
@@ -78,6 +78,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
     virtual char* ToString() const = 0;
+
+    void SetVilleDepart(const char* vD);
+    void SetVilleArrivee(const char* vA);
 
     
 

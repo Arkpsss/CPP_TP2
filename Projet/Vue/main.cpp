@@ -82,6 +82,17 @@ static void test_menu_Terminal() {
 
 }
 
+static void test_detection_vD_vA_TrajetCompose() {
+  Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
+  Trajet *t2 = new TrajetSimple("Londres", "Los Angeles", "avion");
+
+  Trajet* tab[2] = {t1,t2};
+
+  Trajet *t = new TrajetCompose(tab, 2);
+
+  cout << t->GetDescription() << endl;
+}
+
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
@@ -93,6 +104,8 @@ int main(int argc, char const *argv[])
   //test_affichage_Terminal();
 
   test_menu_Terminal();
+
+  //test_detection_vD_vA_TrajetCompose();
 
   
 

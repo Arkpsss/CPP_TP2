@@ -105,14 +105,6 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
     else {
 
-        cout << "   Ville de départ : " << endl;
-        RecupSaisiString(vD, MAX);
-
-
-        cout << "   Ville d'arrivee : " << endl;
-        RecupSaisiString(vA, MAX);
-
-
         Trajet* *tab = new Trajet*[nbSousTrajets];
 
         for (int i = 0; i < nbSousTrajets; i++) {
@@ -123,7 +115,7 @@ Trajet* Terminal::SaisirNewTrajet() const {
         }
 
         try {
-            Trajet* t = new TrajetCompose(tab, nbSousTrajets, vD, vA);
+            Trajet* t = new TrajetCompose(tab, nbSousTrajets);
             delete [] tab;
 
             return t;
