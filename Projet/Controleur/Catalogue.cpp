@@ -74,6 +74,14 @@ Catalogue *Catalogue::RechercheAvancee (char *villeDepart, char *villeArrivee) c
 #ifdef MAP
     cout << "Appel à RechercheAvancee de Catalogue" << endl;
 #endif
+    //Si la liste est vide, on renvoie un catalogue vide
+    if (list->GetTaille() == 0)
+        return new Catalogue();
+    LinkedList *matching = new LinkedList();
+
+    Element *current = list->GetHead();
+    rechercheRecursive(villeDepart,villeArrivee);
+
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -101,6 +109,11 @@ Catalogue::~Catalogue ( )
 
 
 //------------------------------------------------------------------ PRIVE
+
+bool Catalogue::rechercheRecursive (char *villeDepart, char *villeArrivee) const
+{
+
+}
 
 //----------------------------------------------------- Méthodes protégées
 

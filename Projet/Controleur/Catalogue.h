@@ -81,6 +81,8 @@ public:
 private:
 //----------------------------------------------------- Méthodes privées
 
+bool rechercheRecursive (char *villeDepart, char *villeArrivee) const;
+
 //----------------------------------------------------- Attributs privés
 
     LinkedList *list;
