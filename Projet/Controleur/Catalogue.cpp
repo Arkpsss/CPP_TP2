@@ -62,11 +62,18 @@ Catalogue *Catalogue::RechercheSimple (char *villeDepart, char *villeArrivee) co
         if (strcmp(current->GetTrajet()->GetVilleDepart(), villeDepart) == 0
         && strcmp(current->GetTrajet()->GetVilleArrivee(), villeArrivee) == 0)
         {
-            matching->AddFirst(current->GetTrajet());
+            matching->AddFirst(current->GetTrajet(),0);
         }
         current = current->GetNext();
     }
     return new Catalogue(matching);
+}
+
+Catalogue *Catalogue::RechercheAvancee (char *villeDepart, char *villeArrivee) const
+{
+#ifdef MAP
+    cout << "Appel à RechercheAvancee de Catalogue" << endl;
+#endif
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -88,7 +95,6 @@ Catalogue::~Catalogue ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
-
     delete list;
 
 } //----- Fin de ~Catalogue

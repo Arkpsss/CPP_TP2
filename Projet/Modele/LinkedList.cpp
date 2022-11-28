@@ -101,14 +101,11 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 }
 
 
-void LinkedList::AddFirst (Trajet *trajet) {
-
+void LinkedList::AddFirst (Trajet *trajet, bool _deleteTrajet) {
     Element *e = new Element(trajet, tete);
-
+    e->SetDeleteTrajet(_deleteTrajet);
     this->tete = e;
-
     taille++;
-
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -106,7 +106,7 @@ static void test_creation_catalogue ()
     delete(catalogue);
 }
 
-static void test_recherche_catalogue ()
+static void test_recherche_simple_catalogue ()
 {
     Trajet *ts3 = new TrajetSimple("Londres", "Bruxelles", "bus");
     Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
@@ -114,7 +114,6 @@ static void test_recherche_catalogue ()
     Trajet *ts6 = new TrajetSimple("New York", "Los Angeles", "avion");
     Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
     Trajet *ts9 = new TrajetSimple("Paris","New York", "nage");
-
     Trajet *ts1 = new TrajetSimple("Paris", "Londres", "bateau");
     Trajet *ts2 = new TrajetSimple("Londres", "Los Angeles", "avion");
     Trajet *ts8 = new TrajetSimple("Los Angeles", "New York", "train");
@@ -150,6 +149,6 @@ int main(int argc, char const *argv[])
   //test_affichage_Terminal();
   //test_affichage_trajet_compose();
   //test_creation_catalogue();
-  test_recherche_catalogue();
+  test_recherche_simple_catalogue();
   return 0;
 }

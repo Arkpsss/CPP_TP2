@@ -60,6 +60,11 @@ public:
     // Contrat :
     //
 
+    void SetDeleteTrajet (bool _deleteTrajet);
+    // Mode d'emploi :
+    // Modifie la valeur de deleteTrajet
+    // Contrat :
+    //
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -69,9 +74,9 @@ public:
     //
     // Contrat :
     //
-    */
+*/
 
-    Element (Trajet *trajet = NULL, Element *next = NULL);
+    Element (Trajet *trajet = NULL, Element *next = NULL, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Crée un Element avec :
     // this->trajet = trajet (paramètre formel)
@@ -91,6 +96,8 @@ protected:
 //----------------------------------------------------- Attributs protégés
     Trajet *trajet;
     Element *next;
+    bool deleteTrajet; //Indique si, au moment, du delete, on delete le trajet.
+                       //Utile notamment dans les méthodes RechercheSimple et RechercheAvancee de Catalogue
 };
 
 //-------------------------------- Autres définitions dépendantes de <Element>

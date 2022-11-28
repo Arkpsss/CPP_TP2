@@ -55,9 +55,10 @@ public:
     // Contrat :
     //
 
-    void AddFirst(Trajet *trajet);
+    void AddFirst(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Ajoute un trajet en tête de liste
+    // Permet de spécifier le comportement lors du delete
 
     bool AddTrie(Trajet *trajet);
     // Mode d'emploi :

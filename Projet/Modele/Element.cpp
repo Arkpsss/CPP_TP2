@@ -48,7 +48,12 @@ void Element::SetNext (Element *next)
 //
 {
 this->next=next;
-} //----- Fin de Méthode
+} //----- Fin de SetNext
+
+void Element::SetDeleteTrajet(bool _deleteTrajet)
+{
+    deleteTrajet=_deleteTrajet;
+} //----- Fin de SetDeleteTrajet
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -60,16 +65,16 @@ this->next=next;
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Element>" << endl;
 #endif
-    trajet=unElement.trajet;
+    trajet= unElement.trajet;
     next=unElement.next;
 } //----- Fin de Element (constructeur de copie)
 */
 
 
 
-Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
+Element::Element (Trajet *trajet, Element *next, bool _deleteTrajet) : trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
 // Algorithme :
-// Met à this->next à next et this->trajet à trajet.
+// Met à this->next à next et this->trajet à trajet et _deleteTrajet à deleteTrajet.
 {
 #ifdef MAP
     cout << "Appel au deuxième constructeur de <Element>" << endl;
@@ -83,7 +88,8 @@ Element::~Element ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Element>" << endl;
 #endif
-    delete(trajet);
+    if (deleteTrajet)
+        delete(trajet);
 } //----- Fin de ~Element
 
 

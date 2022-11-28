@@ -37,7 +37,7 @@ public:
     // Mode d'emploi:
     // Ajoute un trajet en tête de liste
 
-    void Afficher();
+    void Afficher() const;
     // Mode d'emploi :
     // Affiche un par un chaque trajet de la liste
 
@@ -54,6 +54,15 @@ public:
     // villeArrivee.
     // Renvoie un pointeur vers un Catalogue contenant tous les trajets (simples ou composés)
     // remplissant ces deux conditions
+    // Ces trajets seront réalloués dynamiquement dans le tas
+
+    Catalogue *RechercheAvancee (char *villeDepart, char *villeArrivee) const;
+    // Mode d'emploi :
+    // Recherche toutes les combinaisons de trajets dont la ville de départ est villeDepart et dont la
+    // ville d'arrivée est villeArrivee.
+    // Renvoie un pointeur vers un Catalogue contenant toutes les combinaisons de trajets (simples ou composés)
+    // remplissant ces deux conditions
+    // Les combinaisons de trajets seront représentées par des trajets composés
     // Ces trajets seront réalloués dynamiquement dans le tas
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -74,8 +83,7 @@ private:
 
 //----------------------------------------------------- Attributs privés
 
-    LinkedList *list;                        
-
+    LinkedList *list;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Catalogue>
