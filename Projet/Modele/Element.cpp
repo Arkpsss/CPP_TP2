@@ -3,7 +3,8 @@
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    e-mail               : gabriel.canaple@insa-lyon.fr,
+                           julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Element> (fichier Element.cpp) ------------

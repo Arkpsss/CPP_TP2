@@ -1,9 +1,11 @@
 /*************************************************************************
-                           TrajetSimple  -  description
+                      TrajetCompose  -  Classe implémentant les trajets
+                                        composés du TP2
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 21/11/2022
+    copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
+    e-mail               : gabriel.canaple@insa-lyon.fr,
+                           julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
