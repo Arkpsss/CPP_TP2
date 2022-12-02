@@ -46,5 +46,6 @@ Terminal.o : Vue/Terminal.h Controleur/Catalogue.h
 
 
 #Nettoyage
+.PHONY : clean #indique que la cible de clean n'est pas un fichier
 clean :
 	rm -f $(OBJETS) $(EXE)
