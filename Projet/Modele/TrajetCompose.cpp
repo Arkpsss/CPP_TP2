@@ -17,16 +17,13 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
 
+
 //------------------------------------------------------------- Constantes
 
 #define NB_CHIFFRES 4  //nombre de chiffre que peut contenir une étape -> utile pour la conversion int to char*
+#define DESC 100    //taille du superflux de description
 
 //----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-
-
-
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -103,7 +100,7 @@ char* TrajetCompose::ToString() const {
         const char *text = e->GetTrajet()->GetDescription();
 
         while (strlen(text) + 15 >= taille - strlen(res)-1) {
-            res = TrajetCompose::realloc(res, taille*2);
+            res = realloc(res, taille*2);
             taille *= 2;
         }
 
@@ -115,7 +112,7 @@ char* TrajetCompose::ToString() const {
 
         strcat(res, text);
 
-        e->GetTrajet()->deleteDescription();
+        Trajet::deleteDescription(e->GetTrajet());
 
         e = e->GetNext();
     }

@@ -29,17 +29,27 @@ class Element
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Trajet *GetTrajet () const;
+    Trajet *GetTrajet () const
     // Mode d'emploi :
     // Retourne le pointeur sur le trajet
+    {
+        return trajet;
+    }
 
-    Element *GetNext () const;
+    Element *GetNext () const
     // Mode d'emploi :
     // Retourne un pointeur vers le prochain chaînon
-    // Contrat :
-    //
+    {
+        return next;
+    }
 
-    void SetNext(Element *e);
+
+    void SetNext(Element *e)
+    // Mode d'emploi :
+    // Redéfinit l'élement suivant celui-ci
+    {
+        this->next = e;
+    }
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -60,9 +70,8 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs privés
     Trajet *trajet;
     Element *next;
 };

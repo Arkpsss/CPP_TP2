@@ -22,21 +22,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-Trajet *Element::GetTrajet () const
-{
-     return trajet;
-} //----- Fin de GetTrajet
 
-
-Element *Element::GetNext () const
-{
-    return next;
-} //----- Fin de GetNext
-
-
-void Element::SetNext(Element *e) {
-    this->next = e;
-} //----- Fin de SetNext
 
 //-------------------------------------------- Constructeurs - destructeur
 

@@ -55,8 +55,7 @@ public:
 
     Trajet* SaisirNewTrajet() const;
     
-    void ViderBuffer() const;
-    int RecupSaisiString(char *chaine, int longueur) const;
+
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -71,9 +70,8 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs privés
     Catalogue *catalogue;
 
 };

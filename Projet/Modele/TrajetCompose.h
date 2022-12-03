@@ -14,15 +14,10 @@
 
 #include "Trajet.h"
 #include "LinkedList.h"
+#include "fonction_string.h"
 
-#include <iostream>
 using namespace std;
 
-//------------------------------------------------------------- Constantes
-
-#define DESC 100    //taille du superflux de description
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetCompose>
@@ -68,23 +63,6 @@ private:
     // Construit une chaine de caractère C décrivant le trajet
     // Contient la ville de départ et la ville d'arrivé et la description de 
     // chaque sous-trajet
-
-    static char* realloc(char* text, int newSize) 
-    // Mode d'emploi :
-    // Recopie le text dans une nouvelle chaine de caractère plus grande (newSize)
-    // delete le text
-    {
-
-        char* res = new char[newSize];
-
-        if (text != NULL) {
-            strcpy(res, text);
-            delete [] text;
-        }
-
-        return res;
-
-    }
 
 
 

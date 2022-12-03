@@ -11,7 +11,8 @@
 #define TRAJET_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
+
+#include "fonction_string.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -38,34 +39,25 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 
-    const char* GetVilleDepart()
+    const char* GetVilleDepart() const
     // Mode d'emploi :
     // Retourne la ville de départ
     {
         return villeDepart;
     }
 
-    const char* GetVilleArrivee() 
+    const char* GetVilleArrivee() const
     // Mode d'emploi :
     // Retourne la ville d'arrivé
     {
         return villeArrivee;
     }
 
-    const char* GetDescription() 
+    const char* GetDescription() const
     // Mode d'emploi:
     // Retourn la description du trajet
     {
         return description;
-    }
-
-    inline void deleteDescription() {
-
-        if (description != NULL) {
-            delete [] description;
-            description = NULL;
-        }
-
     }
     
 
@@ -97,6 +89,17 @@ protected:
     // Mode d'emploi : 
     // Redéfinit la ville d'arrivé en supprimant l'ancienne si nécessaire
 
+
+
+    static void deleteDescription(Trajet *t) {
+
+        if (t->description != NULL) {
+            delete [] t->description;
+            t->description = NULL;
+        }
+
+    }
+
 //----------------------------------------------------- Attributs protégés
 
     char *villeDepart;
@@ -108,5 +111,5 @@ protected:
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // XXX_H
+#endif // TRAJET_H
 

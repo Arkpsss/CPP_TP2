@@ -17,9 +17,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Terminal.h"
 
-//------------------------------------------------------------- Constantes
+#include "../Modele/fonction_string.h"
 
-#define MAX 1000
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -35,41 +34,10 @@ void Terminal::Afficher() const {
 
     }
 
-}
+} //---- Fin de Afficher
 
 
-void Terminal::ViderBuffer() const
-{
-    int c = 0;
-    while (c != '\n' && c != EOF)
-    {
-        c = getchar();
-    }
-}
- 
-int Terminal::RecupSaisiString(char *chaine, int longueur) const
-{
-    char *positionEntree = NULL;
- 
-    if (fgets(chaine, longueur, stdin) != NULL)
-    {
-        positionEntree = strchr(chaine, '\n');
-        if (positionEntree != NULL)
-        {
-            *positionEntree = '\0';
-        }
-        else
-        {
-            ViderBuffer();
-        }
-        return 1;
-    }
-    else
-    {
-        ViderBuffer();
-        return 0;
-    }
-}
+
 
 Trajet* Terminal::SaisirNewTrajet() const {
 
@@ -78,20 +46,20 @@ Trajet* Terminal::SaisirNewTrajet() const {
     cin >> nbSousTrajets;
     cin.ignore();
 
-    char vD[MAX];
-    char vA[MAX];
+    char vD[TAILLE_MAX];
+    char vA[TAILLE_MAX];
 
     if (nbSousTrajets == 1) {
         cout << "   Ville de départ : " << endl;
-        RecupSaisiString(vD, MAX);
+        recup_saisi_string(vD, TAILLE_MAX);
 
         cout << "   Ville d'arrivee : " << endl;
-        RecupSaisiString(vA, MAX);
+        recup_saisi_string(vA, TAILLE_MAX);
 
 
-        char mt[MAX];
+        char mt[TAILLE_MAX];
         cout << "   Moyen de transport : " << endl;
-        RecupSaisiString(mt, MAX);
+        recup_saisi_string(mt, TAILLE_MAX);
 
 
         cout << "\n\n";
@@ -128,7 +96,7 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
     
 
-}
+} //---- Fin de SaisirNewTrajet
 
 void Terminal::Start() {
 
@@ -177,7 +145,7 @@ void Terminal::Start() {
 
     }
 
-}
+} //---- Fin de Start
 
 
 //-------------------------------------------- Constructeurs - destructeur

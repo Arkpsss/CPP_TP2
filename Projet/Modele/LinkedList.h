@@ -13,6 +13,9 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Element.h"
+
+#include "fonction_string.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -33,11 +36,13 @@ class LinkedList
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Element* GetHead () const {
-        return this->tete;
-    }
+    Element* GetHead () const 
     // Mode d'emploi :
     // Renvoie le premier maillon de la liste
+    {
+        return this->tete;
+    }
+    
 
 
     void AddFirst(Trajet *trajet);
@@ -49,11 +54,13 @@ public:
     // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
     // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
 
-    int GetTaille() const {
-        return this->taille;
-    }
+    int GetTaille() const
     // Mode d'emploi :
     // Renvoie la taille de la liste
+    {
+        return this->taille;
+    }
+    
 
 
 
@@ -74,7 +81,10 @@ public:
 private:
 //----------------------------------------------------- Méthodes privé
 
-    static bool compare(Trajet *a, Trajet *b) {
+    static bool compare(Trajet *a, Trajet *b) 
+    // Mode d'emploi:
+    // Compare la ville de depart du premier trajet avec la ville d'arrivé du second
+    {
         if (strcmp(a->GetVilleDepart(), b->GetVilleArrivee()) == 0) {
             return true;
         }
@@ -82,8 +92,7 @@ private:
             return false;
         }
     }
-    // Mode d'emploi:
-    // Compare la ville de depart du premier trajet avec la ville d'arrivé du second
+    
 
 //----------------------------------------------------- Attributs privé
     Element *tete;

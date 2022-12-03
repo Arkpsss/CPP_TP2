@@ -13,6 +13,8 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 
+#include "fonction_string.h"
+
 //------------------------------------------------------------- Constantes
 
 #define DESC 100    //taille du superflux de description
