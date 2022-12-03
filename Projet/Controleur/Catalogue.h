@@ -22,7 +22,7 @@
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 //
-// Cette classe répresente une liste sans ordre spécifique de Trajet possible.
+// Cette classe répresente une liste trié par ordre alphabetique de Trajet possible.
 // Un catalogue peut fournir la description de chaque trajet qu'il contient.
 // On peut aussi insérer un trajet dans ce catalogue.
 //
@@ -37,7 +37,8 @@ public:
     
     void Insert(Trajet *trajet);
     // Mode d'emploi:
-    // Ajoute un trajet en tête de liste
+    // Ajoute un trajet trié par ordre alphabetique par rapport à sa ville de
+    // départ puis par rapport à sa ville d'arrivée.
 
 
     int GetNbTrajet() const 

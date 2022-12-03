@@ -45,14 +45,16 @@ public:
     
 
 
-    void AddFirst(Trajet *trajet);
-    // Mode d'emploi :
-    // Ajoute un trajet en tête de liste
-
-    bool AddTrie(Trajet *trajet);
+    bool AddCoherent(Trajet *trajet);
     // Mode d'emploi :
     // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
     // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
+
+    void AddOrdreAlphabetique(Trajet *trajet);
+    // Mode d'emploi :
+    // Si la liste est vide ajoute en tête le trajet sinon fait appel à la méthode
+    // RecAddAlpha pour ajouter le trajet par ordre alphabetique de la ville de depart
+    // et en cas d'égalité par rapport à la ville d'arrivée.
 
     int GetTaille() const
     // Mode d'emploi :
@@ -92,6 +94,19 @@ private:
             return false;
         }
     }
+
+    void RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart);
+    // Mode d'emploi :
+    // Ajoute un trajet de telle sorte que l'orde alphabétique soit respecté
+    // Determine si l'element courant et l'element prec est bien le bonne encadrement pour 
+    // ajouter ce trajet
+    // Sinon rappelle cette methode en progressant dans la liste 
+    // Le boolean depart permet de savoir si la comparaison doit s'effectuer sur la ville de 
+    // départ ou celle d'arrivé.
+
+    void AddFirst(Trajet *trajet);
+    // Mode d'emploi :
+    // Ajoute un trajet en tête de liste
     
 
 //----------------------------------------------------- Attributs privé

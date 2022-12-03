@@ -25,7 +25,7 @@ using namespace std;
 
 void Catalogue::Insert(Trajet *trajet) {
 
-    list->AddFirst(trajet);
+    list->AddOrdreAlphabetique(trajet);
 
 } //---- Fin de Insert
 

@@ -30,6 +30,12 @@
 
 //------------------------------------------------------------------ Types
 
+typedef enum ComparaisonAlphabetique {
+
+  ARG1, ARG2, EGAL
+
+} ComparaisonAlphabetique;
+
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
 
@@ -51,6 +57,10 @@ char* realloc(char* text, int newSize);
 // Recopie le text dans une nouvelle chaine de caractère plus grande (newSize)
 // delete le text
 
+
+ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2);
+// Mode d'emploi : 
+// Compare 2 chaines de caractère par rapport à leur ordre alphabetique.
 
 
 #endif // FONCTION_STRING_H

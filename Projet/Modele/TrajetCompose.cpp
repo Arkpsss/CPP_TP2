@@ -40,7 +40,7 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
     list = new LinkedList();
 
     for (int i = nb-1; i >= 0; i--) {
-        if (list->AddTrie(tab[i]) == false) {
+        if (list->AddCoherent(tab[i]) == false) {
             delete tab[i];
             throw MauvaiseComposition(list);
         }

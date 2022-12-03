@@ -17,20 +17,7 @@
 ///////////////////////////////////////////////////////////////////  PRIVE
 //------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types
-
-//---------------------------------------------------- Variables statiques
-
-//------------------------------------------------------ Fonctions privées
-//static type nom ( liste de paramètres )
-// Mode d'emploi :
-//
-// Contrat :
-//
-// Algorithme :
-//
-//{
-//} //----- fin de nom
+#define min(a,b) a > b ? b : a
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
@@ -79,5 +66,36 @@ char* realloc(char* text, int newSize)
     }
 
     return res;
+
+}
+
+ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2) {
+
+    if (strcmp(s1, s2) == 0) {
+        return EGAL;
+    }
+
+    int len1 = strlen(s1);
+    int len2 = strlen(s2);
+
+    int min = min(len1, len2);
+
+    for (int i = 0; i < min; i++) {
+
+        if (s1[i] < s2[i]) {
+            return ARG1;
+        }
+        else if (s2[i] < s1[i]) {
+            return ARG2;
+        }
+
+    }
+
+    if (min == len1) {
+        return ARG1;
+    }
+    else {
+        return ARG2;
+    }
 
 }
