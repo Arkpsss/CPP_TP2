@@ -1,9 +1,9 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Trajet  -  Classe implémentant un trajet composé
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
@@ -31,40 +31,6 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-/*
-TrajetCompose::TrajetCompose (LinkedList *l, const char *vD, const char *vA)
-    : Trajet(vD, vA)
-
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <TrajetCompose>" << endl;
-#endif
-
-    listTrajets = l;
-    
-    if (strcmp(vD, "") == 0 || strcmp(vA, "") == 0) {
-        Element *d = listTrajets->GetHead();
-        Element *a = listTrajets->GetHead();
-
-        for (int i = 1; i < listTrajets->GetTaille(); i++) {
-            a = a->GetNext();
-        }
-
-        delete [] villeDepart;
-        delete [] villeArrivee;
-
-        villeDepart = new char[strlen(d->GetTrajet()->GetVilleDepart()) +1];
-        villeArrivee = new char[strlen(a->GetTrajet()->GetVilleArrivee()) +1];
-
-        strcpy(villeDepart, d->GetTrajet()->GetVilleDepart());
-        strcpy(villeArrivee, a->GetTrajet()->GetVilleArrivee());
-
-    }
-    
-
-} //----- Fin de TrajetCompose
-*/
 
 TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA )
     : Trajet(vD, vA)

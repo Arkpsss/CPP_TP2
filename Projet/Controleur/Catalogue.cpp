@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Catalogue  -  description
+                           Catalogue  -  Classe imlémentant un catalogue de Trajet
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
@@ -27,9 +27,9 @@ void Catalogue::Insert(Trajet *trajet) {
 
     list->AddFirst(trajet);
 
-}
+} //---- Fin de Insert
 
-char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
+const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
     if (numeroTrajet > list->GetTaille() || numeroTrajet < 0) {
         return NULL;
@@ -43,7 +43,7 @@ char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
     return e->GetTrajet()->GetDescription();
 
-}
+} //---- Fin de GetDescriptionOf
 
 
 
