@@ -69,7 +69,7 @@ private:
     // Contient la ville de départ et la ville d'arrivé et la description de 
     // chaque sous-trajet
 
-    inline static char* realloc(char* text, int newSize) 
+    static char* realloc(char* text, int newSize) 
     // Mode d'emploi :
     // Recopie le text dans une nouvelle chaine de caractère plus grande (newSize)
     // delete le text

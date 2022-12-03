@@ -1,9 +1,9 @@
-/*************************************************************************
-                           Terminal  -  description
+ /*************************************************************************
+                           Terminal  -  Système d'IHM du projet
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Terminal> (fichier Terminal.cpp) ------------
@@ -16,9 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Terminal.h"
-#include "../Modele/Trajet.h"
-#include "../Modele/TrajetSimple.h"
-#include "../Modele/TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -188,8 +185,6 @@ void Terminal::Start() {
 
 
 Terminal::Terminal ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Terminal>" << endl;
@@ -197,27 +192,11 @@ Terminal::Terminal ( )
 
     catalogue = new Catalogue();
 
-    //Pour le test
-    /*Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
-    Trajet *t2 = new TrajetSimple("Londres", "Los Angeles", "avion");
-
-    Trajet* tab[2] = {t1,t2};
-
-    Trajet *t = new TrajetCompose(tab, 2, "Paris", "Los Angeles");
-
-    catalogue->Insert(t);
-
-    Trajet *tbis = new TrajetSimple("Paris", "Londres", "Bateau");
-    catalogue->Insert(tbis);*/
-
-
 
 } //----- Fin de Terminal
 
 
 Terminal::~Terminal ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Terminal>" << endl;
