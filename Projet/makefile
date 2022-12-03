@@ -34,14 +34,14 @@ $(EXE) : $(OBJETS)
 	$(ECHO) $(GCC) $(CCFLAGS) $<
 	$(GCC) $(CCFLAGS) $<
 
-TrajetSimple.o : Modele/TrajetSimple.h Modele/Trajet.h
+TrajetSimple.o : Modele/TrajetSimple.h Modele/Trajet.h Modele/fonction_string.h
 main.o : Modele/Trajet.h Modele/TrajetSimple.h
-Trajet.o : Modele/Trajet.h
-TrajetCompose.o : Modele/TrajetCompose.h Modele/Trajet.h
+Trajet.o : Modele/Trajet.h Modele/fonction_string.h
+TrajetCompose.o : Modele/TrajetCompose.h Modele/Trajet.h Modele/LinkedList.h Modele/fonction_string.h
 Element.o : Modele/Element.h Modele/Trajet.h
-LinkedList.o : Modele/LinkedList.h Modele/Element.h
-Catalogue.o : Controleur/Catalogue.h Modele/LinkedList.h
-Terminal.o : Vue/Terminal.h Controleur/Catalogue.h
+LinkedList.o : Modele/LinkedList.h Modele/Element.h Modele/fonction_string.h
+Catalogue.o : Controleur/Catalogue.h Modele/LinkedList.h Modele/Trajet.h
+Terminal.o : Vue/Terminal.h Controleur/Catalogue.h Modele/Trajet.h Modele/TrajetSimple.h Modele/TrajetCompose.h Modele/fonction_string.h
 fonction_string.o : Modele/fonction_string.h
 
 

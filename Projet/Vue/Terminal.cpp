@@ -26,6 +26,10 @@ using namespace std;
 
 void Terminal::Afficher() const {
 
+    if (catalogue->GetNbTrajet() == 0) {
+        cout << "Le catalogue est vide..." << endl;
+    }
+
     for (int i = 1; i <= catalogue->GetNbTrajet(); i++) {
 
         cout << "\t\t" << "Trajet n° " << i << "/ " << endl;
@@ -42,7 +46,7 @@ void Terminal::Afficher() const {
 Trajet* Terminal::SaisirNewTrajet() const {
 
     int nbSousTrajets = 0;
-    cout << "Entrer le nombre de sous-trajets que contient votre trajet à saisir : ";
+    cout << "Entrer le nombre d'escales que contient votre trajet à saisir : ";
     cin >> nbSousTrajets;
     cin.ignore();
 
@@ -50,19 +54,19 @@ Trajet* Terminal::SaisirNewTrajet() const {
     char vA[TAILLE_MAX];
 
     if (nbSousTrajets == 1) {
-        cout << "   Ville de départ : " << endl;
+        cout << "   Ville de départ : ";
         recup_saisi_string(vD, TAILLE_MAX);
 
-        cout << "   Ville d'arrivee : " << endl;
+        cout << "   Ville d'arrivee : ";
         recup_saisi_string(vA, TAILLE_MAX);
 
 
         char mt[TAILLE_MAX];
-        cout << "   Moyen de transport : " << endl;
+        cout << "   Moyen de transport : ";
         recup_saisi_string(mt, TAILLE_MAX);
 
 
-        cout << "\n\n";
+        cout << "\n";
 
         return new TrajetSimple(vD, vA, mt);
 
@@ -110,7 +114,7 @@ void Terminal::Start() {
         cout << "   2. Inserer un trajet" << endl;
         cout << "   3. Rechercher un voyage" << endl;
         cout << "   4. Quitter" << endl;
-        cout << "Saisir le numero qui vous interesse" << endl;
+        cout << "Saisir le numero qui vous interesse : ";
 
         int action;
         cin >> action;
@@ -139,6 +143,7 @@ void Terminal::Start() {
 
         default:
             cout << "Erreur de numero !" << endl;
+            break;
 
         }
 
