@@ -84,7 +84,7 @@ private:
 // d'arrivée
 //
 // En cas de levé d'exception le trajet composé en cours de construction est
-// détruit et cette classe se charge de détruire la liste incomplète.
+// détruit et cette classe se charge de détruire le reste du tableau
 //------------------------------------------------------------------------
 
 
@@ -92,14 +92,18 @@ class MauvaiseComposition : public exception {
 
 public:
 
-    MauvaiseComposition(LinkedList *l){
+    MauvaiseComposition(Trajet **tab ,  int limit){
 
-        this->list  = l;
-
+        this->tab = tab;
+        this->limit = limit;
     }
     virtual ~MauvaiseComposition() {
 
-        delete list;
+        for (int i = 0; i <= limit; i++) {
+            delete tab[i];
+        }
+
+        delete [] tab;
 
     }
 
@@ -108,7 +112,8 @@ public:
     }
 
 private:
-    LinkedList *list;
+    Trajet **tab;
+    int limit;
 
 };
 

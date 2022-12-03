@@ -87,7 +87,6 @@ Trajet* Terminal::SaisirNewTrajet() const {
         }
         catch (exception &e) {
             cout << e.what() << endl;
-            delete [] tab;
         }
         
         return NULL;

@@ -41,10 +41,11 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
 
     for (int i = nb-1; i >= 0; i--) {
         if (list->AddCoherent(tab[i]) == false) {
-            delete tab[i];
-            throw MauvaiseComposition(list);
+            delete list;
+            throw MauvaiseComposition(tab, i);
         }
     }
+    
 
     if (vD == NULL && vA == NULL) {
         SetVilleDepart(list->GetHead()->GetTrajet()->GetVilleDepart());
