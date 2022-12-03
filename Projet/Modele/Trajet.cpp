@@ -35,6 +35,10 @@ Trajet::Trajet(const char *vD, const char *vA) {
         strcpy(villeDepart, vD);
         strcpy(villeArrivee, vA);
     }
+    else {
+        villeDepart = NULL;
+        villeArrivee = NULL;
+    }
 
     description = NULL;
 
