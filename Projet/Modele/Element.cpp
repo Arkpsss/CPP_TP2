@@ -31,8 +31,12 @@ Trajet *Element::GetTrajet () const
 Element *Element::GetNext () const
 {
     return next;
-} //----- Fin de GetTrajet
+} //----- Fin de GetNext
 
+
+void Element::SetNext(Element *e) {
+    this->next = e;
+} //----- Fin de SetNext
 
 //-------------------------------------------- Constructeurs - destructeur
 

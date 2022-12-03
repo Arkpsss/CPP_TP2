@@ -39,7 +39,9 @@ public:
     // Contrat :
     //
 
-    friend class LinkedList; //LinkedList a accès à tous les attributs de Element
+    void SetNext(Element *e);
+
+    //friend class LinkedList; //LinkedList a accès à tous les attributs de Element
 
 //-------------------------------------------- Constructeurs - destructeur
 

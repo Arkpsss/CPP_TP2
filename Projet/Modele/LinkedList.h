@@ -74,7 +74,7 @@ public:
 private:
 //----------------------------------------------------- Méthodes privé
 
-    inline static bool compare(Trajet *a, Trajet *b) {
+    static bool compare(Trajet *a, Trajet *b) {
         if (strcmp(a->GetVilleDepart(), b->GetVilleArrivee()) == 0) {
             return true;
         }

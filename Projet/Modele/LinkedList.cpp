@@ -55,12 +55,12 @@ bool LinkedList::AddTrie(Trajet *trajet)
     else {
 
         for (int i = 0; i < taille; i++) {
-            current = prec->next;
+            current = prec->GetNext();
 
             if (current == NULL) {
                 if(compare(trajet,prec->GetTrajet())) {
                     Element *e = new Element(trajet, NULL);
-                    prec->next = e;
+                    prec->SetNext(e);
                     taille++;
                     return true;
                 }
@@ -71,7 +71,7 @@ bool LinkedList::AddTrie(Trajet *trajet)
 
             else if (compare(current->GetTrajet(), trajet)) {
                 Element *e = new Element(trajet, current);
-                prec->next = e;
+                prec->SetNext(e);
 
                 taille++;
                 return true;
