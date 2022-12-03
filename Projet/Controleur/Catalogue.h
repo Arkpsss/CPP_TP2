@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Catalogue  -  description
+                           Catalogue  -  Classe imlémentant un catalogue de Trajet
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
@@ -22,7 +22,9 @@
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 //
-// Cette classe répresent une liste sans ordre spécifique de Trajet possible.
+// Cette classe répresente une liste trié par ordre alphabetique de Trajet possible.
+// Un catalogue peut fournir la description de chaque trajet qu'il contient.
+// On peut aussi insérer un trajet dans ce catalogue.
 //
 //------------------------------------------------------------------------
 
@@ -35,17 +37,21 @@ public:
     
     void Insert(Trajet *trajet);
     // Mode d'emploi:
-    // Ajoute un trajet en tête de liste
+    // Ajoute un trajet trié par ordre alphabetique par rapport à sa ville de
+    // départ puis par rapport à sa ville d'arrivée.
 
-    void Afficher();
-    // Mode d'emploi :
-    // Affiche un par un chaque trajet de la liste
 
-    int GetNbTrajet() const {
+    int GetNbTrajet() const 
+    // Mode d'emploi:
+    // Retourne le nombre de trajet contenu dans le catalogue
+    {
         return list->GetTaille();
     }
 
-    char* GetDescriptionOf(int numeroTrajet) const;
+    const char* GetDescriptionOf(int numeroTrajet) const;
+    // Mode d'emploi:
+    // Renvoie la description du trajet dont le numéro est passé en
+    // paramètre.
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -62,7 +68,6 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- Méthodes privées
 
 //----------------------------------------------------- Attributs privés
 

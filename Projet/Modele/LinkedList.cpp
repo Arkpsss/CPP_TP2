@@ -22,30 +22,17 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void LinkedList::Add (Trajet *trajet, int position)
+
+
+
+bool LinkedList::AddCoherent(Trajet *trajet) 
 // Algorithme :
-//
+// Distingue 4 cas :
+// - la liste est vide donc pas de comparaison à faire
+// - la ville d'arrivé est la ville de départ du premier élement -> ajout en tete
+// - la ville de départ du trajet est la ville d'arrivé d'un trajet au milieu de la liste -> ajout en milieu
+// - la ville d'arrivé du dernier trajet de la liste est la ville de départ du trajet à ajouter -> ajout en fin
 {
-    //Si on ajoute en tête de liste
-    if (position==0)
-    {
-        Element *nouvelElement = new Element(trajet,tete);
-        tete = nouvelElement;
-        return;
-    }
-
-    //Si on ajoute dans le reste de la liste
-    Element *current=tete;
-    for (int i=0; i<position-1; i++)
-    {
-        current=current->GetNext();
-    }
-
-    Element *nouvelElement = new Element (trajet, current->GetNext());
-    current->SetNext(nouvelElement);
-} //----- Fin de Add
-
-bool LinkedList::AddTrie(Trajet *trajet) {
 
     Element *current = tete;
     Element *prec = tete;
@@ -57,8 +44,6 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 
     //Ville d'arrivee du trajet est la ville de depart de l'element
     if (compare(current->GetTrajet(), trajet)) {
-
-
 
         Element *e = new Element(trajet, current);
         this->tete = e;
@@ -101,36 +86,30 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 }
 
 
-void LinkedList::AddFirst (Trajet *trajet) {
 
-    Element *e = new Element(trajet, tete);
 
-    this->tete = e;
 
-    taille++;
+void LinkedList::AddOrdreAlphabetique(Trajet *trajet) {
+
+    if (tete == NULL) {
+        this->AddFirst(trajet);
+    }
+
+    else {
+
+        RecAddAlpha(trajet, tete, tete, true);
+
+    }
 
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+
+
 
 //-------------------------------------------- Constructeurs - destructeur
-/*LinkedList::LinkedList ( const LinkedList & uneLinkedList )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <LinkedList>" << endl;
-#endif
-    tete=uneLinkedList.tete;
-    taille=uneLinkedList.taille;
-} //----- Fin de LinkedList (constructeur de copie)
-*/
-
 
 
 LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
-// Algorithme :
-// Met tete à l'attribut tete et taille à l'attribut taille
 {
 #ifdef MAP
     cout << "Appel au constructeur de <LinkedList>" << endl;
@@ -139,7 +118,7 @@ LinkedList::LinkedList(Element *tete, int taille) : tete(tete), taille(taille)
 
 LinkedList::~LinkedList ( )
 // Algorithme :
-//
+// Parcourt la liste et delete chaque element
 {
 #ifdef MAP
     cout << "Appel au destructeur de <LinkedList>" << endl;
@@ -156,4 +135,95 @@ LinkedList::~LinkedList ( )
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes privées
+
+
+void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart)
+{
+
+    ComparaisonAlphabetique res;
+
+    if (current == NULL) {
+        Element *e = new Element(trajet, current);
+        prec->SetNext(e);
+        taille++;
+        return;
+    }
+
+    if (depart) {
+        const char* tD = trajet->GetVilleDepart();
+        const char* cD = current->GetTrajet()->GetVilleDepart();
+
+        res = ordre_alphabetique(tD, cD);
+
+    }
+    
+    else {
+        const char* tA = trajet->GetVilleArrivee();
+        const char* cA = current->GetTrajet()->GetVilleArrivee();
+
+        res = ordre_alphabetique(tA, cA);
+    }
+
+
+    //La ville de départ du trajet est avant la ville de depart de l'element courant
+    if (res == ARG1) {
+        Element *e = new Element(trajet, current);
+
+        if (current == tete) {
+            this->tete = e;
+        }
+        else {
+            prec->SetNext(e);
+        }
+        taille++;
+    }
+
+
+
+    //La ville de depart du trajet est la meme que la ville de départ de l'element courant
+    else if (res == EGAL) {
+
+        if (!depart) {
+            Element *e = new Element(trajet, current);
+
+            if (current == tete) {
+                this->tete = e;
+                taille++;
+            }
+            else {
+                prec->SetNext(e);
+                taille++;
+            }
+        }
+        else {
+            //debut recherche sur ville arrivée
+            RecAddAlpha(trajet, current, prec, !depart);
+            return;
+        }
+        
+        
+
+    }
+
+    //La ville de depart du trajet est après la ville de départ de l'element courant
+    else if (res == ARG2) {
+
+        RecAddAlpha(trajet, current->GetNext(), current, depart);
+        return;
+        
+    }
+
+} //--- Fin de RecAddAlpha
+
+
+
+void LinkedList::AddFirst (Trajet *trajet) {
+
+    Element *e = new Element(trajet, tete);
+
+    this->tete = e;
+
+    taille++;
+
+} //---- Fin de AddFirst

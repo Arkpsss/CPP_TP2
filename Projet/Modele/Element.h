@@ -1,5 +1,5 @@
 /*************************************************************************
-                           Element  -  Classe implémentant une liste chaînée
+                           Element  -  Maillon du liste chainée simple
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Element> (fichier Element.h) ----------------
-#if ! defined ( Element_H )
-#define Element_H
+#if ! defined ( ELEMENT_H )
+#define ELEMENT_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -19,13 +19,8 @@
 //------------------------------------------------------------------------
 // Rôle de la classe <Element>
 // Un Element est un chaînon de la LinkedList implémentée dans notre projet.
-// Il contient un trajet, qui peut être simple ou composé, et contient éga
+// Il contient un pointeur sur un trajet, qui peut être simple ou composé, et contient éga
 // -lement un pointeur vers le chaînon suivant.
-// La classe contient donc deux attributs :
-// - trajet, de type Trajet*, est un pointeur vers le trajet contenu dans
-//   le chaînon.
-// - next, de type Element*, est un pointeur vers le prochain Element de la
-//   liste.
 //------------------------------------------------------------------------
 
 class Element
@@ -34,42 +29,31 @@ class Element
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Trajet *GetTrajet () const;
+    Trajet *GetTrajet () const
     // Mode d'emploi :
-    // Retourne un pointeur vers le trajet contenu dans le chaînon
-    // Contrat :
-    //
+    // Retourne le pointeur sur le trajet
+    {
+        return trajet;
+    }
 
-    void SetTrajet (Trajet *trajet);
-    // Mode d'emploi :
-    // Permet de modifier le trajet contenu dans le chaînon à partir d'un
-    // trajet alloué dynamiquement (avec new).
-    // Contrat :
-    //
-
-    Element *GetNext () const;
+    Element *GetNext () const
     // Mode d'emploi :
     // Retourne un pointeur vers le prochain chaînon
-    // Contrat :
-    //
+    {
+        return next;
+    }
 
-    void SetNext (Element *next);
+
+    void SetNext(Element *e)
     // Mode d'emploi :
-    // Permet de modifier le prochain chaînon pointé par next avec une
-    // valeur valide (NULL ou Element alloué dynamiquement)
-    // Contrat :
-    //
+    // Redéfinit l'élement suivant celui-ci
+    {
+        this->next = e;
+    }
 
-
-//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    /*Element ( const Element &unElement );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-    */
+
 
     Element (Trajet *trajet = NULL, Element *next = NULL);
     // Mode d'emploi :
@@ -78,21 +62,20 @@ public:
     // this->next = next
     // next doit être valide (pointe vers un Element existant ou vers NULL)
 
-    ~Element ( );
+    ~Element ();
     // Mode d'emploi :
     // Détruit l'Element, c'est à dire désalloue la zone mémoire pointée
     // par trajet.
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
-//----------------------------------------------------- Méthodes protégées
+private:
 
-//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs privés
     Trajet *trajet;
     Element *next;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Element>
 
-#endif // Element_H
+#endif // ELEMENT_H

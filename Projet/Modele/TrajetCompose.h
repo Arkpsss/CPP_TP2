@@ -1,9 +1,9 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Trajet  -  Classe implémentant un trajet composé
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 28/11/2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
@@ -14,12 +14,10 @@
 
 #include "Trajet.h"
 #include "LinkedList.h"
+#include "fonction_string.h"
 
-//------------------------------------------------------------- Constantes
+using namespace std;
 
-#define DESC 100
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetCompose>
@@ -39,13 +37,16 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-    /*TrajetCompose(LinkedList *l, const char *vD = "", const char *vA = "");
-    // Mode d'emploi :
-    // Initialise la liste des trajets et si renseigné, les villes de départ
-    // et d'arrivé. Sinon se contente de les instancier avec des chaines vides
-    */
 
-    TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA );
+    TrajetCompose( Trajet **tab, int nb, const char *vD = NULL, const char *vA = NULL);
+    // Mode d'emploi :
+    // A partir d'un tableau de nb trajets, construit une LinkedList 
+    // en se chargeant de les ajouter de manière ordonné (contraintes sur les villes
+    // de départ et d'arrivé de chaque). 
+    // En cas d'impossibilité de respecter cette contrainte, une MauvaiseComposition
+    // exception est levée.
+    // Si les paramètres vD et vA sont non renseignés, on les détermine après la construction de la liste
+    // en prenant le premier et dernier element
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :
@@ -58,19 +59,10 @@ private:
 
 
     char* ToString() const;
-
-    inline static char* realloc(char* text, int newSize) {
-
-        char* res = new char[newSize];
-
-        if (text != NULL) {
-            strcpy(res, text);
-            delete [] text;
-        }
-
-        return res;
-
-    }
+    // Mode d'emploi :
+    // Construit une chaine de caractère C décrivant le trajet
+    // Contient la ville de départ et la ville d'arrivé et la description de 
+    // chaque sous-trajet
 
 
 
@@ -81,6 +73,49 @@ private:
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+
+
+//------------------------------------------------------------------------
+// Rôle de la classe <MauvaiseCompositio>
+//
+// Cette classe hérite de la classe exception
+// Cette exception est levée lorsque l'on ajoute un trajet au trajet composé
+// qui ne permet pas de maintenir la cohérence entre ville de départ et ville
+// d'arrivée
+//
+// En cas de levé d'exception le trajet composé en cours de construction est
+// détruit et cette classe se charge de détruire le reste du tableau
+//------------------------------------------------------------------------
+
+
+class MauvaiseComposition : public exception {
+
+public:
+
+    MauvaiseComposition(Trajet **tab ,  int limit){
+
+        this->tab = tab;
+        this->limit = limit;
+    }
+    virtual ~MauvaiseComposition() {
+
+        for (int i = 0; i <= limit; i++) {
+            delete tab[i];
+        }
+
+        delete [] tab;
+
+    }
+
+    virtual const char* what() const throw() {      //redefinition de what() de la classe exception
+        return "Erreur: Impossible d'ajouter ce trajet compose car la succession n'est pas ordonnée";
+    }
+
+private:
+    Trajet **tab;
+    int limit;
+
+};
 
 #endif // TRAJETCOMPOSE_H
 

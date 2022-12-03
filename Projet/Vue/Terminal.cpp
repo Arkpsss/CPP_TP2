@@ -1,9 +1,9 @@
-/*************************************************************************
-                           Terminal  -  description
+ /*************************************************************************
+                           Terminal  -  Système d'IHM du projet
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Terminal> (fichier Terminal.cpp) ------------
@@ -16,19 +16,19 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Terminal.h"
-#include "../Modele/Trajet.h"
-#include "../Modele/TrajetSimple.h"
-#include "../Modele/TrajetCompose.h"
 
-//------------------------------------------------------------- Constantes
+#include "../Modele/fonction_string.h"
 
-#define MAX 1000
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
 void Terminal::Afficher() const {
+
+    if (catalogue->GetNbTrajet() == 0) {
+        cout << "Le catalogue est vide..." << endl;
+    }
 
     for (int i = 1; i <= catalogue->GetNbTrajet(); i++) {
 
@@ -38,39 +38,41 @@ void Terminal::Afficher() const {
 
     }
 
-}
+} //---- Fin de Afficher
+
+
+
 
 Trajet* Terminal::SaisirNewTrajet() const {
 
     int nbSousTrajets = 0;
-    cout << "Entrer le nombre de sous-trajets que contient votre trajet à saisir : ";
+    cout << "Entrer le nombre d'escales que contient votre trajet à saisir : ";
     cin >> nbSousTrajets;
+    cin.ignore();
 
-    char vD[MAX];
-    char vA[MAX];
+    char vD[TAILLE_MAX];
+    char vA[TAILLE_MAX];
 
     if (nbSousTrajets == 1) {
         cout << "   Ville de départ : ";
-        fgets(vD, MAX, stdin);
+        recup_saisi_string(vD, TAILLE_MAX);
 
         cout << "   Ville d'arrivee : ";
-        fgets(vA, MAX, stdin);
+        recup_saisi_string(vA, TAILLE_MAX);
 
-        char mt[MAX];
+
+        char mt[TAILLE_MAX];
         cout << "   Moyen de transport : ";
-        fgets(mt, MAX, stdin);
+        recup_saisi_string(mt, TAILLE_MAX);
+
+
+        cout << "\n";
 
         return new TrajetSimple(vD, vA, mt);
 
     }
 
     else {
-
-        cout << "   Ville de départ : ";
-        fgets(vD, MAX, stdin);
-
-        cout << "   Ville d'arrivee : ";
-        fgets(vA, MAX, stdin);
 
         Trajet* *tab = new Trajet*[nbSousTrajets];
 
@@ -81,12 +83,23 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
         }
 
-        return new TrajetCompose(tab, nbSousTrajets, vD, vA);
+        try {
+            Trajet* t = new TrajetCompose(tab, nbSousTrajets);
+            delete [] tab;
+
+            return t;
+        }
+        catch (exception &e) {
+            cout << e.what() << endl;
+        }
+        
+        return NULL;
+        
     }
 
     
 
-}
+} //---- Fin de SaisirNewTrajet
 
 void Terminal::Start() {
 
@@ -96,12 +109,12 @@ void Terminal::Start() {
 
     while (ok) {
 
-        
+        cout << endl;
         cout << "   1. Afficher le catalogue" << endl;
         cout << "   2. Inserer un trajet" << endl;
         cout << "   3. Rechercher un voyage" << endl;
         cout << "   4. Quitter" << endl;
-        cout << "Saisir le numero qui vous interesse" << endl;
+        cout << "Saisir le numero qui vous interesse : ";
 
         int action;
         cin >> action;
@@ -113,7 +126,12 @@ void Terminal::Start() {
             break;
 
         case 2:
-            catalogue->Insert(this->SaisirNewTrajet());
+            {
+                Trajet *t = this->SaisirNewTrajet();
+                if (t != NULL) {
+                    catalogue->Insert(t);
+                }
+            }
             break;
 
         case 3:
@@ -125,12 +143,13 @@ void Terminal::Start() {
 
         default:
             cout << "Erreur de numero !" << endl;
+            break;
 
         }
 
     }
 
-}
+} //---- Fin de Start
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -138,8 +157,6 @@ void Terminal::Start() {
 
 
 Terminal::Terminal ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Terminal>" << endl;
@@ -147,27 +164,11 @@ Terminal::Terminal ( )
 
     catalogue = new Catalogue();
 
-    //Pour le test
-    Trajet *t1 = new TrajetSimple("Paris", "Londres", "bateau");
-    Trajet *t2 = new TrajetSimple("Londres", "Los Angeles", "avion");
-
-    Trajet* tab[2] = {t1,t2};
-
-    Trajet *t = new TrajetCompose(tab, 2, "Paris", "Los Angeles");
-
-    catalogue->Insert(t);
-
-    Trajet *tbis = new TrajetSimple("Paris", "Londres", "Bateau");
-    catalogue->Insert(tbis);
-
-
 
 } //----- Fin de Terminal
 
 
 Terminal::~Terminal ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Terminal>" << endl;
