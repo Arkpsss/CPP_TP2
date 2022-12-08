@@ -69,27 +69,57 @@ char* realloc(char* text, int newSize)
 
 }
 
-ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2) {
+void to_upper(char *dst, const char *src) {
 
-    if (strcmp(s1, s2) == 0) {
-        return EGAL;
+    for (unsigned int i = 0; i < strlen(src); i++) {
+        dst[i] = toupper(src[i]);
     }
+
+}
+
+ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2) {
 
     int len1 = strlen(s1);
     int len2 = strlen(s2);
+
+    char *str1 = new char[len1+1];
+    char *str2 = new char[len2+1];
+
+    to_upper(str1, s1);
+    to_upper(str2, s2);
+
+    if (strcmp(str1, str2) == 0) {
+
+        delete [] str1;
+        delete [] str2;
+
+        return EGAL;
+    }
+
 
     int min = min(len1, len2);
 
     for (int i = 0; i < min; i++) {
 
-        if (s1[i] < s2[i]) {
+        if (str1[i] < str2[i]) {
+
+            delete [] str1;
+            delete [] str2;
+
             return ARG1;
         }
-        else if (s2[i] < s1[i]) {
+        else if (str2[i] < str1[i]) {
+
+            delete [] str1;
+            delete [] str2;
+
             return ARG2;
         }
 
     }
+
+    delete [] str1;
+    delete [] str2;
 
     if (min == len1) {
         return ARG1;

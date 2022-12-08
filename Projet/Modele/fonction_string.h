@@ -23,6 +23,7 @@
 
 #include <cstring>
 #include <cstdio>
+#include <cctype>
 
 //------------------------------------------------------------- Constantes
 
@@ -61,6 +62,12 @@ char* realloc(char* text, int newSize);
 ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2);
 // Mode d'emploi : 
 // Compare 2 chaines de caractère par rapport à leur ordre alphabetique.
+
+
+void to_upper(char *dst, const char *src);
+// Mode d'emploi :
+// Copie le contenu de la chaine src dans la chaine dst en mettant en majuscules 
+// chaque caractères.
 
 
 #endif // FONCTION_STRING_H
