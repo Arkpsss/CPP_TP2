@@ -22,6 +22,10 @@ $(EXE) : $(OBJETS)
 
 
 #Creation fichier binaire -> compilation
+%.o : %.cpp
+	$(ECHO) $(GCC) $(CCFLAGS) $<
+	$(GCC) $(CCFLAGS) $<
+
 %.o : Modele/%.cpp
 	$(ECHO) $(GCC) $(CCFLAGS) $<
 	$(GCC) $(CCFLAGS) $<

@@ -1,9 +1,9 @@
 /*************************************************************************
-                           main  -  description
+                           main  -  Module principale
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 2022
+    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation du module <main> (fichier main.cpp) ---------------
@@ -15,11 +15,11 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "../Modele/Trajet.h"
-#include "../Modele/TrajetSimple.h"
-#include "../Modele/TrajetCompose.h"
+#include "Modele/Trajet.h"
+#include "Modele/TrajetSimple.h"
+#include "Modele/TrajetCompose.h"
 
-#include "Terminal.h"
+#include "Vue/Terminal.h"
 
 
 ///////////////////////////////////////////////////////////////////  PRIVE
