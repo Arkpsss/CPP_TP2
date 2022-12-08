@@ -11,6 +11,9 @@
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
 
+#include <iostream>
+using namespace std;
+
 //------------------------------------------------------ Include personnel
 #include "fonction_string.h"
 

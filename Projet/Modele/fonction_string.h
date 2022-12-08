@@ -23,7 +23,6 @@
 
 #include <cstring>
 #include <cstdio>
-#include <cctype>
 
 //------------------------------------------------------------- Constantes
 
