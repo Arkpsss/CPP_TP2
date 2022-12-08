@@ -46,9 +46,29 @@ void Terminal::Afficher() const {
 Trajet* Terminal::SaisirNewTrajet() const {
 
     int nbSousTrajets = 0;
-    cout << "Entrer le nombre d'escales que contient votre trajet à saisir : ";
-    cin >> nbSousTrajets;
-    cin.ignore();
+    bool ok = true;
+    
+    while (ok) {
+        cout << "Entrer le nombre d'escales que contient votre trajet à saisir : ";
+
+        //Pour gerer les exceptions de mauvaise saisi
+        cin.exceptions(ios_base::failbit);
+
+        try {
+
+            cin >> nbSousTrajets;
+            cin.ignore();
+
+            ok = false;
+
+        } catch (exception &e) {
+            cout << "Il faut saisir un nombre !" << endl;
+
+                cin.clear();
+                cin.ignore(300, '\n');
+        }
+    }
+
 
     char vD[TAILLE_MAX];
     char vA[TAILLE_MAX];
@@ -107,6 +127,9 @@ void Terminal::Start() {
 
     cout << "Bienvenue dans le menu de gestion de catalogue de voyage" << endl;
 
+    
+    
+
     while (ok) {
 
         cout << endl;
@@ -117,34 +140,47 @@ void Terminal::Start() {
         cout << "Saisir le numero qui vous interesse : ";
 
         int action;
-        cin >> action;
 
-        switch(action) {
+        //Pour gerer les exceptions de mauvaise saisi
+        cin.exceptions(ios_base::failbit);
 
-        case 1:
-            this->Afficher();
-            break;
+        try {
+            cin >> action;
 
-        case 2:
-            {
-                Trajet *t = this->SaisirNewTrajet();
-                if (t != NULL) {
-                    catalogue->Insert(t);
+            switch(action) {
+
+            case 1:
+                this->Afficher();
+                break;
+
+            case 2:
+                {
+                    Trajet *t = this->SaisirNewTrajet();
+                    if (t != NULL) {
+                        catalogue->Insert(t);
+                    }
                 }
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                ok = false;
+                break;
+
+            default:
+                cout << "Erreur de numero !" << endl;
+                break;
+
             }
-            break;
 
-        case 3:
-            break;
 
-        case 4:
-            ok = false;
-            break;
+        } catch(exception &ex) {
+            cout << "Il faut saisir un nombre !" << endl;
 
-        default:
-            cout << "Erreur de numero !" << endl;
-            break;
-
+            cin.clear();
+            cin.ignore(300, '\n');
         }
 
     }
