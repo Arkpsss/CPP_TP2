@@ -117,7 +117,7 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 
 }
 
-*/
+/*
 void LinkedList::AddOrdreAlphab (Trajet *trajet, bool _deleteTrajet)
 // Algorithme :
 //
@@ -155,10 +155,10 @@ void LinkedList::AddOrdreAlphab (Trajet *trajet, bool _deleteTrajet)
             }
             current=current->GetNext();
         }
-    }*/
+    }
 
 } //----- Fin de Afficher
-
+*/
 void LinkedList::AddFirst (Trajet *trajet, bool _deleteTrajet) {
     Element *e = new Element(trajet, tete);
     e->SetDeleteTrajet(_deleteTrajet);
