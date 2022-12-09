@@ -28,7 +28,7 @@ using namespace std;
 
 void Catalogue::Insert(Trajet *trajet) {
 
-    list->AddOrdreAlphab();
+    list->AddFirst(trajet);
 
 }
 
