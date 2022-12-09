@@ -43,9 +43,10 @@ public:
     // Mode d'emploi :
     // Affiche un par un chaque trajet de la liste
 
-    int GetNbTrajet() const {
-        return list->GetTaille();
-    }
+    int GetNbTrajet() const ;
+    // Mode d'emploi :
+    // Renvoie la taille de la liste
+
 
 
     char* GetDescriptionOf(int numeroTrajet) const;
@@ -56,7 +57,7 @@ public:
     // villeArrivee.
     // Renvoie un pointeur vers un Catalogue contenant tous les trajets (simples ou composés)
     // remplissant ces deux conditions
-    // Ces trajets seront réalloués dynamiquement dans le tas
+    // Ces trajets seront réalloués dynamiquement dans le tas, tout comme le catalogue renvoyé (penser à le delete)
 
     Catalogue *RechercheAvancee (char *villeDepart, char *villeArrivee) const;
     // Mode d'emploi :

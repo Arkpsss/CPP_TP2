@@ -47,25 +47,40 @@ void LinkedList::Add (Trajet *trajet, int position)
     current->SetNext(nouvelElement);
 } //----- Fin de Add
 
+Element * LinkedList::GetHead () const
+{
+return this->tete;
+} //----- Fin de GetHead
+
+
+void LinkedList::Afficher () const
+// Algorithme :
+//
+{
+    Element *current = tete;
+    for (int i=0; i<taille; i++)
+    {
+        cout << current->GetTrajet()->GetDescription() << endl;
+        current = current->GetNext();
+    }
+} //----- Fin de Afficher
+
 bool LinkedList::AddTrie(Trajet *trajet) {
 
     Element *current = tete;
     Element *prec = tete;
 
+    //On ajoute en tête si la liste est vide
     if (tete == NULL) {
         this->AddFirst(trajet);
         return true;
     }
 
-    //Ville d'arrivee du trajet est la ville de depart de l'element
+    //Si la ville d'arrivée du trajet est la ville de depart de l'element
     if (compare(current->GetTrajet(), trajet)) {
-
-
-
         Element *e = new Element(trajet, current);
         this->tete = e;
         taille++;
-
         return true;
     }
 
@@ -102,6 +117,47 @@ bool LinkedList::AddTrie(Trajet *trajet) {
 
 }
 
+*/
+void LinkedList::AddOrdreAlphab (Trajet *trajet, bool _deleteTrajet)
+// Algorithme :
+//
+{
+    if (tete==NULL)
+    {
+        Element *e = new Element (trajet,NULL);
+        tete = e;
+    }
+    else if (strcmp(trajet->GetVilleDepart(),tete->GetTrajet()->GetVilleDepart()) < 0)
+    {
+        Element *e = new Element (trajet,tete);
+        tete=e;
+        return;
+    }
+    else
+    {
+        Element *current = tete;
+        while (current->GetNext()!=NULL)
+        {
+            if (strcmp(trajet->GetVilleDepart(),current->GetNext()->GetTrajet()->GetVilleDepart()) < 0)
+                //Si la ville de départ est avant dans l'ordre alphabétique, on a la place finale
+            {
+
+                break;
+            }
+            else if (strcmp(trajet->GetVilleDepart(),current->GetNext()->GetTrajet()->GetVilleDepart()) == 0)
+                //Si même ville de départ, on compare les villes d'arrivée
+            {
+                while()
+                {
+
+                }
+                break;
+            }
+            current=current->GetNext();
+        }
+    }*/
+
+} //----- Fin de Afficher
 
 void LinkedList::AddFirst (Trajet *trajet, bool _deleteTrajet) {
     Element *e = new Element(trajet, tete);

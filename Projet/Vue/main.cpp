@@ -121,19 +121,16 @@ static void test_recherche_simple_catalogue ()
     Trajet *tc1 = new TrajetCompose(tc1tab,3,"Paris","New York");
 
     LinkedList *listeCatalogue = new LinkedList();
-    listeCatalogue->AddFirst(ts3);
-    listeCatalogue->AddFirst(ts4);
-    listeCatalogue->AddFirst(ts5);
-    listeCatalogue->AddFirst(ts6);
-    listeCatalogue->AddFirst(ts7);
-    listeCatalogue->AddFirst(ts9);
-    listeCatalogue->AddFirst(tc1);
+    listeCatalogue->AddOrdreAlphab(ts3);
+    listeCatalogue->AddOrdreAlphab(ts4);
+    listeCatalogue->AddOrdreAlphab(ts5);
+    listeCatalogue->AddOrdreAlphab(ts6);
+    listeCatalogue->AddOrdreAlphab(ts7);
+    listeCatalogue->AddOrdreAlphab(ts9);
+    listeCatalogue->AddOrdreAlphab(tc1);
     Catalogue *catalogue = new Catalogue(listeCatalogue);
     Catalogue *resultat = catalogue->RechercheSimple("Paris", "New York");
-    for (int i=0; i<resultat->GetNbTrajet();i++)
-    {
-        std::cout << resultat->GetDescriptionOf(i) << std::endl;
-    }
+    resultat->Afficher();
     delete(catalogue);
     delete(resultat);
 }

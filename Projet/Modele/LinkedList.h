@@ -35,11 +35,14 @@ class LinkedList
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Element * GetHead () const {
-        return this->tete;
-    }
-    // Mode d'emploi :
+    Element * GetHead () const ;    // Mode d'emploi :
     // Renvoie le premier maillon de la liste
+    // Contrat :
+    //
+
+    void Afficher () const;
+    // Mode d'emploi :
+    // Affiche le contenu de la liste
     // Contrat :
     //
 
@@ -57,10 +60,16 @@ public:
     // Contrat :
     //
 
+    /*
+    void AddOrdreAlphab (Trajet *trajet, bool _deleteTrajet = true);
+    // Mode d'emploi :
+    // Ajoute un trajet à la liste en le classant d'abord par ordre alphabétique de la ville de départ,
+    // puis par ordre alphabétique de la ville d'arrivée.
+*/
     void AddFirst(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Ajoute un trajet en tête de liste
-    // Permet de spécifier le comportement lors du delete
+    // _deleteTrajet permet de spécifier le comportement lors du delete
 
     bool AddTrie(Trajet *trajet);
     // Mode d'emploi :
@@ -98,7 +107,7 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- Méthodes privé
+//----------------------------------------------------- Méthodes privées
 
     inline static bool compare(Trajet *a, Trajet *b) {
         if (strcmp(a->GetVilleDepart(), b->GetVilleArrivee()) == 0) {
@@ -111,7 +120,7 @@ private:
     // Mode d'emploi:
     // Compare la ville de depart du premier trajet avec la ville d'arrivé du second
 
-//----------------------------------------------------- Attributs privé
+//----------------------------------------------------- Attributs privés
     Element *tete;
     int taille;
 };

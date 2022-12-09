@@ -28,8 +28,17 @@ using namespace std;
 
 void Catalogue::Insert(Trajet *trajet) {
 
-    list->AddFirst(trajet);
+    list->AddOrdreAlphab();
 
+}
+
+int Catalogue::GetNbTrajet() const
+{
+return list->GetTaille();
+}
+
+void Catalogue::Afficher() const {
+    list->Afficher();
 }
 
 char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
@@ -79,9 +88,10 @@ Catalogue *Catalogue::RechercheAvancee (char *villeDepart, char *villeArrivee) c
     //Si la liste est vide, on renvoie un catalogue vide
     if (list->GetTaille() == 0)
         return new Catalogue();
-    LinkedList *matching = new LinkedList();
 
-    Element *current = list->GetHead();
+
+    LinkedList *matching = new LinkedList();
+    LinkedList *visited = new LinkedList();
     rechercheRecursive(villeDepart,villeArrivee);
 
 }
