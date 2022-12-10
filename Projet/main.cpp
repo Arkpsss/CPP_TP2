@@ -123,13 +123,13 @@ static void test_ordre_catalogue() {
 
 }
 
-/*static void test_creation_catalogue ()
+static void test_creation_catalogue ()
 {
     Trajet *ts3 = new TrajetSimple("Londres", "Bruxelles", "bus");
     Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
     Trajet *ts5 = new TrajetSimple("Calais", "Marseille", "voiture");
     Trajet *ts6 = new TrajetSimple("New York", "Los Angeles", "avion");
-//    Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
+    Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
 
     Trajet *ts1 = new TrajetSimple("Paris", "Londres", "bateau");
     Trajet *ts2 = new TrajetSimple("Londres", "Los Angeles", "avion");
@@ -142,12 +142,21 @@ static void test_ordre_catalogue() {
     listeCatalogue->AddOrdreAlphabetique(ts4);
     listeCatalogue->AddOrdreAlphabetique(ts5);
     listeCatalogue->AddOrdreAlphabetique(ts6);
-  //  listeCatalogue->AddOrdreAlphabetique(ts7);
+    listeCatalogue->AddOrdreAlphabetique(ts7);
     listeCatalogue->AddOrdreAlphabetique(tc1);
     Catalogue *catalogue = new Catalogue(listeCatalogue);
-    catalogue->Afficher();
+    if (catalogue->GetNbTrajet() == 0) {
+        cout << "Le catalogue est vide." << endl;
+    }
+
+    for (int i = 1; i <= catalogue->GetNbTrajet(); i++) {
+
+        cout << "\t\t" << "Trajet n° " << i << "/ " << endl;
+
+        cout << catalogue->GetDescriptionOf(i) << endl;
+    }
     delete(catalogue);
-}*/
+}
 
 static void test_recherche_simple_catalogue ()
 {
@@ -186,7 +195,6 @@ static void test_recherche_simple_catalogue ()
         cout << resultat->GetDescriptionOf(i) << endl;
     }
 
-
     delete(catalogue);
     delete(resultat);
 }
@@ -197,22 +205,8 @@ static void test_recherche_simple_catalogue ()
 
 int main(int argc, char const *argv[])
 {
-  //test_ordre_catalogue();
-  //test_creation_catalogue();
-  test_recherche_simple_catalogue();
-  //test_affichage_Terminal();
-
-  //test_menu_Terminal();
-
-  //test_detection_vD_vA_TrajetCompose();
-
-  //test_ordre_catalogue();
-  
   //Pour démarrer le terminal
-  //Terminal term = Terminal();
-  //term.Start(); 
-
-  
-
+  Terminal term = Terminal();
+  term.Start(); 
   return 0;
 }
