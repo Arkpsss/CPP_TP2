@@ -62,7 +62,7 @@ static void test_affichage_trajet_compose() {
 static void test_creation_linkedlist() {
   LinkedList *l = new LinkedList();
 
-  //l->AddFirst(new TrajetSimple("Paris", "Londres", "bateau"));
+  //l->AddOrdreAlphabetique(new TrajetSimple("Paris", "Londres", "bateau"));
   l->AddCoherent(new TrajetSimple("Londres", "Los Angeles", "avion"));
 
   delete l;
@@ -100,8 +100,9 @@ static void test_ordre_catalogue() {
 
   Trajet *t1 = new TrajetSimple("Paris", "Marseille", "Train");
   Trajet *t2 = new TrajetSimple("Londres", "Rotterdam", "Train");
-  Trajet *t3 = new TrajetSimple("Paris", "Orlean", "Train");
+  Trajet *t3 = new TrajetSimple("Paris", "Orleans", "Train");
   Trajet *t4 = new TrajetSimple("Mama", "Nana", "t");
+  Trajet *t5 = new TrajetSimple("Paris","Marseille","Avion");
  
   Catalogue *c = new Catalogue();
 
@@ -109,17 +110,73 @@ static void test_ordre_catalogue() {
   c->Insert(t2);
   c->Insert(t3);
   c->Insert(t4);
+  c->Insert(t5);
 
   cout << c->GetDescriptionOf(1);
   cout << c->GetDescriptionOf(2);
   cout << c->GetDescriptionOf(3);
   cout << c->GetDescriptionOf(4);
+  cout << c->GetDescriptionOf(5);
 
 
   delete c;
 
 }
 
+static void test_creation_catalogue ()
+{
+    Trajet *ts3 = new TrajetSimple("Londres", "Bruxelles", "bus");
+    Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
+    Trajet *ts5 = new TrajetSimple("Calais", "Marseille", "voiture");
+    Trajet *ts6 = new TrajetSimple("New York", "Los Angeles", "avion");
+//    Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
+
+    Trajet *ts1 = new TrajetSimple("Paris", "Londres", "bateau");
+    Trajet *ts2 = new TrajetSimple("Londres", "Los Angeles", "avion");
+    Trajet *ts8 = new TrajetSimple("Los Angeles", "New York", "train");
+    Trajet *tc1tab [] = {ts1,ts2,ts8};
+    Trajet *tc1 = new TrajetCompose(tc1tab,3,"Paris","New York");
+
+    LinkedList *listeCatalogue = new LinkedList();
+    listeCatalogue->AddOrdreAlphabetique(ts3);
+    listeCatalogue->AddOrdreAlphabetique(ts4);
+    listeCatalogue->AddOrdreAlphabetique(ts5);
+    listeCatalogue->AddOrdreAlphabetique(ts6);
+  //  listeCatalogue->AddOrdreAlphabetique(ts7);
+    listeCatalogue->AddOrdreAlphabetique(tc1);
+    Catalogue *catalogue = new Catalogue(listeCatalogue);
+    catalogue->Afficher();
+    delete(catalogue);
+}
+
+static void test_recherche_simple_catalogue ()
+{
+    Trajet *ts3 = new TrajetSimple("Londres", "Bruxelles", "bus");
+    Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
+    Trajet *ts5 = new TrajetSimple("Calais", "Marseille", "voiture");
+    Trajet *ts6 = new TrajetSimple("New York", "Los Angeles", "avion");
+    //Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
+    //Trajet *ts9 = new TrajetSimple("Paris","New York", "nage");
+    Trajet *ts1 = new TrajetSimple("Paris", "Londres", "bateau");
+    Trajet *ts2 = new TrajetSimple("Londres", "Los Angeles", "avion");
+    Trajet *ts8 = new TrajetSimple("Los Angeles", "New York", "train");
+    Trajet *tc1tab [] = {ts1,ts2,ts8};
+    Trajet *tc1 = new TrajetCompose(tc1tab,3,"Paris","New York");
+
+    LinkedList *listeCatalogue = new LinkedList();
+    listeCatalogue->AddOrdreAlphabetique(ts3);
+    listeCatalogue->AddOrdreAlphabetique(ts4);
+    listeCatalogue->AddOrdreAlphabetique(ts5);
+    listeCatalogue->AddOrdreAlphabetique(ts6);
+    //listeCatalogue->AddOrdreAlphabetique(ts7);
+    //listeCatalogue->AddOrdreAlphabetique(ts9);
+    listeCatalogue->AddOrdreAlphabetique(tc1);
+    Catalogue *catalogue = new Catalogue(listeCatalogue);
+    Catalogue *resultat = catalogue->RechercheSimple("Paris", "New York");
+    resultat->Afficher();
+    delete(catalogue);
+    delete(resultat);
+}
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
@@ -127,7 +184,9 @@ static void test_ordre_catalogue() {
 
 int main(int argc, char const *argv[])
 {
-  
+  //test_ordre_catalogue();
+  //test_creation_catalogue();
+  //test_recherche_simple_catalogue();
   //test_affichage_Terminal();
 
   //test_menu_Terminal();
@@ -135,9 +194,10 @@ int main(int argc, char const *argv[])
   //test_detection_vD_vA_TrajetCompose();
 
   //test_ordre_catalogue();
-
+  
+  //Pour démarrer le terminal
   Terminal term = Terminal();
-  term.Start();
+  term.Start(); 
 
   
 

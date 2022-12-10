@@ -27,7 +27,7 @@ using namespace std;
 void Terminal::Afficher() const {
 
     if (catalogue->GetNbTrajet() == 0) {
-        cout << "Le catalogue est vide..." << endl;
+        cout << "Le catalogue est vide." << endl;
     }
 
     for (int i = 1; i <= catalogue->GetNbTrajet(); i++) {
@@ -77,7 +77,7 @@ Trajet* Terminal::SaisirNewTrajet() const {
         cout << "   Ville de départ : ";
         recup_saisi_string(vD, TAILLE_MAX);
 
-        cout << "   Ville d'arrivee : ";
+        cout << "   Ville d'arrivée : ";
         recup_saisi_string(vA, TAILLE_MAX);
 
 
@@ -121,6 +121,25 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
 } //---- Fin de SaisirNewTrajet
 
+void Terminal::RechercheTrajet() const {
+    char vD[TAILLE_MAX];
+    char vA[TAILLE_MAX];
+
+    cin.ignore();
+
+    cout << "   Ville de départ : ";
+    recup_saisi_string(vD, TAILLE_MAX);
+
+    cout << "   Ville d'arrivée : ";
+    recup_saisi_string(vA, TAILLE_MAX);
+
+    Catalogue *resultat = catalogue->RechercheSimple(vD, vA);
+    std::cout << "Résultat de la requête : " << std::endl;
+    resultat->Afficher();
+    std::cout << std::endl;
+    delete(resultat);
+} //---- Fin de RechercheTrajet
+
 void Terminal::Start() {
 
     bool ok = true;
@@ -163,6 +182,7 @@ void Terminal::Start() {
                 break;
 
             case 3:
+                RechercheTrajet();
                 break;
 
             case 4:

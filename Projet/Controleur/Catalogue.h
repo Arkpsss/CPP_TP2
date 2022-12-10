@@ -40,6 +40,9 @@ public:
     // Ajoute un trajet trié par ordre alphabetique par rapport à sa ville de
     // départ puis par rapport à sa ville d'arrivée.
 
+    void Afficher() const;
+    // Mode d'emploi :
+    // Affiche un par un chaque trajet de la liste
 
     int GetNbTrajet() const 
     // Mode d'emploi:
@@ -53,11 +56,27 @@ public:
     // Renvoie la description du trajet dont le numéro est passé en
     // paramètre.
 
+    Catalogue *RechercheSimple (const char *villeDepart, const char *villeArrivee) const;
+    // Mode d'emploi :
+    // Recherche tous les trajets dont la ville de départ est villeDepart et dont la ville d'arrivée est
+    // villeArrivee.
+    // Renvoie un pointeur vers un Catalogue contenant tous les trajets (simples ou composés)
+    // remplissant ces deux conditions
+    // Ces trajets seront réalloués dynamiquement dans le tas, tout comme le catalogue renvoyé (penser à le delete)
+
+    Catalogue *RechercheAvancee (const char *villeDepart, const char *villeArrivee) const;
+    // Mode d'emploi :
+    // Recherche toutes les combinaisons de trajets dont la ville de départ est villeDepart et dont la
+    // ville d'arrivée est villeArrivee.
+    // Renvoie un pointeur vers un Catalogue contenant toutes les combinaisons de trajets (simples ou composés)
+    // remplissant ces deux conditions
+    // Les combinaisons de trajets seront représentées par des trajets composés
+    // Ces trajets seront réalloués dynamiquement dans le tas
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
-    Catalogue();
+    Catalogue(LinkedList *_list = new LinkedList ());
     // Mode d'emploi :
     // Instancie un nouveau catalogue avec une liste vide
 

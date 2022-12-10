@@ -43,14 +43,18 @@ public:
         return this->tete;
     }
     
+    void Afficher () const;
+    // Mode d'emploi :
+    // Affiche le contenu de la liste
+    // Contrat :
+    //
 
-
-    bool AddCoherent(Trajet *trajet);
+    bool AddCoherent(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Ajoute un trajet à la liste de telle sorte que la ville d'arrivé de celui-ci
     // correspondent à la ville de départ du trajet contenu dans l'élement suivant.
 
-    void AddOrdreAlphabetique(Trajet *trajet);
+    void AddOrdreAlphabetique(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Si la liste est vide ajoute en tête le trajet sinon fait appel à la méthode
     // RecAddAlpha pour ajouter le trajet par ordre alphabetique de la ville de depart
@@ -95,19 +99,19 @@ private:
         }
     }
 
-    void RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart);
+    void RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Ajoute un trajet de telle sorte que l'orde alphabétique soit respecté
-    // Determine si l'element courant et l'element prec est bien le bonne encadrement pour 
+    // Determine si l'element courant et l'element prec est bien le bon encadrement pour 
     // ajouter ce trajet
     // Sinon rappelle cette methode en progressant dans la liste 
     // Le boolean depart permet de savoir si la comparaison doit s'effectuer sur la ville de 
-    // départ ou celle d'arrivé.
+    // départ ou celle d'arrivée.
 
-    void AddFirst(Trajet *trajet);
+    void AddFirst(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :
     // Ajoute un trajet en tête de liste
-    
+    // __deleteTrajet permet de spécifier le comportement lors du delete 
 
 //----------------------------------------------------- Attributs privé
     Element *tete;

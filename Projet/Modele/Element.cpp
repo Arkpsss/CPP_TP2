@@ -29,7 +29,7 @@ using namespace std;
 
 
 
-Element::Element (Trajet *trajet, Element *next) : trajet(trajet), next(next)
+Element::Element (Trajet *trajet, Element *next, bool _deleteTrajet) : trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
 // Algorithme :
 // Met à this->next à next et this->trajet à trajet.
 {
@@ -45,7 +45,8 @@ Element::~Element ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Element>" << endl;
 #endif
-    delete(trajet);
+    if (deleteTrajet)
+      delete(trajet);
 } //----- Fin de ~Element
 
 

@@ -29,6 +29,10 @@ void Catalogue::Insert(Trajet *trajet) {
 
 } //---- Fin de Insert
 
+void Catalogue::Afficher() const {
+    list->Afficher();
+}
+
 const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
     if (numeroTrajet > list->GetTaille() || numeroTrajet < 0) {
@@ -45,20 +49,54 @@ const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
 } //---- Fin de GetDescriptionOf
 
+Catalogue *Catalogue::RechercheSimple (const char *villeDepart, const char *villeArrivee) const
+{
+#ifdef MAP
+    cout << "Appel à RechercheSimple de Catalogue" << endl;
+#endif
+    //Si la liste est vide, on renvoie un catalogue vide
+    if (list->GetTaille() == 0)
+        return new Catalogue();
 
+    LinkedList *matching = new LinkedList();
+    Element *current = list->GetHead();
+    for (int i = 0; i<list->GetTaille(); i++)
+    {
+        if (strcmp(current->GetTrajet()->GetVilleDepart(), villeDepart) == 0
+        && strcmp(current->GetTrajet()->GetVilleArrivee(), villeArrivee) == 0)
+        {
+            matching->AddOrdreAlphabetique(current->GetTrajet(),false);
+        }
+        current = current->GetNext();
+    }
+    return new Catalogue(matching);
+}
+
+Catalogue *Catalogue::RechercheAvancee (const char *villeDepart, const char *villeArrivee) const
+{
+#ifdef MAP
+    cout << "Appel à RechercheAvancee de Catalogue" << endl;
+#endif
+    //Si la liste est vide, on renvoie un catalogue vide
+    if (list->GetTaille() == 0)
+        return new Catalogue();
+
+
+    LinkedList *matching = new LinkedList();
+    LinkedList *visited = new LinkedList();
+    //rechercheRecursive(villeDepart,villeArrivee);
+  return new Catalogue ();
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
 
-Catalogue::Catalogue ( )
+Catalogue::Catalogue (LinkedList *_list) : list(_list)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
-
-    list = new LinkedList();
-
 } //----- Fin de Catalogue
 
 

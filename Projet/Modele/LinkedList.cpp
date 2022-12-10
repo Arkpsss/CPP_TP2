@@ -23,9 +23,19 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void LinkedList::Afficher () const
+// Algorithme :
+//
+{
+    Element *current = tete;
+    for (int i=0; i<taille; i++)
+    {
+        cout << current->GetTrajet()->GetDescription() << endl;
+        current = current->GetNext();
+    }
+} //----- Fin de Afficher
 
-
-bool LinkedList::AddCoherent(Trajet *trajet) 
+bool LinkedList::AddCoherent(Trajet *trajet, bool _deleteTrajet) 
 // Algorithme :
 // Distingue 4 cas :
 // - la liste est vide donc pas de comparaison à faire
@@ -38,14 +48,14 @@ bool LinkedList::AddCoherent(Trajet *trajet)
     Element *prec = tete;
 
     if (tete == NULL) {
-        this->AddFirst(trajet);
+        this->AddFirst(trajet, _deleteTrajet);
         return true;
     }
 
     //Ville d'arrivee du trajet est la ville de depart de l'element
     if (compare(current->GetTrajet(), trajet)) {
 
-        Element *e = new Element(trajet, current);
+        Element *e = new Element(trajet, current, _deleteTrajet);
         this->tete = e;
         taille++;
 
@@ -59,7 +69,7 @@ bool LinkedList::AddCoherent(Trajet *trajet)
 
             if (current == NULL) {
                 if(compare(trajet,prec->GetTrajet())) {
-                    Element *e = new Element(trajet, NULL);
+                    Element *e = new Element(trajet, NULL, _deleteTrajet);
                     prec->SetNext(e);
                     taille++;
                     return true;
@@ -70,7 +80,7 @@ bool LinkedList::AddCoherent(Trajet *trajet)
             }
 
             else if (compare(current->GetTrajet(), trajet)) {
-                Element *e = new Element(trajet, current);
+                Element *e = new Element(trajet, current, _deleteTrajet);
                 prec->SetNext(e);
 
                 taille++;
@@ -89,15 +99,15 @@ bool LinkedList::AddCoherent(Trajet *trajet)
 
 
 
-void LinkedList::AddOrdreAlphabetique(Trajet *trajet) {
+void LinkedList::AddOrdreAlphabetique(Trajet *trajet, bool _deleteTrajet) {
 
     if (tete == NULL) {
-        this->AddFirst(trajet);
+        this->AddFirst(trajet, _deleteTrajet);
     }
 
     else {
 
-        RecAddAlpha(trajet, tete, tete, true);
+        RecAddAlpha(trajet, tete, tete, true, _deleteTrajet);
 
     }
 
@@ -138,13 +148,13 @@ LinkedList::~LinkedList ( )
 //----------------------------------------------------- Méthodes privées
 
 
-void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart)
+void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bool depart, bool _deleteTrajet)
 {
 
     ComparaisonAlphabetique res;
 
     if (current == NULL) {
-        Element *e = new Element(trajet, current);
+        Element *e = new Element(trajet, current, _deleteTrajet);
         prec->SetNext(e);
         taille++;
         return;
@@ -168,7 +178,7 @@ void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bo
 
     //La ville de départ du trajet est avant la ville de depart de l'element courant
     if (res == ARG1) {
-        Element *e = new Element(trajet, current);
+        Element *e = new Element(trajet, current, _deleteTrajet);
 
         if (current == tete) {
             this->tete = e;
@@ -185,7 +195,7 @@ void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bo
     else if (res == EGAL) {
 
         if (!depart) {
-            Element *e = new Element(trajet, current);
+            Element *e = new Element(trajet, current, _deleteTrajet);
 
             if (current == tete) {
                 this->tete = e;
@@ -198,7 +208,7 @@ void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bo
         }
         else {
             //debut recherche sur ville arrivée
-            RecAddAlpha(trajet, current, prec, !depart);
+            RecAddAlpha(trajet, current, prec, !depart, _deleteTrajet);
             return;
         }
         
@@ -209,7 +219,7 @@ void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bo
     //La ville de depart du trajet est après la ville de départ de l'element courant
     else if (res == ARG2) {
 
-        RecAddAlpha(trajet, current->GetNext(), current, depart);
+        RecAddAlpha(trajet, current->GetNext(), current, depart, _deleteTrajet);
         return;
         
     }
@@ -218,10 +228,9 @@ void LinkedList::RecAddAlpha(Trajet *trajet, Element *current, Element *prec, bo
 
 
 
-void LinkedList::AddFirst (Trajet *trajet) {
+void LinkedList::AddFirst (Trajet *trajet, bool _deleteTrajet) {
 
-    Element *e = new Element(trajet, tete);
-
+    Element *e = new Element(trajet, tete, _deleteTrajet);
     this->tete = e;
 
     taille++;
