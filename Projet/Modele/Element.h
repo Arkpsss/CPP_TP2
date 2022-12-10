@@ -1,5 +1,6 @@
 /*************************************************************************
-                           Element  -  Maillon du liste chainée simple
+                 Element  -  Classe implémentant un maillon de 
+                             la liste chaînée
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
@@ -18,9 +19,9 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Element>
-// Un Element est un chaînon de la LinkedList implémentée dans notre projet.
-// Il contient un pointeur sur un trajet, qui peut être simple ou composé, et contient éga
-// -lement un pointeur vers le chaînon suivant.
+// Un Element est un chaînon de la LinkedList implémentée dans notre
+// projet. Il contient un pointeur sur un trajet, qui peut être simple ou
+// composé, et contient également un pointeur vers le chaînon suivant.
 //------------------------------------------------------------------------
 
 class Element
@@ -34,14 +35,14 @@ public:
     // Retourne le pointeur sur le trajet
     {
         return trajet;
-    }
+    } //---- Fin de GetTrajet
 
     Element *GetNext () const
     // Mode d'emploi :
     // Retourne un pointeur vers le prochain chaînon
     {
         return next;
-    }
+    } //---- Fin de GetNext
 
 
     void SetNext(Element *e)
@@ -49,7 +50,7 @@ public:
     // Redéfinit l'élement suivant celui-ci
     {
         this->next = e;
-    }
+    } //---- Fin de SetNext
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -59,7 +60,7 @@ public:
     // Mode d'emploi :
     // Crée un Element avec :
     // this->trajet = trajet (paramètre formel)
-    // this->next = next
+    // this->next = next (paramètre formel)
     // deleteTrajet à _deleteTrajet
     // next doit être valide (pointe vers un Element existant ou vers NULL)
 
@@ -76,7 +77,8 @@ private:
     Trajet *trajet;
     Element *next;
     bool deleteTrajet; //Indique si, au moment, du delete, on delete le trajet.
-                       //Utile notamment dans les méthodes RechercheSimple et RechercheAvancee de Catalogue
+                       //Utile notamment dans les méthodes RechercheSimple et 
+                       // RechercheAvancee de Catalogue
 };
 
 //-------------------------------- Autres définitions dépendantes de <Element>

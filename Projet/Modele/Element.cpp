@@ -1,9 +1,11 @@
 /*************************************************************************
-                           Element  -  Classe implémentant une liste chaînée
+                 Element  -  Classe implémentant un maillon de 
+                             la liste chaînée
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    e-mail               : gabriel.canaple@insa-lyon.fr, 
+                           julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Element> (fichier Element.cpp) ------------
@@ -29,9 +31,10 @@ using namespace std;
 
 
 
-Element::Element (Trajet *trajet, Element *next, bool _deleteTrajet) : trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
+Element::Element (Trajet *trajet, Element *next, bool _deleteTrajet) : 
+trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
 // Algorithme :
-// Met à this->next à next et this->trajet à trajet.
+// Initialise chacun des attributs
 {
 #ifdef MAP
     cout << "Appel au deuxième constructeur de <Element>" << endl;
