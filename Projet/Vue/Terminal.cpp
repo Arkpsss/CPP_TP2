@@ -42,7 +42,6 @@ void Terminal::Afficher() const {
 
 
 
-
 Trajet* Terminal::SaisirNewTrajet() const {
 
     int nbSousTrajets = 0;
@@ -121,7 +120,9 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
 } //---- Fin de SaisirNewTrajet
 
-void Terminal::RechercheTrajet() const {
+
+
+Catalogue* Terminal::RechercheTrajet() const {
     char vD[TAILLE_MAX];
     char vA[TAILLE_MAX];
 
@@ -134,11 +135,13 @@ void Terminal::RechercheTrajet() const {
     recup_saisi_string(vA, TAILLE_MAX);
 
     Catalogue *resultat = catalogue->RechercheSimple(vD, vA);
-    std::cout << "Résultat de la requête : " << std::endl;
-    resultat->Afficher();
-    std::cout << std::endl;
-    delete(resultat);
+
+    return resultat;
+    
 } //---- Fin de RechercheTrajet
+
+
+
 
 void Terminal::Start() {
 
@@ -182,7 +185,27 @@ void Terminal::Start() {
                 break;
 
             case 3:
-                RechercheTrajet();
+                {
+                    //Recup des resultat de la recherche
+                    Catalogue *resultat = RechercheTrajet();
+
+                    //Sauvegarde temporaire du catalogue entier
+                    Catalogue *temp = this->catalogue;
+
+                    //on remplace le catalogue de l'instance par celui du resultat de la recherche et on l'affiche
+                    this->catalogue = resultat;
+
+                    cout << "Résultat de la requête : " << endl;
+                    Afficher();
+                    cout << endl;
+
+                    //Suppression du catalogue de resultat
+                    delete resultat;
+
+                    //Recuperation du catalogue entier
+                    this->catalogue = temp;
+                }
+
                 break;
 
             case 4:

@@ -55,12 +55,13 @@ public:
 
     Trajet* SaisirNewTrajet() const;
 
-    void RechercheTrajet () const;
+    Catalogue* RechercheTrajet () const;
     // Mode d'emploi :
     // Demande à l'utilisateur d'entrer une ville de départ et une ville
     // d'arrivée, et recherche à travers le catalogue courant tous les
-    // trajets correspondant. Affiche ensuite le contenu du catalogue
-    // contenant le résultat
+    // trajets correspondant. 
+    // Retourne un catalogue contenant tous les trajets correspondant à la 
+    // recherche.
 
 
 //-------------------------------------------- Constructeurs - destructeur

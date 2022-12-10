@@ -23,17 +23,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void LinkedList::Afficher () const
-// Algorithme :
-//
-{
-    Element *current = tete;
-    for (int i=0; i<taille; i++)
-    {
-        cout << current->GetTrajet()->GetDescription() << endl;
-        current = current->GetNext();
-    }
-} //----- Fin de Afficher
+
 
 bool LinkedList::AddCoherent(Trajet *trajet, bool _deleteTrajet) 
 // Algorithme :

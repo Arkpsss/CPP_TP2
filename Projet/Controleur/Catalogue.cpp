@@ -29,9 +29,6 @@ void Catalogue::Insert(Trajet *trajet) {
 
 } //---- Fin de Insert
 
-void Catalogue::Afficher() const {
-    list->Afficher();
-}
 
 const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 

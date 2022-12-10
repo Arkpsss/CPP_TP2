@@ -43,11 +43,6 @@ public:
         return this->tete;
     }
     
-    void Afficher () const;
-    // Mode d'emploi :
-    // Affiche le contenu de la liste
-    // Contrat :
-    //
 
     bool AddCoherent(Trajet *trajet, bool _deleteTrajet = true);
     // Mode d'emploi :

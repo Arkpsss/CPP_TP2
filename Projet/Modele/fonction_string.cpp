@@ -88,6 +88,9 @@ ComparaisonAlphabetique ordre_alphabetique(const char* s1, const char* s2) {
     char *str1 = new char[len1+1];
     char *str2 = new char[len2+1];
 
+    str1[len1] = '\0';
+    str2[len2] = '\0';
+
     to_upper(str1, s1);
     to_upper(str2, s2);
 

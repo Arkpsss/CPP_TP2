@@ -40,9 +40,6 @@ public:
     // Ajoute un trajet trié par ordre alphabetique par rapport à sa ville de
     // départ puis par rapport à sa ville d'arrivée.
 
-    void Afficher() const;
-    // Mode d'emploi :
-    // Affiche un par un chaque trajet de la liste
 
     int GetNbTrajet() const 
     // Mode d'emploi:
