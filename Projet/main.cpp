@@ -155,8 +155,8 @@ static void test_recherche_simple_catalogue ()
     Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
     Trajet *ts5 = new TrajetSimple("Calais", "Marseille", "voiture");
     Trajet *ts6 = new TrajetSimple("New York", "Los Angeles", "avion");
-    //Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
-    //Trajet *ts9 = new TrajetSimple("Paris","New York", "nage");
+    Trajet *ts7 = new TrajetSimple("New York", "Los Angeles", "train");
+    Trajet *ts9 = new TrajetSimple("Paris","New York", "nage");
     Trajet *ts1 = new TrajetSimple("Paris", "Londres", "bateau");
     Trajet *ts2 = new TrajetSimple("Londres", "Los Angeles", "avion");
     Trajet *ts8 = new TrajetSimple("Los Angeles", "New York", "train");
@@ -168,8 +168,8 @@ static void test_recherche_simple_catalogue ()
     listeCatalogue->AddOrdreAlphabetique(ts4);
     listeCatalogue->AddOrdreAlphabetique(ts5);
     listeCatalogue->AddOrdreAlphabetique(ts6);
-    //listeCatalogue->AddOrdreAlphabetique(ts7);
-    //listeCatalogue->AddOrdreAlphabetique(ts9);
+    listeCatalogue->AddOrdreAlphabetique(ts7);
+    listeCatalogue->AddOrdreAlphabetique(ts9);
     listeCatalogue->AddOrdreAlphabetique(tc1);
     Catalogue *catalogue = new Catalogue(listeCatalogue);
     Catalogue *resultat = catalogue->RechercheSimple("Paris", "New York");
@@ -199,7 +199,7 @@ int main(int argc, char const *argv[])
 {
   //test_ordre_catalogue();
   //test_creation_catalogue();
-  //test_recherche_simple_catalogue();
+  test_recherche_simple_catalogue();
   //test_affichage_Terminal();
 
   //test_menu_Terminal();
@@ -209,8 +209,8 @@ int main(int argc, char const *argv[])
   //test_ordre_catalogue();
   
   //Pour démarrer le terminal
-  Terminal term = Terminal();
-  term.Start(); 
+  //Terminal term = Terminal();
+  //term.Start(); 
 
   
 
