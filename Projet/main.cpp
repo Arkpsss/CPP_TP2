@@ -123,7 +123,7 @@ static void test_ordre_catalogue() {
 
 }
 
-static void test_creation_catalogue ()
+/*static void test_creation_catalogue ()
 {
     Trajet *ts3 = new TrajetSimple("Londres", "Bruxelles", "bus");
     Trajet *ts4 = new TrajetSimple("Berlin", "Munich", "avion");
@@ -147,7 +147,7 @@ static void test_creation_catalogue ()
     Catalogue *catalogue = new Catalogue(listeCatalogue);
     catalogue->Afficher();
     delete(catalogue);
-}
+}*/
 
 static void test_recherche_simple_catalogue ()
 {
@@ -173,7 +173,20 @@ static void test_recherche_simple_catalogue ()
     listeCatalogue->AddOrdreAlphabetique(tc1);
     Catalogue *catalogue = new Catalogue(listeCatalogue);
     Catalogue *resultat = catalogue->RechercheSimple("Paris", "New York");
-    resultat->Afficher();
+    
+
+    if (resultat->GetNbTrajet() == 0) {
+        cout << "Le catalogue est vide." << endl;
+    }
+
+    for (int i = 1; i <= resultat->GetNbTrajet(); i++) {
+
+        cout << "\t\t" << "Trajet n° " << i << "/ " << endl;
+
+        cout << resultat->GetDescriptionOf(i) << endl;
+    }
+
+
     delete(catalogue);
     delete(resultat);
 }

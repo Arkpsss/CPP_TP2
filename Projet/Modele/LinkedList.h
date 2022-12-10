@@ -111,6 +111,7 @@ private:
 //----------------------------------------------------- Attributs privé
     Element *tete;
     int taille;
+
 };
 
 //-------------------------------- Autres définitions dépendantes de <LinkedList>
