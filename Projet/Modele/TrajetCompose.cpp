@@ -1,12 +1,14 @@
 /*************************************************************************
-                           Trajet  -  Classe implémentant un trajet composé
+                 Trajet  -  Classe implémentant un trajet composé
                              -------------------
     début                : 28/11/2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, 
+                           julien.bondyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) -
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -20,8 +22,9 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
-#define NB_CHIFFRES 4  //nombre de chiffre que peut contenir une étape -> utile pour la conversion int to char*
-#define DESC 100    //taille du superflux de description
+#define NB_CHIFFRES 4  //nombre de chiffre que peut contenir une étape 
+                       //-> utile pour la conversion int to char*
+#define DESC 100       //taille du superflux de description
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -29,16 +32,22 @@ using namespace std;
 //-------------------------------------------- Constructeurs - destructeur
 
 
-TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *vA )
-    : Trajet(vD, vA)
+TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, 
+    const char *vA ) : Trajet(vD, vA)
+// Algorithme :
+// Ajoute d'abord chaque trajet en veillant à ce qu'ils soient
+// valides.
+// Ensuite, initialise les villes de départ et d'arrivée en fonction 
+// de s'ils sont renseignés ou non.
+// Finalement, construit la description du trajet.
 {
-
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 
     list = new LinkedList();
-
+    
+    //Ajout des trajets
     for (int i = nb-1; i >= 0; i--) {
         if (list->AddCoherent(tab[i]) == false) {
             delete list;
@@ -46,7 +55,7 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
         }
     }
     
-
+    //Initialisation de vA et vD s'ils ne sont pas renseignés
     if (vD == NULL && vA == NULL) {
         SetVilleDepart(list->GetHead()->GetTrajet()->GetVilleDepart());
 
@@ -58,11 +67,8 @@ TrajetCompose::TrajetCompose( Trajet **tab, int nb, const char *vD, const char *
         SetVilleArrivee(e->GetTrajet()->GetVilleArrivee());
     }
     
-
     description = ToString();
-    
-
-}
+} //---- Fin du constructeur de TrajetCompose
 
 
 
@@ -79,9 +85,13 @@ TrajetCompose::~TrajetCompose ()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes privés
+//----------------------------------------------------- Méthodes privées
 
-char* TrajetCompose::ToString() const {
+char* TrajetCompose::ToString() const 
+// Algorithme :
+// Construit la description du trajet en concaténant ses caracéristiques.
+// Effectue cette opération pour chaque sous-trajet.
+{
 
     int taille = strlen(villeDepart) + strlen(villeArrivee) + DESC;
 
@@ -121,4 +131,3 @@ char* TrajetCompose::ToString() const {
     return res;
 
 }
-
