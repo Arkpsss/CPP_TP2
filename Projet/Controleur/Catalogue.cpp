@@ -1,12 +1,14 @@
 /*************************************************************************
-                           Catalogue  -  Classe imlémentant un catalogue de Trajet
+         Catalogue  -  Classe implémentant un catalogue de trajets
                              -------------------
     début                : 2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et 
+                           gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//----- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) -----
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -30,8 +32,10 @@ void Catalogue::Insert(Trajet *trajet) {
 } //---- Fin de Insert
 
 
-const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
-
+const char* Catalogue::GetDescriptionOf(int numeroTrajet) const
+// Algorithme :
+// Parcourt (numeroTrajet) éléments de la liste chainée
+{
     if (numeroTrajet > list->GetTaille() || numeroTrajet < 0) {
         return NULL;
     }
@@ -46,17 +50,21 @@ const char* Catalogue::GetDescriptionOf(int numeroTrajet) const {
 
 } //---- Fin de GetDescriptionOf
 
-Catalogue *Catalogue::RechercheSimple (const char *villeDepart, const char *villeArrivee) const
+
+Catalogue *Catalogue::RechercheSimple (const char *villeDepart, 
+    const char *villeArrivee) const
+// Algorithme :
+// 
 {
-#ifdef MAP
-    cout << "Appel à RechercheSimple de Catalogue" << endl;
-#endif
     //Si la liste est vide, on renvoie un catalogue vide
     if (list->GetTaille() == 0)
         return new Catalogue();
 
-    LinkedList *matching = new LinkedList();
+    //Création d'une liste pour les trajets qui correspondent
+    LinkedList *matching = new LinkedList(); 
+                                            
     Element *current = list->GetHead();
+    //On parcourt la liste, et on évalue l'égalité entre les villes
     for (int i = 0; i<list->GetTaille(); i++)
     {
         if (strcmp(current->GetTrajet()->GetVilleDepart(), villeDepart) == 0
@@ -67,13 +75,12 @@ Catalogue *Catalogue::RechercheSimple (const char *villeDepart, const char *vill
         current = current->GetNext();
     }
     return new Catalogue(matching);
-}
+} //---- Fin de RechercheSimple
 
-Catalogue *Catalogue::RechercheAvancee (const char *villeDepart, const char *villeArrivee) const
+
+Catalogue *Catalogue::RechercheAvancee (const char *villeDepart, 
+    const char *villeArrivee) const
 {
-#ifdef MAP
-    cout << "Appel à RechercheAvancee de Catalogue" << endl;
-#endif
     //Si la liste est vide, on renvoie un catalogue vide
     if (list->GetTaille() == 0)
         return new Catalogue();
@@ -83,13 +90,15 @@ Catalogue *Catalogue::RechercheAvancee (const char *villeDepart, const char *vil
     LinkedList *visited = new LinkedList();
     //rechercheRecursive(villeDepart,villeArrivee);
   return new Catalogue ();
-}
+} //---- Fin de RechercheAvancee
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
 
 Catalogue::Catalogue (LinkedList *_list) : list(_list)
+// Algorithme :
+// aucun
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
@@ -99,7 +108,7 @@ Catalogue::Catalogue (LinkedList *_list) : list(_list)
 
 Catalogue::~Catalogue ( )
 // Algorithme :
-//
+// aucun
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
