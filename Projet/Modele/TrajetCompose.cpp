@@ -1,5 +1,5 @@
 /*************************************************************************
-                 Trajet  -  Classe implémentant un trajet composé
+           TrajetCompose  -  Classe implémentant un trajet composé
                              -------------------
     début                : 28/11/2022
     copyright            : (C) 2022 par Julien Bondyfalat et 
