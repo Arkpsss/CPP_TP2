@@ -62,7 +62,7 @@ Trajet* Terminal::SaisirNewTrajet() const
     
     //Etape 1
     while (ok) {
-        cout << "Entrer le nombre d'escales que contient votre trajet : ";
+        cout << "Entrer le nombre de sous-trajets que contient votre trajet : ";
 
         //Pour gerer les exceptions de mauvaise saisie
         cin.exceptions(ios_base::failbit);
