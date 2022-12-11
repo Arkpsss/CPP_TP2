@@ -77,21 +77,6 @@ Catalogue *Catalogue::RechercheSimple (const char *villeDepart,
     return new Catalogue(matching);
 } //---- Fin de RechercheSimple
 
-
-Catalogue *Catalogue::RechercheAvancee (const char *villeDepart, 
-    const char *villeArrivee) const
-{
-    //Si la liste est vide, on renvoie un catalogue vide
-    if (list->GetTaille() == 0)
-        return new Catalogue();
-
-
-    LinkedList *matching = new LinkedList();
-    LinkedList *visited = new LinkedList();
-    //rechercheRecursive(villeDepart,villeArrivee);
-  return new Catalogue ();
-} //---- Fin de RechercheAvancee
-
 //-------------------------------------------- Constructeurs - destructeur
 
 

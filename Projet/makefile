@@ -10,7 +10,7 @@ ECHO = echo
 GCC = g++ #gcc
 CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 #-DMAP#-c -O1 # debug : -c -g
 OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o Terminal.o fonction_string.o
-EXE = main
+EXE = trajet
 LIBRAIRIES = #-lm
 
 #Règles

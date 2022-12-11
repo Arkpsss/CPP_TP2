@@ -68,20 +68,6 @@ public:
     // des trajets déjà existant (ils ne sont pas réalloués), il ne faut
     // donc pas les delete individuellement!
 
-    Catalogue *RechercheAvancee (const char *villeDepart, 
-        const char *villeArrivee) const;
-    // Mode d'emploi :
-    // Recherche toutes les combinaisons de trajets dont la ville de départ 
-    // est villeDepart et dont la ville d'arrivée est villeArrivee.
-    // Renvoie un pointeur vers un Catalogue contenant toutes les 
-    // combinaisons de trajets (simples ou composés) remplissant ces deux 
-    // conditions
-    // Les combinaisons de trajets seront représentées par des trajets 
-    // composés.
-    // Les éléments de la liste chainée du catalogue généré pointent vers
-    // des trajets déjà existant (ils ne sont pas réalloués), il ne faut
-    // donc pas les delete individuellement!
-
 //-------------------------------------------- Constructeurs - destructeur
 
 
