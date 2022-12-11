@@ -1,29 +1,32 @@
 /*************************************************************************
-                           Trajet  -  Classe représentant un trajet générale
-                             -------------------
+            Trajet  -  Classe représentant un trajet général
+                           -------------------
     début                : 28/11/2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, 
+                           julien.bondyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ---------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+
 using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Trajet.h"
 
+#include "Trajet.h"
 
 //----------------------------------------------------------------- PUBLIC
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Trajet::Trajet(const char *vD, const char *vA) {
-
+Trajet::Trajet(const char *vD, const char *vA) 
+{
     #ifdef MAP
         cout << "Appel au constructeur de <Trajet>" << endl;
     #endif
@@ -43,10 +46,10 @@ Trajet::Trajet(const char *vD, const char *vA) {
     description = NULL;
 
     
-}
+} //---- Fin du constructeur de Trajet
 
-Trajet::~Trajet () {
-
+Trajet::~Trajet () 
+{
     #ifdef MAP
         cout << "Appel au destructeur de <Trajet>" << endl;
     #endif
@@ -57,15 +60,14 @@ Trajet::~Trajet () {
     if (description != NULL) {
         delete [] description;
     }
-    
-}
+} //---- Fin du destructeur de Trajet
 
-//------------------------------------------------------------------ PROTECTED
+//-------------------------------------------------------------- PROTECTED
 
 //----------------------------------------------------- Méthodes protégées
 
-void Trajet::SetVilleDepart(const char* vD) {
-
+void Trajet::SetVilleDepart(const char* vD) 
+{
     if (vD == NULL) {
         return;
     }
@@ -76,12 +78,11 @@ void Trajet::SetVilleDepart(const char* vD) {
     
     villeDepart = new char[strlen(vD)+1];
     strcpy(villeDepart, vD);
+} //---- Fin de SetVilleDepart
 
-}
 
-
-void Trajet::SetVilleArrivee(const char* vA) {
-    
+void Trajet::SetVilleArrivee(const char* vA) 
+{
     if (vA == NULL) {
         return;
     }
@@ -92,4 +93,4 @@ void Trajet::SetVilleArrivee(const char* vA) {
 
     villeArrivee = new char[strlen(vA) + 1];
     strcpy(villeArrivee, vA);
-}
+} //---- Fin de SetVilleArrivee
