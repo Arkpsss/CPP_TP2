@@ -1,12 +1,14 @@
 /*************************************************************************
-                           Trajet  -  Classe implémentant un trajet composé
+                 Trajet  -  Classe implémentant un trajet composé
                              -------------------
     début                : 28/11/2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : gabriel.canaple@insa-lyon.fr, 
+                           julien.bondyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
+//--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
 #ifndef TRAJETCOMPOSE_H
 #define TRAJETCOMPOSE_H
 
@@ -20,12 +22,12 @@ using namespace std;
 
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
 //
-// Cette classe représente un trajet composé de plusieurs trajets simples
-// ou composé
-// ordonné de tel sorte que la ville d'arrivé correspondent à la ville de 
-// départ du suivant.
+// Rôle de la classe <TrajetCompose>
+// Cette classe représente un trajet composé de plusieurs trajets, qui
+// peuvent etre simples ou composés.
+// Il est ordonné de telle sorte que la ville d'arrivée corresponde à la 
+// ville de départ du suivant.
 //
 //------------------------------------------------------------------------
 
@@ -34,19 +36,22 @@ class TrajetCompose : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
+
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    TrajetCompose( Trajet **tab, int nb, const char *vD = NULL, const char *vA = NULL);
+    TrajetCompose( Trajet **tab, int nb, const char *vD = NULL, 
+        const char *vA = NULL);
     // Mode d'emploi :
     // A partir d'un tableau de nb trajets, construit une LinkedList 
-    // en se chargeant de les ajouter de manière ordonné (contraintes sur les villes
-    // de départ et d'arrivé de chaque). 
-    // En cas d'impossibilité de respecter cette contrainte, une MauvaiseComposition
-    // exception est levée.
-    // Si les paramètres vD et vA sont non renseignés, on les détermine après la construction de la liste
-    // en prenant le premier et dernier element
+    // en se chargeant de les ajouter de manière ordonnée (contraintes 
+    // sur les villes de départ et d'arrivée de chacune). 
+    // En cas d'impossibilité de respecter cette contrainte, une 
+    // exception MauvaiseComposition est levée.
+    // Si les paramètres vD et vA ne sont pas renseignés, on les détermine 
+    // après la construction de la liste en prenant le premier et le 
+    // dernier element
 
     virtual ~TrajetCompose ();
     // Mode d'emploi :
@@ -55,6 +60,7 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 private:
+    
 //----------------------------------------------------- Méthodes privées
 
 
@@ -72,18 +78,17 @@ private:
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//------------------------ Autres définitions dépendantes de <TrajetCompose>
 
 
 //------------------------------------------------------------------------
-// Rôle de la classe <MauvaiseCompositio>
+// Rôle de la classe <MauvaiseComposition>
 //
 // Cette classe hérite de la classe exception
 // Cette exception est levée lorsque l'on ajoute un trajet au trajet composé
-// qui ne permet pas de maintenir la cohérence entre ville de départ et ville
-// d'arrivée
-//
-// En cas de levé d'exception le trajet composé en cours de construction est
+// qui ne permet pas de maintenir la cohérence entre ville de départ et 
+// ville d'arrivée.
+// En cas de levée d'exception, le trajet composé en cours de construction est
 // détruit et cette classe se charge de détruire le reste du tableau
 //------------------------------------------------------------------------
 
@@ -118,4 +123,3 @@ private:
 };
 
 #endif // TRAJETCOMPOSE_H
-
