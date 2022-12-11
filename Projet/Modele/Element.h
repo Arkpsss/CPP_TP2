@@ -4,10 +4,11 @@
                              -------------------
     début                : 21/11/2022
     copyright            : (C) 2022 par G.Canaple et J.Bondyfalat
-    e-mail               : gabriel.canaple@insa-lyon.fr, julien.bodyfalat@insa-lyon.fr
+    e-mail               : gabriel.canaple@insa-lyon.fr, 
+                           julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Element> (fichier Element.h) ----------------
+//---------- Interface de la classe <Element> (fichier Element.h) --------
 #if ! defined ( ELEMENT_H )
 #define ELEMENT_H
 
@@ -56,7 +57,8 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 
 
-    Element (Trajet *trajet = NULL, Element *next = NULL, bool _deleteTrajet = true);
+    Element (Trajet *trajet = NULL, Element *next = NULL, 
+      bool _deleteTrajet = true);
     // Mode d'emploi :
     // Crée un Element avec :
     // this->trajet = trajet (paramètre formel)
