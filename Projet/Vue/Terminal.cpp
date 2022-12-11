@@ -166,16 +166,18 @@ void Terminal::Start()
 // choix différent.
 {
     bool ok = true;
-    cout << "Bienvenue dans le menu de gestion de catalogue de voyage" << endl;
+    cout << "Bienvenue dans le menu de gestion de catalogue de voyages" << endl;
 
     while (ok) {
 
         cout << endl;
-        cout << "   1. Afficher le catalogue" << endl;
-        cout << "   2. Inserer un trajet" << endl;
-        cout << "   3. Rechercher un voyage" << endl;
-        cout << "   4. Quitter" << endl;
-        cout << "Saisir le numero qui vous interesse : ";
+        cout << "+-----------------------------------+" << endl;
+        cout << "|   1. Afficher le catalogue        |" << endl;
+        cout << "|   2. Inserer un trajet            |" << endl;
+        cout << "|   3. Rechercher un voyage         |" << endl;
+        cout << "|   4. Quitter                      |" << endl;
+        cout << "+-----------------------------------+" << endl;
+        cout << "Saisir le numéro qui vous intéresse : ";
 
         int action;
 
@@ -215,7 +217,7 @@ void Terminal::Start()
                     //resultat de la recherche et on l'affiche
                     this->catalogue = resultat;
 
-                    cout << "Résultat de la requête : " << endl;
+                    cout << "\nRésultat de la requête : " << endl;
                     Afficher();
                     cout << endl;
 
@@ -245,7 +247,6 @@ void Terminal::Start()
             cin.clear();
             cin.ignore(300, '\n');
         }
-
     }
 
 } //---- Fin de Start
