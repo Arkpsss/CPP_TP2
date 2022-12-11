@@ -1,25 +1,14 @@
-
-#Modele de makefile C/C++
-#A utiliser pour des projets de plusieurs fichiers
-#A adapter au besoin
-
-# version évoluée avec variables et patterns
-
-#Variables (mettre @ devant une commande pour la passer en mode silencieux)
+#Variables 
 ECHO = echo
-GCC = g++ #gcc
-CCFLAGS = -c -g -ansi -pedantic -Wall -std=c++11 #-DMAP#-c -O1 # debug : -c -g
+GCC = g++ 
+CCFLAGS = -c -ansi -pedantic -Wall -std=c++11
 OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o Terminal.o fonction_string.o
 EXE = trajet
 LIBRAIRIES = #-lm
 
-#Règles
-
-
 #Creation executable -> linker
 $(EXE) : $(OBJETS)
 	$(GCC) -o $(EXE) $(OBJETS) $(LIBRAIRIES)
-
 
 #Creation fichier binaire -> compilation
 %.o : %.cpp
@@ -38,6 +27,7 @@ $(EXE) : $(OBJETS)
 	$(ECHO) $(GCC) $(CCFLAGS) $<
 	$(GCC) $(CCFLAGS) $<
 
+#Règles
 TrajetSimple.o : Modele/TrajetSimple.h Modele/Trajet.h Modele/fonction_string.h
 main.o : Modele/Trajet.h Modele/TrajetSimple.h
 Trajet.o : Modele/Trajet.h Modele/fonction_string.h
@@ -48,8 +38,11 @@ Catalogue.o : Controleur/Catalogue.h Modele/LinkedList.h Modele/Trajet.h
 Terminal.o : Vue/Terminal.h Controleur/Catalogue.h Modele/Trajet.h Modele/TrajetSimple.h Modele/TrajetCompose.h Modele/fonction_string.h
 fonction_string.o : Modele/fonction_string.h
 
-
-
+.PHONY : clean, debug
 #Nettoyage
 clean :
 	rm -f $(OBJETS) $(EXE)
+
+#Mode debug
+debug : CCFLAGS += -DMAP -g
+debug : $(EXE)
