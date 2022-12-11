@@ -1,12 +1,14 @@
 /*************************************************************************
-                           TrajetSimple  -  Classe implémentant un trajet simple
+              TrajetSimple  -  Classe implémentant un trajet simple
                              -------------------
     début                : 28/11/2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.f
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et 
+                           gabriel.canaple@insa-lyon.f
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+//-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -35,7 +37,6 @@ TrajetSimple::TrajetSimple (const char *vD, const char *vA, const char *mt)
 
     moyenTransport = new char[strlen(mt) + 1];
     strcpy(moyenTransport, mt);
-
     description = ToString();
 
 } //----- Fin de TrajetSimple
@@ -47,8 +48,6 @@ TrajetSimple::~TrajetSimple () {
 #endif
 
     delete [] moyenTransport;
-    //delete [] description;
-
 } //----- Fin de ~TrajetSimple
 
 
@@ -56,9 +55,14 @@ TrajetSimple::~TrajetSimple () {
 
 //----------------------------------------------------- Méthodes privées
 
-char* TrajetSimple::ToString() const {
+char* TrajetSimple::ToString() const 
+// Algorithme :
+// Concatène les caractéristiques du trajet en une seule chaine de
+// caractères.
+{
 
-    char *res = new char[DESC + strlen(villeDepart) + strlen(villeArrivee) + strlen(moyenTransport)];
+    char *res = new char[DESC + strlen(villeDepart) + strlen(villeArrivee) 
+      + strlen(moyenTransport)];
     res[0] = '\0';
 
     strcat(res, "Ville de depart : ");
