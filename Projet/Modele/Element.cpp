@@ -8,7 +8,7 @@
                            julien.bodyfalat@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Element> (fichier Element.cpp) ------------
+//------- Réalisation de la classe <Element> (fichier Element.cpp) -------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -28,13 +28,10 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-
-
 Element::Element (Trajet *trajet, Element *next, bool _deleteTrajet) : 
 trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
 // Algorithme :
-// Initialise chacun des attributs
+// Initialise chacun des attributs à la volée
 {
 #ifdef MAP
     cout << "Appel au deuxième constructeur de <Element>" << endl;
@@ -43,7 +40,7 @@ trajet(trajet), next(next), deleteTrajet(_deleteTrajet)
 
 Element::~Element ( )
 // Algorithme :
-// Désalloue la zone mémoire du trajet
+// Désalloue la zone mémoire du trajet seulement si deleteTrajet est true
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Element>" << endl;
@@ -51,7 +48,6 @@ Element::~Element ( )
     if (deleteTrajet)
       delete(trajet);
 } //----- Fin de ~Element
-
 
 //------------------------------------------------------------------ PRIVE
 
