@@ -173,7 +173,7 @@ void Terminal::Start()
         cout << endl;
         cout << "+-----------------------------------+" << endl;
         cout << "|   1. Afficher le catalogue        |" << endl;
-        cout << "|   2. Inserer un trajet            |" << endl;
+        cout << "|   2. Insérer un trajet            |" << endl;
         cout << "|   3. Rechercher un voyage         |" << endl;
         cout << "|   4. Quitter                      |" << endl;
         cout << "+-----------------------------------+" << endl;
