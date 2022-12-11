@@ -1,12 +1,14 @@
  /*************************************************************************
-                           Terminal  -  Système d'IHM du projet
+                   Terminal  -  Système d'IHM du projet
                              -------------------
     début                : 2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et 
+                           gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Terminal> (fichier Terminal.h) ----------------
+//------- Interface de la classe <Terminal> (fichier Terminal.h) ---------
 #if ! defined ( TERMINAL_H )
 #define TERMINAL_H
 
@@ -49,9 +51,9 @@ public:
 
     void Start();
     // Mode d'emploi : 
-    // Débute l'affichage sur console en bouclant jusqu'à arret de l'utilisateur
-    // sur un menu permettant de choisir les actions que l'on souhaite utiliser du
-    // catalogue
+    // Débute l'affichage sur console en bouclant jusqu'à arret de 
+    // l'utilisateur sur un menu permettant de choisir les actions que l'on 
+    // souhaite utiliser du catalogue
 
     Trajet* SaisirNewTrajet() const;
 
@@ -83,7 +85,7 @@ private:
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Terminal>
+//--------------------------- Autres définitions dépendantes de <Terminal>
 
 #endif // TERMINAL_H
 

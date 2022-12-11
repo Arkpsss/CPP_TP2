@@ -1,12 +1,14 @@
- /*************************************************************************
-                           Terminal  -  Système d'IHM du projet
+/*************************************************************************
+                   Terminal  -  Système d'IHM du projet
                              -------------------
     début                : 2022
-    copyright            : (C) 2022 par Julien Bondyfalat et Gabriel Canaple
-    e-mail               : julien.bondyfalat@insa-lyon.fr et gabriel.canaple@insa-lyon.fr
+    copyright            : (C) 2022 par Julien Bondyfalat et 
+                                        Gabriel Canaple
+    e-mail               : julien.bondyfalat@insa-lyon.fr et 
+                           gabriel.canaple@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Terminal> (fichier Terminal.cpp) ------------
+//------ Réalisation de la classe <Terminal> (fichier Terminal.cpp) ------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -24,8 +26,10 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void Terminal::Afficher() const {
-
+void Terminal::Afficher() const 
+// Algorithme :
+// Utilise la fonction GetDescriptionOf pour accéder aux trajets
+{
     if (catalogue->GetNbTrajet() == 0) {
         cout << "Le catalogue est vide." << endl;
     }
@@ -42,15 +46,25 @@ void Terminal::Afficher() const {
 
 
 
-Trajet* Terminal::SaisirNewTrajet() const {
+Trajet* Terminal::SaisirNewTrajet() const 
+// Algorithme :
+// Séparation en trois temps :
+// 1) Demande du nombre d'étapes du trajet, en gérant les saisaies incorrectes
+// 2) S'il y a une seule étape, création d'un TrajetSimple en demandant
+//    à l'utilisateur ses caractéristiques.
+// 3) S'il y a plus d'une étape, création d'un TrajetCompose avec possibilité
+//    d'y inclure des trajets simples et des trajets composés, en rappelant
+//    la fonction récursivement.
+{
 
     int nbSousTrajets = 0;
     bool ok = true;
     
+    //Etape 1
     while (ok) {
-        cout << "Entrer le nombre d'escales que contient votre trajet à saisir : ";
+        cout << "Entrer le nombre d'escales que contient votre trajet : ";
 
-        //Pour gerer les exceptions de mauvaise saisi
+        //Pour gerer les exceptions de mauvaise saisie
         cin.exceptions(ios_base::failbit);
 
         try {
@@ -71,7 +85,7 @@ Trajet* Terminal::SaisirNewTrajet() const {
 
     char vD[TAILLE_MAX];
     char vA[TAILLE_MAX];
-
+    //Etape 2
     if (nbSousTrajets == 1) {
         cout << "   Ville de départ : ";
         recup_saisi_string(vD, TAILLE_MAX);
@@ -90,22 +104,21 @@ Trajet* Terminal::SaisirNewTrajet() const {
         return new TrajetSimple(vD, vA, mt);
 
     }
-
+    //Etape 3
     else {
 
         Trajet* *tab = new Trajet*[nbSousTrajets];
 
         for (int i = 0; i < nbSousTrajets; i++) {
-
             cout << "\tSous-Trajet n° " << i+1 << endl;
+            //On rappelle la fonction pour pouvoir saisir un trajet simple
+            //ou un trajet composé
             tab[i] = SaisirNewTrajet();
-
         }
 
         try {
             Trajet* t = new TrajetCompose(tab, nbSousTrajets);
             delete [] tab;
-
             return t;
         }
         catch (exception &e) {
@@ -113,16 +126,17 @@ Trajet* Terminal::SaisirNewTrajet() const {
         }
         
         return NULL;
-        
     }
-
-    
-
 } //---- Fin de SaisirNewTrajet
 
 
 
-Catalogue* Terminal::RechercheTrajet() const {
+Catalogue* Terminal::RechercheTrajet() const 
+// Algorithme :
+// Fait appel aux fonctions fournies par fonction_string pour l'entrée,
+// et fait appel à RechercheSimple de Catalogue pour trouver les
+// trajets qui correspondent.
+{
     char vD[TAILLE_MAX];
     char vA[TAILLE_MAX];
 
@@ -143,14 +157,16 @@ Catalogue* Terminal::RechercheTrajet() const {
 
 
 
-void Terminal::Start() {
-
+void Terminal::Start() 
+// Algorithme :
+// Utilisation d'un switch case afin de gérer tous les choix du menu
+// A chaque fois, on récupère le nombre entier saisi par
+// l'utilisateur, qui doit etre valide.
+// Puis on utilise les fonctions adaptées de la classe pour chaque 
+// choix différent.
+{
     bool ok = true;
-
     cout << "Bienvenue dans le menu de gestion de catalogue de voyage" << endl;
-
-    
-    
 
     while (ok) {
 
@@ -163,7 +179,7 @@ void Terminal::Start() {
 
         int action;
 
-        //Pour gerer les exceptions de mauvaise saisi
+        //Pour gerer les exceptions de mauvaise saisie
         cin.exceptions(ios_base::failbit);
 
         try {
@@ -177,7 +193,10 @@ void Terminal::Start() {
 
             case 2:
                 {
+                    //Saisie d'un trajet
                     Trajet *t = this->SaisirNewTrajet();
+                    //Insertion dans le catalogue s'il n'y a pas eu 
+                    //d'erreur de saisie.
                     if (t != NULL) {
                         catalogue->Insert(t);
                     }
@@ -192,7 +211,8 @@ void Terminal::Start() {
                     //Sauvegarde temporaire du catalogue entier
                     Catalogue *temp = this->catalogue;
 
-                    //on remplace le catalogue de l'instance par celui du resultat de la recherche et on l'affiche
+                    //on remplace le catalogue de l'instance par celui du 
+                    //resultat de la recherche et on l'affiche
                     this->catalogue = resultat;
 
                     cout << "Résultat de la requête : " << endl;
