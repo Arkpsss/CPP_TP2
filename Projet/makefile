@@ -3,7 +3,7 @@ ECHO = echo
 GCC = g++ 
 CCFLAGS = -c -ansi -pedantic -Wall -std=c++11
 OBJETS = main.o Trajet.o TrajetSimple.o TrajetCompose.o Element.o LinkedList.o Catalogue.o Terminal.o fonction_string.o
-EXE = trajet
+EXE = trajets
 LIBRAIRIES = #-lm
 
 #Creation executable -> linker
